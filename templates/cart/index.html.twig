@@ -1,0 +1,174 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+
+
+{% block main %}
+
+
+
+    <div class="row">
+            <div class="col-8">
+            <h4>Liste des produits</h4>
+            <div class="row">
+                {% for product in products %}
+                   <div class="col-2 mb-3" >
+
+                        <div style="cursor:pointer;" data-name="{{product.name}}" data-price="{{product.price}}"  data-id="{{product.id}}" class="card  add-product-to-cart h-100" >
+                          
+                          <div class="bg-pink" style="background:url('uploads/{{asset(product.image)}}'); height:100px;background-size:cover;"></div>
+                            <div class="card-body">
+                                <h6>{{product.name}}</h6>
+                            <p>{{product.price}} DH</p>
+                            </div>
+                            
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+            <div class="col-4">
+
+                
+                <div class="card p-3" >
+                <h4>Panier</h4>
+                    <table class="table">
+                    <tbody class="cart">
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td colspan="4" class="text-right">Total: <strong class="total"></strong></td>
+                            
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td colspan="4" class="text-right">Montant pris: <input type="number" class="form-control" id="cash" /></td>
+                            
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td colspan="4" class="text-right">Difference: <strong class="difference-cash"></strong></td>
+                            
+                        </tr>
+                    </tfoot>
+                    </table>
+
+                    <button class="btn btn-danger destroy-cart" >Vider le panier</button>
+                </div>
+            </div>
+    </div>
+{% endblock %}
+
+
+    {% block body_javascript %}
+
+        {{parent()}}
+<script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+<script src="{{asset('flexy/js/cart-localstorage.js')}}" defer></script>
+
+<script>
+
+
+$(document).ready(function(){
+function renderCart(items) {
+  const $cart = document.querySelector(".cart")
+  const $total = document.querySelector(".total")
+
+  $cart.innerHTML = items.map((item) => `
+      <tr data-id="${item.id}">
+        <td>${item.name}</td>
+        <td style="width: 60px;"> 
+          <button data-id="${item.id}" type="button" class="btn   btn-block btn-sm  decrease-quantite-to-cart"
+            ><i class="fas fa-minus"></i></button>
+        </td>
+        <td style="width: 60px;"> 
+          <button data-id="${item.id}" type="button" class="btn   btn-block btn-sm  increase-quantite-to-cart"
+            ><i class="fas fa-plus"></i></button>
+        </td>
+        <td style="white-space:nowrap;" class="text-right">${item.quantity} x ${item.price} DH</td>
+        <td  class="text-right">${item.price * item.quantity}  DH</td>
+        <td class="text-right"><Button data-id="${item.id}" class="btn btn-danger  delete-product-from-cart" ><i class="fas fa-trash-alt"></i></Button></td>
+      </tr>`).join("");
+
+  $total.innerHTML =  cartLS.total() + "DH";
+}
+renderCart(cartLS.list());
+
+
+cartLS.onChange(renderCart);
+
+
+$(".add-product-to-cart").click(function(){
+
+var id = $(this).attr("data-id");
+var name = $(this).attr("data-name");
+var price = $(this).attr("data-price");
+
+cartLS.add({
+  id: id, 
+  name: name, 
+  price: price,
+  client:{
+      name:"Adil",
+      type:"Client Fidele",
+  }
+});
+cartLS.onChange(renderCart);
+console.log(cartLS.list());
+});
+
+
+
+$(".cart").on("click",".increase-quantite-to-cart",function(){
+
+    var id = $(this).attr("data-id");
+
+    cartLS.quantity(id, 1);
+    cartLS.onChange(renderCart);
+});
+
+$(".cart").on("click",".decrease-quantite-to-cart",function(){
+
+    var id = $(this).attr("data-id");
+    cartLS.quantity(id, -1);
+    cartLS.onChange(renderCart);
+   
+});
+
+$(".cart").on("click",".delete-product-from-cart",function(){
+
+    var id = $(this).attr("data-id");
+
+    cartLS.remove(id);
+    cartLS.onChange(renderCart);
+});
+
+$(".destroy-cart").click(function(){
+    cartLS.destroy();
+});
+
+$("#cash").keyup(function(){
+    var total = cartLS.total();
+    var cash = $(this).val();
+    var difference = cash-total;
+    $(".difference-cash").html(difference+ " DH");
+});
+
+
+
+
+});
+
+
+
+
+</script>
+
+
+{% endblock body_javascript %}
+
+

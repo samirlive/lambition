@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr"> 
+<head>
+    <title>Flexy</title>
+    
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="description" content="Flexy web platform">
+    <meta name="author" content="Samir MENGADI">    
+    <link rel="shortcut icon" href="favicon.ico"> 
+    
+    
+    <!-- App CSS -->  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('bundles/easyadmin/app.css') }}">
+     <link rel="stylesheet" href="{{ asset('flexy/css/style.css') }}">
+
+</head> 
+
+<body style="background: url('flexy/img/login-bg.jpg');background-size:cover;color:white;" class="app app-login p-0">    	
+    <div class="row g-0 app-auth-wrapper">
+	    <div class="col-12 col-md-12 col-lg-12 auth-main-col text-center p-5">
+		    <div class="d-flex flex-column align-content-end">
+			    <div  class="app-auth-body mt-5 mx-auto">	
+				    <div class="app-auth-branding mb-4"><a class="app-logo" href="index.html"><img width="300"  src="flexy/img/logo-flexy-600px-white.png" alt="logo"></a></div>
+					
+			        <div class="auth-form-container text-start">
+					
+					<form method="post">
+    {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+    {% endif %}
+
+    {% if app.user %}
+        <div class="mb-3">
+            Vous êtes connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se deconnecter</a>
+        </div>
+    {% endif %}
+
+    <h1 class="h3 mb-3 text-white font-weight-normal">Connexion</h1>
+
+    <label for="inputUsername">Nom d'utilisateur</label>
+    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+    <label for="inputPassword">Mot de passe</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+    
+    <br>
+    <button class="btn btn-lg btn-primary d-block" type="submit">
+        Se connecter
+    </button>
+</form>
+						
+						<div class="auth-option text-center pt-5 d-none">No Account? Sign up <a class="text-link" href="signup.html" >here</a>.</div>
+					</div><!--//auth-form-container-->	
+
+			    </div><!--//auth-body-->
+		    
+			    <footer class="app-auth-footer d-none">
+				    <div class="container text-center py-3">
+				         <!--/* This template is free as long as you keep the footer attribution link. If you'd like to use the template without the attribution link, you can buy the commercial license via our website: themes.3rdwavemedia.com Thank you for your support. :) */-->
+			        <small class="copyright">Designed with <i class="fas fa-heart" style="color: #fb866a;"></i> by <a class="app-link" href="http://themes.3rdwavemedia.com" target="_blank">Xiaoying Riley</a> for developers</small>
+				       
+				    </div>
+			    </footer><!--//app-auth-footer-->	
+		    </div><!--//flex-column-->   
+	    </div><!--//auth-main-col-->
+    
+    </div><!--//row-->
+
+
+</body>
+</html> 
+
+

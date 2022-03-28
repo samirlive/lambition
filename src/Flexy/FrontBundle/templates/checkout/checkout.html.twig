@@ -1,0 +1,546 @@
+{% extends "@Flexy/FrontBundle/templates/layout.html.twig"  %}
+
+{% block body %}
+
+
+<style>
+.error{
+    font-size:0.8rem;
+    color:white !important;
+    background:red;
+    padding:4px;
+}
+
+.error.valid{
+    font-size:0.8rem;
+    background:green;
+    padding:4px;
+}
+
+
+</style>
+
+
+
+
+        <!-- Begin Body Wrapper -->
+        <div class="body-wrapper">
+     
+            <!-- Begin Li's Breadcrumb Area -->
+            <div class="breadcrumb-area">
+                <div class="container">
+                    <div class="breadcrumb-content">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active">Checkout</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Li's Breadcrumb Area End Here -->
+            <!--Checkout Area Strat-->
+<form action="#">
+            <div class="checkout-area pt-60 pb-30">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+
+
+                            <div class="coupon-accordion">
+                                <!--Accordion Start-->
+                                <h3>vous n'êtes pas connecté <span id="showlogin">Se connecter</span></h3>
+                                <div id="checkout-login" class="coupon-content">
+                                    <div class="coupon-info">
+                                        <p class="coupon-text">Quisque gravida turpis sit amet nulla posuere lacinia. Cras sed est sit amet ipsum luctus.</p>
+                                        
+                                            <p class="form-row-first">
+                                                <label>Username or email <span class="required">*</span></label>
+                                                <input type="text">
+                                            </p>
+                                            <p class="form-row-last">
+                                                <label>Mot de passe  <span class="required">*</span></label>
+                                                <input type="text">
+                                            </p>
+                                            <p class="form-row">
+                                                <input value="Se connecter" type="submit">
+                                                <label>
+                                                    <input type="checkbox">
+                                                     Se souvenir de moi 
+                                                </label>
+                                            </p>
+                                            <p class="lost-password"><a href="#">Lost your password?</a></p>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!--Accordion End-->
+                                <!--Accordion Start-->
+                                <h3>Avez-vous un coupon? <span id="showcoupon">Appliquer un coupon</span></h3>
+                                <div id="checkout_coupon" class="coupon-checkout-content">
+                                    <div class="coupon-info">
+                                        <form action="#">
+                                            <p class="checkout-coupon">
+                                                <input placeholder="Coupon code" type="text">
+                                                <input value="Appliquer un coupon" type="submit">
+                                            </p>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!--Accordion End-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-7 col-12">
+                            <form class="form-js-validations" action="#">
+                                <div class="checkbox-form">
+                                    <h3>Details de facturation</h3>
+                                    
+                                    
+
+                                    <div  class="row shipping-form">
+
+                                            <div class="col-md-12">
+                                                <div class="">
+                                                    <label>Choisissez une adresse parmi votre liste <span class="required">*</span></label>
+                                                    <select name="customer-address-choice-shipping" >
+                                                    <option value="0">Aucune</option>
+                                                        {% for singleCustomerAddress in customer.customerAddresses %}
+                                                            <option value="{{singleCustomerAddress.id}}">{{singleCustomerAddress.address}} / {{singleCustomerAddress.country}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12 d-none">
+                                                <div class="country-select clearfix">
+                                                    <label>Pays <span class="required">*</span></label>
+                                                    <select class="nice-select wide">
+                                                      <option data-display="Bangladesh">Maroc</option>
+                                                      <option value="uk">London</option>
+                                                      <option value="rou">Romania</option>
+                                                      <option value="fr">French</option>
+                                                      <option value="de">Germany</option>
+                                                      <option value="aus">Australia</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="checkout-form-list">
+                                                    <label>Prénom <span class="required">*</span></label>
+                                                    <input name="firstName" required placeholder="" type="text" value="{{customer.firstName}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="checkout-form-list">
+                                                    <label>Nom <span class="required">*</span></label>
+                                                    <input name="lastName" required placeholder="" type="text" value="{{customer.lastName}}">
+                                                </div>
+                                            </div>
+                                                 <div class="col-md-6">
+                                                <div class="checkout-form-list">
+                                                    <label>Adresse<span class="required">*</span></label>
+                                                    <input name="address" required placeholder="Rue Adresse" type="text" value="{{customer.address}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="checkout-form-list">
+
+                                                <label>&nbsp;</label>
+                                                    <input  name="addressComplement" placeholder="Apartment, suite, unit etc. (optional)" type="text" >
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="checkout-form-list">
+                                                    <label>Nom d'entreprise</label>
+                                                    <input name="companyName"  placeholder="" type="text" value="{{customer.companyName}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="checkout-form-list">
+                                                    <label>Code postal / Zip <span class="required">*</span></label>
+                                                    <input name="postcode" required placeholder="" type="text" value="{{customer.postCode}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="checkout-form-list">
+
+                                                    <label>Ville / Region <span class="required">*</span></label>
+                                                    <select required=""  name="city">
+                                                        {% for city in cities %}
+
+                                                        <option value="{{city.name}}" >{{city.name}}</option>
+
+                                                        {% endfor %}
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                       
+                                            <div class="col-md-6">
+                                                <div class="checkout-form-list">
+                                                    <label>Secteur <span class="required">*</span></label>
+                                                    <select required="" name="departement">
+                                                   
+                                                    </select>
+                                                    <!--<input name="department" required placeholder="" type="text">-->
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-md-6">
+                                                <div class="checkout-form-list">
+                                                    <label>Email Adresse<span class="required">*</span></label>
+                                                    <input name="email" required placeholder="" type="email" value="{{customer.email}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="checkout-form-list">
+                                                    <label>Tel  <span class="required">*</span></label>
+                                                    <input name="tel" required type="text" value="{{customer.phone}}">
+                                                </div>
+                                            </div>
+                                    </div>
+
+
+
+
+                                    <div class="different-Adresse billing-address">
+                                        <div class="ship-different-title">
+                                            <h3>
+                                                <label>Expédier à une adresse différente ?</label>
+                                                <input id="ship-box" name="is-billing-address-different" type="checkbox">
+                                            </h3>
+                                        </div>
+                                        
+
+                                    <div id="ship-box-info">
+                                     <div class="row billing-form">
+
+                                            <div class="col-md-12">
+                                                <div class="">
+                                                    <label>Choisissez une adresse parmi votre liste <span class="required">*</span></label>
+                                                    <select name="customer-address-choice-billing" >
+                                                    <option value="0">Aucune</option>
+                                                        {% for singleCustomerAddress in customer.customerAddresses %}
+                                                            <option value="{{singleCustomerAddress.id}}">{{singleCustomerAddress.address}} / {{singleCustomerAddress.country}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-6 ">
+                                                <div class="checkout-form-list">
+                                                    <label>Prénom <span class="required">*</span></label>
+                                                    <input name="firstName_billing" required placeholder="" type="text" value="{{customer.firstName}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 ">
+                                                <div class="checkout-form-list">
+                                                    <label>Nom <span class="required">*</span></label>
+                                                    <input name="lastName_billing" required placeholder="" type="text" value="{{customer.lastName}}">
+                                                </div>
+                                            </div>
+                                                 <div class="col-md-6">
+                                                <div class="checkout-form-list">
+                                                    <label>Adresse<span class="required">*</span></label>
+                                                    <input name="address_billing" required placeholder="Rue Adresse" type="text" value="{{customer.address}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="checkout-form-list">
+
+                                                <label>&nbsp;</label>
+                                                    <input  name="addressComplement_billing" placeholder="Apartment, suite, unit etc. (optional)" type="text" >
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="checkout-form-list">
+                                                    <label>Nom d'entreprise</label>
+                                                    <input name="companyName_billing"  placeholder="" type="text" value="{{customer.companyName}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="checkout-form-list">
+                                                    <label>Code postal / Zip <span class="required">*</span></label>
+                                                    <input name="postcode_billing" required placeholder="" type="text" value="{{customer.postCode}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="checkout-form-list">
+
+                                                    <label>Ville / Region <span class="required">*</span></label>
+                                                    <select required=""  name="city_billing">
+                                                        {% for city in cities %}
+
+                                                        <option value="{{city.name}}" >{{city.name}}</option>
+
+                                                        {% endfor %}
+                                                    </select>
+
+                                                </div>
+                                            </div>
+                                       
+                                            <div class="col-md-6">
+                                                <div class="checkout-form-list">
+                                                    <label>Secteur <span class="required">*</span></label>
+                                                    <select required="" name="departement_billing">
+                                                   
+                                                    </select>
+                                                    <!--<input name="department" required placeholder="" type="text">-->
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-md-6">
+                                                <div class="checkout-form-list">
+                                                    <label>Email Adresse<span class="required">*</span></label>
+                                                    <input name="email_billing" required placeholder="" type="email" value="{{customer.email}}">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="checkout-form-list">
+                                                    <label>Tel  <span class="required">*</span></label>
+                                                    <input name="tel_billing" required type="text" value="{{customer.phone}}">
+                                                </div>
+                                            </div>
+                                    </div>
+                                    </div>
+                                   
+
+                                        <div class="order-notes">
+                                            <div class="checkout-form-list">
+                                                <label>Commentaire</label>
+                                                <textarea id="checkout-mess" cols="30" rows="10" name="comment" placeholder="Ajouter un commentaire"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            
+                        </div>
+                        <div class="col-lg-5 col-12">
+                            <div class="your-order">
+                                <h3>Votre commande</h3>
+                                <div class="your-order-table table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th class="cart-product-name">Produit</th>
+                                                <th class="cart-product-total">Totale</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="cart-checkout">
+
+ 
+                                        </tbody>
+                                        <tfoot>
+                                            <tr class="cart-subtotal">
+                                                <th>Sous total</th>
+                                                <td><span class="amount total-checkout">0,00 MAD </span></td>
+                                            </tr>
+                                            <tr class="order-total">
+                                                <th>Montant á payer</th>
+                                                <td><strong><span class="amount total-checkout">0,00 MAD</span></strong></td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                <div class="payment-method">
+                                    <div class="payment-accordion">
+                                        <div id="accordion">
+
+                                        {% for singlePaymentMethod in paymentMethods %}
+                                            <div class="card">
+                                            <div class="card-header" id="#payment-{{singlePaymentMethod.id}}">
+                                              
+
+                                                <input class="form-control d-inline" type="radio" id="method{{singlePaymentMethod.id}}"  name="paymentMethod" >
+                                                <label for="method{{singlePaymentMethod.id}}" class="d-inline">{{singlePaymentMethod.name}}</label>
+                                                
+                                                  
+                                                
+                                              
+                                            </div>
+                                            
+                                            </div>
+                                          
+                                        {% endfor %}
+
+                                        <br>
+                                        <h6>Demande des factures</h6>
+                                        <input class="form-control" type="checkbox" id="demandeFacture"  name="paymentMethod" >
+                                        <label for="demandeFacture" class="d-inline">Cocher cette option si vous préférer que les vendeurs de ces produits vous livre des factures pour chaque liste de produits que vous avez acheté chez eux</label>
+
+
+                                        </div>
+                                        <div class="order-button-payment">
+                                            <input value="Terminer la commander" id="checkout-btn" type="submit">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+            <!--Checkout Area End-->
+
+        </div>
+        <!-- Body Wrapper End Here -->
+
+            <!-- IF CART IS EMPTY -->
+            <div class="cart-is-empty d-none">
+                <div class="p-4 text-center  ">
+
+                    <h1>Votre panier est vide !</h1>
+                    <h4>Pensez á ajouter des articles pour continuer</h4>
+                    <p></p>
+
+                    <img style="width:250px;margin-top:20px;" src="https://image.flaticon.com/icons/png/512/102/102661.png"  />
+
+                    </div>
+                </div>
+             <!-- IF CART IS EMPTY -->
+{% endblock %}
+
+
+        {% block javascripts %}
+            {{parent()}}
+
+
+            <script>
+                $(document).ready(function(){
+
+                    // Default Departement 
+                    $.ajax({
+                        url: "{{path('departements_ajax')}}",
+                        data:{
+                            city:$("select[name='city']").val()
+                        },
+                        success:function(data){
+                            $("select[name='departement']").html(data);
+                        },
+                    });
+
+                    $.ajax({
+                        url: "{{path('departements_ajax')}}",
+                        data:{
+                            city:$("select[name='city_billing']").val()
+                        },
+                        success:function(data){
+                            $("select[name='departement_billing']").html(data);
+                        },
+                    });
+
+                    
+
+                    $("select[name='city']").change(function(){
+                    $.ajax({
+                        url: "{{path('departements_ajax')}}",
+                        data:{
+                            city:$(this).val()
+                        },
+                        success:function(data){
+                            $("select[name='departement']").html(data);
+                        },
+                    });
+                    });
+
+
+                    $("select[name='city_billing']").change(function(){
+                    $.ajax({
+                        url: "{{path('departements_ajax')}}",
+                        data:{
+                            city:$(this).val()
+                        },
+                        success:function(data){
+                            $("select[name='departement_billing']").html(data);
+                        },
+                    });
+                    });
+
+                    $("select[name='customer-address-choice-shipping']").change(function(){
+                        var value = $(this).val();
+
+                        if(value!=0){
+                            $(".shipping-form .checkout-form-list").fadeOut()
+                        }else{
+                            $(".shipping-form .checkout-form-list").fadeIn()
+                        }
+                    });
+
+                    $("select[name='customer-address-choice-billing']").change(function(){
+                        var value = $(this).val();
+
+                        if(value!=0){
+                            $(".billing-form .checkout-form-list").fadeOut()
+                        }else{
+                            $(".billing-form .checkout-form-list").fadeIn()
+                        }
+                    });
+
+                    
+
+
+                    if(cartLS.list().length == 0){
+                        $(".checkout-area").html($(".cart-is-empty").html());
+                    }
+
+
+                    
+
+
+
+
+                    $("#checkout-btn").click(function(){
+
+
+                            jQuery.validator.setDefaults({
+                            debug: true,
+                            success: "valid"
+                            });
+
+
+                            
+                            var form = $( ".form-js-validations" );
+                            form.validate({
+                            
+                             lang: 'fr'
+                            });
+                            $( "#checkout-btn" ).click(function() {
+                            });
+                        if(form.valid()){
+                            $.ajax({
+                            url:"{{path('confirm_checkout_ajax')}}",
+                            data:{
+                                firstName:$("input[name='firstName']").val(),
+                                lastName:$("input[name='lastName']").val(),
+                                companyName:$("input[name='companyName']").val(),
+                                address:$("input[name='address']").val(),
+                                city:$("select[name='city']").val(),
+                                country:'Maroc',
+                                department:$("select[name='departement']").val(),
+                                postcode:$("input[name='postcode']").val(),
+                                email:$("input[name='email']").val(),
+                                tel:$("input[name='tel']").val(),
+                                comment:$("textarea[name='comment']").val(),
+                                orderItems:cartLS.list(),
+                                customerAdresseShipping: $("select[name='customer-address-choice-shipping']").val(),
+                                customerAdresseBilling: $("select[name='customer-address-choice-billing']").val(),
+                                isBilling:$("input[name='is-billing-address-different']").val(),
+                            },
+
+                            success:function(result){
+                                $(".checkout-area").html(result);
+                                cartLS.destroy();
+                            }
+                        });
+                        }
+                        
+
+
+                    });
+                });
+            </script>
+        {% endblock %}

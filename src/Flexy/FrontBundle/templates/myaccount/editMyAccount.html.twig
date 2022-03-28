@@ -1,0 +1,92 @@
+
+{% extends '@Flexy/FrontBundle/templates/layout.html.twig' %}
+
+{% block body %}
+
+
+ {% include "@Flexy/FrontBundle/templates/myaccount/_nav.html.twig" %} 
+
+<div class="container" style="padding-bottom:150px;" >
+   {% for message in app.flashes('success') %}
+             
+     <div class="alert  alert-success  alert-dismissible fade show text-center " role="alert">
+  <strong > <i class="fa fa-check"></i>   {{ message }}</strong>  
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+        {% endfor %}
+
+<div class="col-lg-12 col-12">
+ 
+                            <form class="form-js-validations" action="{{path('edit_myaccount')}}" method="POST">
+                                <div class="checkbox-form">
+                                    <h3>Informations personnelles</h3>
+                                    {{ form_start(registrationCustomerForm) }}
+                                    <div  class="row">
+                                         <div class="col-md-4 col-sm-6">
+                                                <div class="checkout-form-list">
+                                                    <label>Prénom <span class="required">*</span></label>
+                                                    {{ form_widget(registrationCustomerForm.firstName) }}
+                                                    </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="checkout-form-list">
+                                                    <label>Nom <span class="required">*</span></label>
+                                                      {{ form_widget(registrationCustomerForm.lastName) }}
+                                                      </div>
+                                            </div>
+                                            
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="checkout-form-list">
+                                                    <label>Email Adresse<span class="required">*</span></label>
+                                                      {{ form_widget(registrationCustomerForm.email) }}
+                                                </div>
+                                            </div>
+                                          
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="checkout-form-list">
+                                                    <label>Code postal / Zip <span class="required">*</span></label>
+                                                        {{ form_widget(registrationCustomerForm.postCode) }}
+                                                    </div>
+                                            </div>
+                                           
+                                             <div class="col-md-4 col-sm-6">
+                                                <div class="checkout-form-list">
+                                                    {{ form_row(registrationCustomerForm.gender) }}
+                                                    
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <div class="checkout-form-list">
+                                                    <label>Tel  <span class="required">*</span></label>
+                                                     {{ form_widget(registrationCustomerForm.phone) }}
+                                                </div>
+                                            </div>
+
+                                             <div class="col-md-4 col-sm-6">
+                                                 {{ form_row(registrationCustomerForm.dateOfBirth) }}
+                                            </div>
+                                        </div>
+                                                    
+                                               
+                                      
+                                   
+                                </div>
+                                 </br>
+                                     <button  class="register-button mt-0">Enregister</button>
+                            </form>
+                      {{ form_end(registrationCustomerForm) }}
+                        </div>
+ 
+</div>
+
+{% endblock %}
+ {% block javascripts %}
+{{parent()}}
+
+ 
+
+{% endblock %}
+
+

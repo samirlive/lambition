@@ -1,0 +1,12 @@
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    paths:
+        '%kernel.project_dir%/src/Flexy': Flexy
+    globals:
+        # the value is the service's id
+        notifications: '@App\Service\FlexyNotificationProvider'
+        urlSite: "http://127.0.0.1:8001/"
+
+when@test:
+    twig:
+        strict_variables: true

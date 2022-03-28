@@ -1,0 +1,40 @@
+<!doctype html>
+<html class="no-js" lang="fr">
+    
+<!-- index28:48-->
+
+
+    {% block stylesheets %}
+{% include "@Flexy/FrontBundle/templates/_head.html.twig" %}
+
+<style>
+header a{
+        color:white;
+    }
+    header a.active{
+        color:#ff5c5b;
+    }
+</style>
+    {% endblock %}
+    <body>
+    <!--[if lt IE 8]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+       
+        {% include "@Flexy/FrontBundle/templates/booking/_header.html.twig" %}
+
+        {% block body %}
+
+        {% endblock %}
+
+
+
+        {% include "@Flexy/FrontBundle/templates/booking/_footer.html.twig" %}
+
+        {% block javascripts %}
+            {% include "@Flexy/FrontBundle/templates/_javascripts.html.twig" %}
+        {% endblock %}
+    </body>
+
+<!-- index30:23-->
+</html>

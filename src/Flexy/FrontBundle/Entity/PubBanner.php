@@ -1,0 +1,179 @@
+<?php
+
+namespace App\Flexy\FrontBundle\Entity;
+
+use ApiPlatform\Core\Annotation\ApiResource;
+use App\Flexy\FrontBundle\Repository\PubBannerRepository;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity(repositoryClass=PubBannerRepository::class)
+ */
+#[ApiResource]
+class PubBanner
+{
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $lien;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $emplacement;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isEnabled;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isTextWhite;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $petitTitre;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $grandTitre;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $textePrix;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $titreBtn;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    public function getLien(): ?string
+    {
+        return $this->lien;
+    }
+
+    public function setLien(?string $lien): self
+    {
+        $this->lien = $lien;
+
+        return $this;
+    }
+
+    public function getEmplacement(): ?string
+    {
+        return $this->emplacement;
+    }
+
+    public function setEmplacement(?string $emplacement): self
+    {
+        $this->emplacement = $emplacement;
+
+        return $this;
+    }
+
+    public function getIsEnabled(): ?bool
+    {
+        return $this->isEnabled;
+    }
+
+    public function setIsEnabled(?bool $isEnabled): self
+    {
+        $this->isEnabled = $isEnabled;
+
+        return $this;
+    }
+
+    public function getIsTextWhite(): ?bool
+    {
+        return $this->isTextWhite;
+    }
+
+    public function setIsTextWhite(?bool $isTextWhite): self
+    {
+        $this->isTextWhite = $isTextWhite;
+
+        return $this;
+    }
+
+    public function getPetitTitre(): ?string
+    {
+        return $this->petitTitre;
+    }
+
+    public function setPetitTitre(?string $petitTitre): self
+    {
+        $this->petitTitre = $petitTitre;
+
+        return $this;
+    }
+
+    public function getGrandTitre(): ?string
+    {
+        return $this->grandTitre;
+    }
+
+    public function setGrandTitre(?string $grandTitre): self
+    {
+        $this->grandTitre = $grandTitre;
+
+        return $this;
+    }
+
+    public function getTextePrix(): ?string
+    {
+        return $this->textePrix;
+    }
+
+    public function setTextePrix(?string $textePrix): self
+    {
+        $this->textePrix = $textePrix;
+
+        return $this;
+    }
+
+    public function getTitreBtn(): ?string
+    {
+        return $this->titreBtn;
+    }
+
+    public function setTitreBtn(?string $titreBtn): self
+    {
+        $this->titreBtn = $titreBtn;
+
+        return $this;
+    }
+}

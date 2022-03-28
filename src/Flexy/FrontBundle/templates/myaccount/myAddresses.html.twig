@@ -1,0 +1,183 @@
+
+
+{% extends '@Flexy/FrontBundle/templates/layout.html.twig' %}
+
+{% block body %}
+
+ {% include "@Flexy/FrontBundle/templates/myaccount/_nav.html.twig" %} 
+
+  
+
+<div class="container" style="padding-bottom:150px;" >
+
+     {% for message in app.flashes('success') %}
+             
+     <div class="alert  alert-success  alert-dismissible fade show text-center " role="alert">
+  <strong > <i class="fa fa-check"></i>   {{ message }}</strong>  
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+        {% endfor %}
+
+{% if customAddress.id == null %}
+    <h1>Mes Adresses</h1>
+
+    
+    <table class="table menu-item">
+        <thead>
+            <tr>
+                <th>Adresse</th>
+                <th>Ville/Region</th>
+                <th>Secteur</th>
+                <th>Code postal</th>
+                <th>Note</th>
+                <th>Modifier</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for singleCustomerAddress in customer.customerAddresses %}
+            <tr>
+                <td>{{singleCustomerAddress.address}}</td>
+                <td>{{singleCustomerAddress.city}}</td>
+                <td>{{singleCustomerAddress.departement}}</td>
+                <td>{{singleCustomerAddress.postCode}}</td>
+                <td>{{singleCustomerAddress.description}}</td>
+                <td><a href="{{path('my_customer_address')}}/{{singleCustomerAddress.id}}" class="btn btn-primary" ><i class="fa fa-edit" ></i></a>
+                <a  href="{{ path('delete_address', {id: singleCustomerAddress.id}) }}" class="btn btn-danger" onclick="return confirm('Voulez-vous supprimer cette adresse ?');" ><i class="fa fa-trash" ></i></a>
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ singleCustomerAddress.id) }}">
+                </td>
+                 
+            </tr>
+            {% endfor %}
+        
+        </tbody>
+    </table>
+    {% endif %}
+
+    <div class="row">
+
+    <div class="col-12">
+
+        {% if customAddress.id %}
+            <h4 class="mb-4">Modifier l'adresse</h4>
+        {% else %}
+            <h4 class="mb-4">Ajouter une adresse</h4>
+        {% endif %}
+        
+
+        {{form_start(formCustomerAddress)}}
+       
+
+        <div  class="row " >
+
+                <div class="col-md-8 col-sm-6">
+                  <div class="checkout-form-list">
+                  <label> Téléphone  <span class="required">*</span></label>
+                   {{ form_widget(formCustomerAddress.phone) }}
+                  </div>
+              </div>
+
+               <div class="col-md-8 col-sm-6">
+                  <div class="checkout-form-list">
+                  <label>Adresse <span class="required">*</span></label>
+                   {{ form_widget(formCustomerAddress.address) }}
+                  </div>
+              </div>
+                <div class="col-md-8 col-sm-6">
+                  <div class="checkout-form-list">
+                  <label> Adresse indication  <span class="required">*</span></label>
+                   {{ form_widget(formCustomerAddress.addressIndication) }}
+                  </div>
+              </div>
+
+               <div class="col-md-8 col-sm-6">
+                  <div class="checkout-form-list">
+                      <label> Ville / Region <span class="required">*</span> </label>
+                   {{ form_widget(formCustomerAddress.city) }} 
+                  </div>
+              </div>
+              <div class="col-md-8 col-sm-6">
+                  <div class="checkout-form-list">
+                       <label> Secteur  <span class="required">*</span></label>
+                   {{ form_widget(formCustomerAddress.departement) }} 
+                  </div>
+              </div>
+
+            
+
+              <div class="col-md-8 col-sm-6">
+                  <div class="checkout-form-list">
+                  <label> Code Postal </label>
+                   {{ form_widget(formCustomerAddress.postCode) }}
+                  </div>
+              </div>
+
+                
+
+              <div class="col-md-8 col-sm-6">
+                  <div class="checkout-form-list">
+                  <label> Déscription </label>
+                   {{ form_widget(formCustomerAddress.description) }} 
+                  </div>
+              </div>
+
+              
+
+              
+
+              
+        </div>
+    
+        <button class="register-button mt-0" >
+        {% if customAddress.id %}
+            Modifier
+        {% else %}
+            Enregister  
+        {% endif %}
+
+        </button>
+    {{form_end(formCustomerAddress)}}
+    </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+
+
+{% block javascripts %}
+{{parent()}}
+
+<script>
+$(document).ready(function(){
+                    $.ajax({
+                        url: "{{path('departements_ajax')}}",
+                        data:{
+                            city:$("select[name='customer_address[city]']").val()
+                        },
+                        success:function(data){
+                            
+                            $("select[name='customer_address[departement]'] ").html(data);
+                        },
+                    });
+
+                    $("select[name='customer_address[city]'").change(function(){
+                    $.ajax({
+                        url: "{{path('departements_ajax')}}",
+                        data:{
+                            city:$(this).val()
+                        },
+                        success:function(data){
+                            
+                            $("select[name='customer_address[departement]']").html(data);
+                        },
+                    });
+                    });
+        });
+</script>
+
+{% endblock %}
+

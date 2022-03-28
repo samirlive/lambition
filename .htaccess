@@ -1,0 +1,58 @@
+RewriteEngine On
+
+RewriteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
+RewriteRule ^ %1 [L,NE,R=302]
+
+RewriteRule ^((?!public/).*)$ public/$1 [L,NC]
+
+
+###> doctrine/doctrine-bundle ###
+# Format described at http://docs.doctrine-project.org/projects/doctrine-dbal/en/latest/reference/configuration.html#connecting-using-a-url
+# For an SQLite database, use: "sqlite:///%kernel.project_dir%/var/data.db"
+# Configure your db driver and server_version in config/packages/doctrine.yaml
+
+###< doctrine/doctrine-bundle ###
+
+###> symfony/swiftmailer-bundle ###
+# For Gmail as a transport, use: "gmail://username:password@localhost"
+# For a generic SMTP server, use: "smtp://localhost:25?encryption=&auth_mode="
+# Delivery is disabled by default via "null://localhost"
+
+###< symfony/swiftmailer-bundle
+
+# BEGIN cPanel-generated php ini directives, do not edit
+# Manual editing of this file may result in unexpected behavior.
+# To make changes to this file, use the cPanel MultiPHP INI Editor (Home >> Software >> MultiPHP INI Editor)
+# For more information, read our documentation (https://go.cpanel.net/EA4ModifyINI)
+<IfModule php7_module>
+   php_flag display_errors Off
+   php_value max_execution_time 1000
+   php_value max_input_time 60
+   php_value max_input_vars 1000
+   php_value memory_limit -1
+   php_value post_max_size 8M
+   php_value session.gc_maxlifetime 1440
+   php_value session.save_path "/tmp"
+   php_value upload_max_filesize 2M
+   php_flag zlib.output_compression Off
+</IfModule>
+<IfModule lsapi_module>
+   php_flag display_errors Off
+   php_value max_execution_time 1000
+   php_value max_input_time 60
+   php_value max_input_vars 1000
+   php_value memory_limit -1
+   php_value post_max_size 8M
+   php_value session.gc_maxlifetime 1440
+   php_value session.save_path "/tmp"
+   php_value upload_max_filesize 2M
+   php_flag zlib.output_compression Off
+</IfModule>
+# END cPanel-generated php ini directives, do not edit
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php74” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php74 .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

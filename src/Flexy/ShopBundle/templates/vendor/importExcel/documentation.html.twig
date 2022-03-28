@@ -1,0 +1,101 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{% extends ea.templatePath('layout') %}
+{% trans_default_domain ea.i18n.translationDomain %}
+
+{% block body_class 'page-content' %}
+
+{% block page_title %}
+    {% deprecated 'The "page_title" block is deprecated, use "content_title" instead.' %}
+{% endblock %}
+
+{% block content_title %}Aide d'importation excel{% endblock %}
+
+{% block page_content %}
+    {% deprecated 'The "page_content" block is deprecated, use "main" instead.' %}
+{% endblock %}
+
+{% block main %}{{ block('page_content') }}
+
+
+
+<div class="container">
+
+<div class="row" >
+
+    <div class="col-5" >
+        <h5> 1 - Télecharger l'exemple excel 
+                <a class="btn btn-success" href="/omall/exemple-importation-produits-omall.xlsx" >
+                <i class="fas fa-file-excel" ></i> Télecharger 
+                </a>
+        </h5>
+
+<h5> 2 - les champs a remplir 
+               
+        </h5>
+
+        <ol>
+            <li>CODE_EAN : </li>
+            <li>NOM_PRODUIT : </li>
+            <li>PRIX_VENTE: </li>
+            <li>ANCIEN_PRIX : </li>
+            <li>---- : </li>
+            <li>---- : </li>
+        </ol>
+
+<h5> 2 - Affecter les categories 
+               
+        </h5>
+        <p>Copier le nom exact en gras d'une famille de produits dans les champs de fichier excel <b>(CAT1, CAT2, CAT3, CAT4, CAT5)</b></p>
+
+        <ul style="font-size:11px;">
+            {% for singleCategory  in categories %}
+            {% if singleCategory.parentCategory == null%}
+                <li> <b>{{singleCategory.name}}</b><!--  <span class="badge badge-warning" style="font-size:7px;padding: 0 1px;" >({{singleCategory.commission * 100}} %)</span>-->
+                    {% if singleCategory.subCategories|length > 0 %}
+                        <ul>
+                            {% for singleSubCategory in singleCategory.subCategories %}
+                            <li>
+                                <b>{{singleSubCategory}}</b><!--  <span class="badge badge-warning" style="font-size:8px;padding: 0 1px;">({{singleSubCategory.commission * 100}} %)</span>-->
+                                                {% if singleSubCategory.subCategories|length > 0 %}
+                                                                <ul>
+                                                        {% for singleSubCategoryLevel2 in singleSubCategory.subCategories %}
+                                                        <li>
+                                                            <b>{{singleSubCategoryLevel2}}</b><!-- <span class="badge badge-warning"style="font-size:8px;padding: 0 1px;" >({{singleSubCategoryLevel2.commission * 100}} %)</span>-->
+                                                            
+                                                        </li>
+                                                        {% endfor %}
+                                                    </ul>
+                                                {% endif %}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </li>
+            {% endif %}
+
+            {% endfor %}
+            
+        </ul>
+    </div>
+
+
+        <div class="col-7" >
+            <h5>Tutorial d'importation</h5>
+            <video width="600"  controls>
+                <source src="/omall/tuto-import-products.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+
+</div>
+
+</div>
+
+
+   
+
+
+
+
+{% endblock %}

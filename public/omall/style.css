@@ -1,0 +1,84 @@
+.sidebar {
+    background:linear-gradient(
+        246deg, #2b3e75 0%, #293a6c 100%) ;
+
+}
+
+
+body{
+    font-family: 'Ubuntu', sans-serif;
+ }
+ 
+ .content-top .content-search input[type=search][name=query] {
+
+background: #f8fafc;
+}
+ 
+
+ .text-grey{
+     color:#dddddd80 !important;
+ }
+     #main-menu .menu .menu-icon {
+         color: var(--sidebar-menu-icon-color);
+         font-size: 17px;
+         height: 26px;
+         margin-right: 10px;
+         margin-top: 3px;
+         vertical-align: middle;
+         width: 20px;
+         color: #ffffff;
+     }
+     #main-menu .menu .submenu a {
+         font-weight:300;
+         color: #c8c8c8;
+         padding: 3px 5px 3px 26px;
+     }
+     #main-menu .menu a{
+         font-weight:300;
+         font-size:15px;
+         color: #ffffff;
+     }
+     #main-menu .menu .menu-item.active:not(.expanded) .menu-icon, #main-menu .menu .menu-item.active:not(.expanded) a {
+color: #ffffff;
+}
+#main-menu .menu a span{
+ 
+}
+#main-menu .menu .menu-item.active a span {
+text-decoration: none;
+}
+
+
+#main-menu .menu .menu-item-contents {
+    color: white;
+    display: block;
+    padding: 4px 0;
+}
+
+#main-menu .menu .menu-header{
+    color: #ddd;
+}
+#main-menu .menu .menu-item.active {
+    background: #e2e8f054;
+}
+
+
+.btn{
+    padding:8px 12px;
+}
+
+.btn-primary{
+    background:linear-gradient(
+        246deg, #2a4fbb 0%, #293a6c 100%);
+}
+
+.card-header:first-child {
+    border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;
+    padding: 15px;
+}
+
+@media (min-width: 992px){
+.content-top {
+background: #f8fafc;
+}
+}

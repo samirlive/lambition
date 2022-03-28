@@ -1,0 +1,73 @@
+
+
+
+
+
+
+                                        <!-- single-product-wrap start -->
+                                        <div class="single-product-wrap">
+                                            <div class="menu-item product-image">
+                                                <a href="{{path('single_offer',{id:singleOffer.id})}}">
+                                                {% if singleOffer.image %}
+                                                    <img src="{{ asset('uploads/' ~ singleOffer.image) | imagine_filter('my_thumb') }}" alt="{{singleOffer.name}}" />
+
+                                                    
+                                                {% else %}
+                                                    <img height="136" src="{{asset("bundles/flexyfront/assets/images/picture.png")}}" alt="{{singleOffer.name}}">
+                                                {% endif %}
+                                                </a>
+
+                                                 {% if singleOffer.oldPrice %}  
+                                                {% set factoryPercent = singleOffer.price / singleOffer.oldPrice %}
+                                                {% set percent = 100 - (factoryPercent * 100 ) %}                                              
+                                               <!-- <span class="sticker"> <b> - {{ percent|number_format(0, ',', ' ') }} %</b></span>-->
+                                                {% endif %}
+
+
+                                            </div>
+                                            <div class="product_desc">
+                                                <div class="product_desc_info">
+                                                    <div class="product-review">
+                                                        {# 
+                                                        <h5 class="manufacturer menu-item">
+                                                            <a href="{{singleOffer.vendor ? path('single_vendor',{id:singleOffer.vendor.id}) : "#" }}">{{singleOffer.brand ? singleOffer.brand :""}}   <br>
+                                                            <small style="font-weight:200;">{{singleOffer.vendor ? "Par "~ singleOffer.vendor:""}}</small>
+                                                            </a>
+                                                            
+                                                        </h5>
+                                                        #}
+                                                       
+                                                    </div>
+                                                    <h4><a class="product_name" href="{{path('single_offer',{id:singleOffer.id})}}">{{singleOffer.name}}</a></h4>
+                                                    <div class="rating-box">
+                                                            <ul class="rating">
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li><i class="fa fa-star"></i></li>
+                                                                <li class="no-star"><i class="fa fa-star"></i></li>
+                                                                <li class="no-star"><i class="fa fa-star"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                    <div class="price-box">
+                                                        <span class="new-price">{{singleOffer.formattedPrice}} MAD </span>
+                                                        {% if singleOffer.oldPrice %}
+                                                        <span class="old-price">{{singleOffer.oldPrice / 100}} MAD</span>
+                                                        {% endif %}
+                                                    </div>
+                                                    
+                                                    <!--<div class="countersection">
+                                                        <div data-endat="{{singleOffer.endAt|date("Y/m/d")}}" class="li-countdown"></div>
+                                                           
+                                                    </div>-->
+                                            
+                                             {% if singleOffer.oldPrice %}  
+                                                {% set factoryPercent = singleOffer.price / singleOffer.oldPrice %}
+                                                {% set percent = 100 - (factoryPercent * 100 ) %}  
+                                                    <label class="mt-5" style="background: #ea322e;font-size: 11px;border: 1px solid #ea322e;padding: 4px;border-radius: 4px;color: #ffffff;margin-right: 8px;">Réduction - {{ percent|number_format(0, ',', ' ') }} %</label>
+                                                {% endif %}
+                                                </div>
+                                             
+                                            </div>
+                                        </div>
+                                        <!-- single-product-wrap end -->
+                                   

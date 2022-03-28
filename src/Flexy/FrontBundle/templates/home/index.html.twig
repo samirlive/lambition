@@ -1,0 +1,966 @@
+{% extends '@Flexy/FrontBundle/templates/layout.html.twig' %}
+
+{% block body %}
+
+
+
+ <!-- Offcanvas Start -->
+ <div class="offcanvas offcanvas-start" id="offcanvasMenu">
+
+ <div class="offcanvas-header">
+ <!-- Offcanvas Logo Start -->
+ <div class="offcanvas-logo">
+ <a href="#"><img src="lambition/assets/images/logo.png" alt=""></a>
+ </div>
+ <!-- Offcanvas Logo End -->
+ <button class="btn-close" data-bs-dismiss="offcanvas"></button>
+ </div>
+
+ <div class="offcanvas-body">
+ <div class="offcanvas-menu">
+ <ul class="main-menu">
+ <li class="active-menu">
+ <a href="index.html">Home</a>
+ <ul class="sub-menu">
+ <li><a href="index.html">Home Default</a></li>
+ <li class="active"><a href="index-2.html">Online Academy</a></li>
+ <li>
+ <a href="index-3.html">Online Courses</a>
+ </li>
+ <li>
+ <a href="index-4.html">Learning Coach</a>
+ </li>
+ <li>
+ <a href="index-5.html">Home Classic</a>
+ </li>
+ </ul>
+ </li>
+ <li><a href="course.html">Courses</a>
+ <ul class="sub-menu">
+ <li><a href="course.html">Courses Grid</a></li>
+ <li><a href="course-single.html">Single Course</a></li>
+ </ul>
+ </li>
+ <li><a href="#">Pages</a>
+ <ul class="sub-menu">
+ <li><a href="about-us.html">About Us</a></li>
+ <li><a href="team.html">Our Team</a></li>
+ <li><a href="team-single.html">Team Single</a></li>
+ <li><a href="error.html">Page 404</a></li>
+ <li><a href="faq.html">FAQ`s</a></li>
+ </ul>
+ </li>
+ <li><a href="blog.html">Blog</a>
+ <ul class="sub-menu">
+ <li><a href="blog.html">Blog Grid</a></li>
+ <li><a href="blog-standard.html">Blog Listing</a></li>
+ <li><a href="blog-details.html">Blog Single</a></li>
+ </ul>
+ </li>
+ <li><a href="contact.html">Contact</a></li>
+ </ul>
+ </div>
+ </div>
+
+ </div>
+ <!-- Offcanvas End -->
+
+ <!-- Shopping Cart Start -->
+ <div class="shopping-cart">
+
+ <div class="shopping-cart-inner">
+ <div class="shopping-cart-content">
+ <p class="empty-message">No products in the cart.</p>
+ </div>
+ </div>
+
+ <div class="body-overlay"></div>
+ </div>
+ <!-- Shopping Cart End -->
+
+ <!-- Hero Start -->
+ <div class="hero-section-2 section" style="background-image: url(lambition/assets/images/hero-2.jpg);">
+
+ <div class="container">
+ <div class="row d-flex align-items-center">
+ <div class="col-lg-7">
+ <!-- Hero Content Start -->
+ <div class="hero-content-2">
+ <h2 class="title">Build skills with courses and degrees from our courses</h2>
+ </div>
+ <!-- Hero Content End -->
+ </div>
+ <div class="col-lg-5 d-flex justify-content-lg-end">
+ <div class="hero-form-2">
+ <div class="hero-form-2-wrapper">
+ <div class="heading-wrapper text-center">
+ <span class="sub-title">Send your queries</span>
+ <h3 class="title">Get in Touch!</h3>
+ </div>
+ <form action="#">
+ <div class="row">
+ <div class="col-sm-12">
+ <!-- Single Form Start -->
+ <div class="single-form">
+ <input type="text" placeholder="Your Name">
+ </div>
+ <!-- Single Form End -->
+ </div>
+ <div class="col-sm-12">
+ <!-- Single Form Start -->
+ <div class="single-form">
+ <input type="email" placeholder="Your Email">
+ </div>
+ <!-- Single Form End -->
+ </div>
+ <div class="col-sm-12">
+ <!-- Single Form Start -->
+ <div class="single-form">
+ <input type="text" placeholder="Phone">
+ </div>
+ <!-- Single Form End -->
+ </div>
+ <div class="col-sm-12">
+ <!-- Single Form Start -->
+ <div class="single-form">
+ <textarea placeholder="Message..."></textarea>
+ </div>
+ <!-- Single Form End -->
+ </div>
+ <div class="col-sm-12">
+ <!-- Single Form Start -->
+ <div class="form-btn">
+ <button class="btn" type="submit">Submit Message</button>
+ </div>
+ <!-- Single Form End -->
+ </div>
+ </div>
+ </form>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+
+
+ </div>
+ <!-- Hero End -->
+
+ <!-- Features Two Start -->
+ <div class="section features-2-section">
+ <div class="container">
+ <!-- Features Two Wrapper Start -->
+ <div class="features-2-wrapper">
+ <div class="row">
+ <div class="col-lg-4 col-md-12">
+ <!-- Features Two Item Start -->
+ <div class="features-2-item">
+ <div class="features-2-icon">
+ <img src="lambition/assets/images/features/f-icon-4.png" alt="features">
+ </div>
+ <div class="features-2-content">
+ <h3 class="title">20K + Courses</h3>
+ <p>You can start and finish one of these popular courses in under</p>
+ </div>
+ </div>
+ <!-- Features Two Item End -->
+ </div>
+ <div class="col-lg-4 col-md-12">
+ <!-- Features Two Item Start -->
+ <div class="features-2-item">
+ <div class="features-2-icon">
+ <img src="lambition/assets/images/features/f-icon-5.png" alt="features">
+ </div>
+ <div class="features-2-content">
+ <h3 class="title">Expert Instructor</h3>
+ <p>You can start and finish one of these popular courses in under</p>
+ </div>
+ </div>
+ <!-- Features Two Item End -->
+ </div>
+ <div class="col-lg-4 col-md-12">
+ <!-- Features Two Item Start -->
+ <div class="features-2-item">
+ <div class="features-2-icon">
+ <img src="lambition/assets/images/features/f-icon-6.png" alt="features">
+ </div>
+ <div class="features-2-content">
+ <h3 class="title">Lifetime Access</h3>
+ <p>You can start and finish one of these popular courses in under</p>
+ </div>
+ </div>
+ <!-- Features Two Item End -->
+ </div>
+ </div>
+ </div>
+ <!-- Features Two Wrapper End -->
+ </div>
+ </div>
+ <!-- Features Two End -->
+
+ <!-- Courses Subject Start -->
+ <div class="section courses-subject-section section-padding">
+ <div class="container">
+ <!-- Courses Subject Wrapper Start -->
+ <div class="courses-subject-wrapper">
+ <!-- Section Title Start -->
+ <div class="section-title section-devider text-center">
+ <h2 class="title">Explore 1350+ Courses within Subject</h2>
+ </div>
+ <!-- Section Title End -->
+ <!-- Courses Subject Content Wrapper Start -->
+ <div class="courses-subject-content-wrapper">
+ <div class="row">
+ <div class="col-lg-3 col-md-6 col-sm-6">
+ <!-- Courses Subject Item Start -->
+ <div class="courses-subject-item color-1 text-center">
+ <div class="courses-subject-img">
+ <a href="#"><img src="lambition/assets/images/courses/c-subject-1.png" alt=""></a>
+ </div>
+ <div class="courses-subject-content">
+ <h3 class="title"><a href="#">Science</a></h3>
+ <span><a href="#">12 Course</a></span>
+ </div>
+ </div>
+ <!-- Courses Subject Item -->
+ </div>
+ <div class="col-lg-3 col-md-6 col-sm-6">
+ <!-- Courses Subject Item Start -->
+ <div class="courses-subject-item color-2 text-center">
+ <div class="courses-subject-img">
+ <a href="#"><img src="lambition/assets/images/courses/c-subject-2.png" alt=""></a>
+ </div>
+ <div class="courses-subject-content">
+ <h3 class="title"><a href="#">Business</a></h3>
+ <span><a href="#">25 Course</a></span>
+ </div>
+ </div>
+ <!-- Courses Subject Item -->
+ </div>
+ <div class="col-lg-3 col-md-6 col-sm-6">
+ <!-- Courses Subject Item Start -->
+ <div class="courses-subject-item color-3 text-center">
+ <div class="courses-subject-img">
+ <a href="#"><img src="lambition/assets/images/courses/c-subject-3.png" alt=""></a>
+ </div>
+ <div class="courses-subject-content">
+ <h3 class="title"><a href="#">Development</a></h3>
+ <span><a href="#">28 Course</a></span>
+ </div>
+ </div>
+ <!-- Courses Subject Item -->
+ </div>
+ <div class="col-lg-3 col-md-6 col-sm-6">
+ <!-- Courses Subject Item Start -->
+ <div class="courses-subject-item color-4 text-center">
+ <div class="courses-subject-img">
+ <a href="#"><img src="lambition/assets/images/courses/c-subject-4.png" alt=""></a>
+ </div>
+ <div class="courses-subject-content">
+ <h3 class="title"><a href="#">Health </a></h3>
+ <span><a href="#">16 Course</a></span>
+ </div>
+ </div>
+ <!-- Courses Subject Item -->
+ </div>
+ </div>
+ </div>
+ <!-- Courses Subject Content Wrapper End -->
+ </div>
+ <!-- Courses Subject Wrapper End -->
+ </div>
+ </div>
+ <!-- Courses Subject End -->
+
+ <!-- Courses Start -->
+ <div class="section top-courses-section section-padding">
+ <div class="container">
+ <div class="top-courses-wrapper">
+ <div class="row">
+ <div class="col-lg-6 col-md-12">
+ <!-- Section Title Start -->
+ <div class="section-title section-devider">
+ <h2 class="title">Browse our top courses</h2>
+ </div>
+ <!-- Section Title End -->
+ </div>
+ <div class="col-lg-6 col-md-12">
+ <div class="top-courses-filter">
+ <ul>
+ <li class="active" data-filter="*">All <span>8</span></li>
+ <li data-filter=".course-cooking">Cooking <span>3</span></li>
+ <li data-filter=".course-finance">Finance <span>3</span></li>
+ <li data-filter=".course-health">Health <span>5</span></li>
+ <li data-filter=".course-technology">Technology <span>2</span></li>
+ </ul>
+ </div>
+ </div>
+ </div>
+
+ <!-- Courses Wrapper Start -->
+ <div class="top-courses-content-wrapper">
+ <div class="row grid">
+ <div class="col-lg-3 col-sm-6 course-health course-technology">
+ <!-- Single Courses Start -->
+ <div class="single-course">
+ <!-- Courses Image Start -->
+ <div class="courses-image">
+ <a href="course-single.html"><img src="lambition/assets/images/courses/course-1.jpg" alt="Courses"></a>
+ <div class="top-meta">
+ <div class="categories">
+ <a class="tag color-1" href="#">Business</a>
+ </div>
+ <div class="wishlist">
+ <a href="#"><i class="far fa-bookmark"></i></a>
+ </div>
+ </div>
+ </div>
+ <!-- Courses Image End -->
+ <!-- Courses Content Start -->
+ <div class="courses-content">
+ <div class="courses-author">
+ <img src="lambition/assets/images/courses/author-1.jpg" alt="author">
+ <h4 class="name"><a href="#">Mick Harris</a></h4>
+ </div>
+ <h3 class="title"><a href="course-single.html">Learn React JS Tutorial For Beginners</a></h3>
+ </div>
+ <!-- Courses Content End -->
+ <!-- Courses Meta Start -->
+ <div class="courses-meta">
+ <div class="course-enroll-rating d-flex">
+ <p><i class="flaticon-user"></i> 4</p>
+ <p><i class="flaticon-star-1"></i> 1</p>
+ </div>
+ <div class="price">
+ <span>£59.99</span>
+ </div>
+ </div>
+ <!-- Courses Meta End -->
+
+ </div>
+ <!-- Single Courses End -->
+ </div>
+ <div class="col-lg-3 col-sm-6 course-finance course-health">
+ <!-- Single Courses Start -->
+ <div class="single-course">
+ <!-- Courses Image Start -->
+ <div class="courses-image">
+ <a href="course-single.html"><img src="lambition/assets/images/courses/course-3.jpg" alt="Courses"></a>
+ <div class="top-meta">
+ <div class="categories">
+ <a class="tag color-2" href="#">Finance</a>
+ </div>
+ <div class="wishlist">
+ <a href="#"><i class="far fa-bookmark"></i></a>
+ </div>
+ </div>
+ </div>
+ <!-- Courses Image End -->
+ <!-- Courses Content Start -->
+ <div class="courses-content">
+ <div class="courses-author">
+ <img src="lambition/assets/images/courses/author-2.jpg" alt="author">
+ <h4 class="name"><a href="#">Kevin Perry</a></h4>
+ </div>
+ <h3 class="title"><a href="course-single.html">English Pronunciation for Beginners</a></h3>
+ </div>
+ <!-- Courses Content End -->
+ <!-- Courses Meta Start -->
+ <div class="courses-meta">
+ <div class="course-enroll-rating d-flex">
+ <p><i class="flaticon-user"></i> 40</p>
+ <p><i class="flaticon-star-1"></i> 3</p>
+ </div>
+ <div class="price">
+ <span>Free</span>
+ </div>
+ </div>
+ <!-- Courses Meta End -->
+
+ </div>
+ <!-- Single Courses End -->
+ </div>
+ <div class="col-lg-3 col-sm-6 course-cooking course-finance course-health">
+ <!-- Single Courses Start -->
+ <div class="single-course">
+ <!-- Courses Image Start -->
+ <div class="courses-image">
+ <a href="course-single.html"><img src="lambition/assets/images/courses/course-4.jpeg" alt="Courses"></a>
+ <div class="top-meta">
+ <div class="categories">
+ <a class="tag color-3" href="#">Coookig</a>
+ </div>
+ <div class="wishlist">
+ <a href="#"><i class="far fa-bookmark"></i></a>
+ </div>
+ </div>
+ </div>
+ <!-- Courses Image End -->
+ <!-- Courses Content Start -->
+ <div class="courses-content">
+ <div class="courses-author">
+ <img src="lambition/assets/images/courses/author-1.jpg" alt="author">
+ <h4 class="name"><a href="#">Mick Harris</a></h4>
+ </div>
+ <h3 class="title"><a href="course-single.html">Health and Safety Awareness Training</a></h3>
+ </div>
+ <!-- Courses Content End -->
+ <!-- Courses Meta Start -->
+ <div class="courses-meta">
+ <div class="course-enroll-rating d-flex">
+ <p><i class="flaticon-user"></i> 2</p>
+ <p><i class="flaticon-star-1"></i> 1</p>
+ </div>
+ <div class="price">
+ <span>£29.99</span>
+ </div>
+ </div>
+ <!-- Courses Meta End -->
+
+ </div>
+ <!-- Single Courses End -->
+ </div>
+ <div class="col-lg-3 col-sm-6 course-finance">
+ <!-- Single Courses Start -->
+ <div class="single-course">
+ <!-- Courses Image Start -->
+ <div class="courses-image">
+ <a href="course-single.html"><img src="lambition/assets/images/courses/course-5.jpg" alt="Courses"></a>
+ <div class="top-meta">
+ <div class="categories">
+ <a class="tag color-4" href="#">Business</a>
+ </div>
+ <div class="wishlist">
+ <a href="#"><i class="far fa-bookmark"></i></a>
+ </div>
+ </div>
+ </div>
+ <!-- Courses Image End -->
+ <!-- Courses Content Start -->
+ <div class="courses-content">
+ <div class="courses-author">
+ <img src="lambition/assets/images/courses/author-2.jpg" alt="author">
+ <h4 class="name"><a href="#">Kevin Perry</a></h4>
+ </div>
+ <h3 class="title"><a href="course-single.html">Complete Financial Analyst Course</a></h3>
+ </div>
+ <!-- Courses Content End -->
+ <!-- Courses Meta Start -->
+ <div class="courses-meta">
+ <div class="course-enroll-rating d-flex">
+ <p><i class="flaticon-user"></i> 8</p>
+ <p><i class="flaticon-star-1"></i> 2</p>
+ </div>
+ <div class="price">
+ <span>Free</span>
+ </div>
+ </div>
+ <!-- Courses Meta End -->
+
+ </div>
+ <!-- Single Courses End -->
+ </div>
+ <div class="col-lg-3 col-sm-6 course-health">
+ <!-- Single Courses Start -->
+ <div class="single-course">
+ <!-- Courses Image Start -->
+ <div class="courses-image">
+ <a href="course-single.html"><img src="lambition/assets/images/courses/course-6.jpg" alt="Courses"></a>
+ <div class="top-meta">
+ <div class="categories">
+ <a class="tag color-2" href="#">Health</a>
+ </div>
+ <div class="wishlist">
+ <a href="#"><i class="far fa-bookmark"></i></a>
+ </div>
+ </div>
+ </div>
+ <!-- Courses Image End -->
+ <!-- Courses Content Start -->
+ <div class="courses-content">
+ <div class="courses-author">
+ <img src="lambition/assets/images/courses/author-2.jpg" alt="author">
+ <h4 class="name"><a href="#">Kevin Perry</a></h4>
+ </div>
+ <h3 class="title"><a href="course-single.html">Easy Food Recipes to Make at Home</a></h3>
+ </div>
+ <!-- Courses Content End -->
+ <!-- Courses Meta Start -->
+ <div class="courses-meta">
+ <div class="course-enroll-rating d-flex">
+ <p><i class="flaticon-user"></i> 2</p>
+ <p><i class="flaticon-star-1"></i> 1</p>
+ </div>
+ <div class="price">
+ <span>£39.99</span>
+ </div>
+ </div>
+ <!-- Courses Meta End -->
+
+ </div>
+ <!-- Single Courses End -->
+ </div>
+ <div class="col-lg-3 col-sm-6 course-cooking">
+ <!-- Single Courses Start -->
+ <div class="single-course">
+ <!-- Courses Image Start -->
+ <div class="courses-image">
+ <a href="course-single.html"><img src="lambition/assets/images/courses/course-7.jpg" alt="Courses"></a>
+ <div class="top-meta">
+ <div class="categories">
+ <a class="tag color-1" href="#">Animation</a>
+ </div>
+ <div class="wishlist">
+ <a href="#"><i class="far fa-bookmark"></i></a>
+ </div>
+ </div>
+ </div>
+ <!-- Courses Image End -->
+ <!-- Courses Content Start -->
+ <div class="courses-content">
+ <div class="courses-author">
+ <img src="lambition/assets/images/courses/author-2.jpg" alt="author">
+ <h4 class="name"><a href="#">Kevin Perry</a></h4>
+ </div>
+ <h3 class="title"><a href="course-single.html">Drawing and Painting Course for Children</a></h3>
+ </div>
+ <!-- Courses Content End -->
+ <!-- Courses Meta Start -->
+ <div class="courses-meta">
+ <div class="course-enroll-rating d-flex">
+ <p><i class="flaticon-user"></i> 5</p>
+ <p><i class="flaticon-star-1"></i> 2</p>
+ </div>
+ <div class="price">
+ <span>Free</span>
+ </div>
+ </div>
+ <!-- Courses Meta End -->
+
+ </div>
+ <!-- Single Courses End -->
+ </div>
+ <div class="col-lg-3 col-sm-6 course-health">
+ <!-- Single Courses Start -->
+ <div class="single-course">
+ <!-- Courses Image Start -->
+ <div class="courses-image">
+ <a href="course-single.html"><img src="lambition/assets/images/courses/course-8.jpg" alt="Courses"></a>
+ <div class="top-meta">
+ <div class="categories">
+ <a class="tag color-2" href="#">Business</a>
+ </div>
+ <div class="wishlist">
+ <a href="#"><i class="far fa-bookmark"></i></a>
+ </div>
+ </div>
+ </div>
+ <!-- Courses Image End -->
+ <!-- Courses Content Start -->
+ <div class="courses-content">
+ <div class="courses-author">
+ <img src="lambition/assets/images/courses/author-2.jpg" alt="author">
+ <h4 class="name"><a href="#">Kevin Perry</a></h4>
+ </div>
+ <h3 class="title"><a href="course-single.html">IELTS Course for international students</a></h3>
+ </div>
+ <!-- Courses Content End -->
+ <!-- Courses Meta Start -->
+ <div class="courses-meta">
+ <div class="course-enroll-rating d-flex">
+ <p><i class="flaticon-user"></i> 7</p>
+ <p><i class="flaticon-star-1"></i> 1</p>
+ </div>
+ <div class="price">
+ <span>£49.99</span>
+ </div>
+ </div>
+ <!-- Courses Meta End -->
+
+ </div>
+ <!-- Single Courses End -->
+ </div>
+ <div class="col-lg-3 col-sm-6 course-cooking course-technology">
+ <!-- Single Courses Start -->
+ <div class="single-course">
+ <!-- Courses Image Start -->
+ <div class="courses-image">
+ <a href="course-single.html"><img src="lambition/assets/images/courses/course-9.jpg" alt="Courses"></a>
+ <div class="top-meta">
+ <div class="categories">
+ <a class="tag color-3" href="#">Animation</a>
+ </div>
+ <div class="wishlist">
+ <a href="#"><i class="far fa-bookmark"></i></a>
+ </div>
+ </div>
+ </div>
+ <!-- Courses Image End -->
+ <!-- Courses Content Start -->
+ <div class="courses-content">
+ <div class="courses-author">
+ <img src="lambition/assets/images/courses/author-2.jpg" alt="author">
+ <h4 class="name"><a href="#">Kevin Perry</a></h4>
+ </div>
+ <h3 class="title"><a href="course-single.html">Android App Development Course</a></h3>
+ </div>
+ <!-- Courses Content End -->
+ <!-- Courses Meta Start -->
+ <div class="courses-meta">
+ <div class="course-enroll-rating d-flex">
+ <p><i class="flaticon-user"></i> 48</p>
+ <p><i class="flaticon-star-1"></i> 1</p>
+ </div>
+ <div class="price">
+ <span>Free</span>
+ </div>
+ </div>
+ <!-- Courses Meta End -->
+
+ </div>
+ <!-- Single Courses End -->
+ </div>
+ </div>
+
+ </div>
+ <!-- Courses Wrapper End -->
+ </div>
+ </div>
+ </div>
+ <!-- Courses End -->
+
+ <!-- Quality Education Start -->
+ <div class="section quality-education-section" style="background-image: url(lambition/assets/images/bg/quality-edu.jpg);">
+ <div class="container">
+ <div class="quality-education-wrapper">
+ <!-- Section Title Start -->
+ <div class="section-title quality-education-title text-center">
+ <h2 class="title">Get quality education with Gostudy</h2>
+ </div>
+ <!-- Section Title End -->
+ <div class="quality-education-content text-center">
+ <p>You can start and finish one of these popular courses in under a day.</p>
+ <!-- Instructor Play Button Start -->
+ <div class="quality-education-play">
+ <a class="popup-video" href="https://www.youtube-nocookie.com/embed/Ga6RYejo6Hk"><i class="fas fa-play"></i></a>
+ </div>
+ <!-- Instructor Play Button End -->
+ </div>
+ </div>
+ </div>
+ </div>
+ <!-- Quality Education End -->
+
+ <!-- Report Career Start -->
+ <div class="section report-career-section">
+ <div class="container">
+ <!-- Report Career Wrapper Start -->
+ <div class="report-career-wrapper">
+ <!-- Report Career Image Start -->
+ <div class="report-career-img" style="background-image: url(lambition/assets/images/r-career.jpg);">
+
+ </div>
+ <!-- Report Career Image End -->
+ <!-- Report Career Content Start -->
+ <div class="report-career-content">
+ <div class="section-title section-devider">
+ <h2 class="title">For professional development report, career benefits</h2>
+ </div>
+ <p>You can start and finish one of these popular courses in under a day – for free! Check out the list below.. Take the course for free</p>
+ <ul>
+ <li><span class="icon"><i class="flaticon-check"></i> </span> <span class="text">Get unlimited access to 4,000+ of our top courses </span> </li>
+ <li><span class="icon"><i class="flaticon-check"></i> </span> <span class="text">Explore a variety of fresh topics</span> </li>
+ <li><span class="icon"><i class="flaticon-check"></i> </span> <span class="text">Find the right instructor for you</span> </li>
+ </ul>
+ </div>
+ <!-- Report Career Content End -->
+ </div>
+ <!-- Report Career Wrapper End -->
+ </div>
+ </div>
+ <!-- Report Career End -->
+
+ <!-- Certificate Start -->
+ <div class="section certificate-section section-padding">
+ <div class="container">
+ <!-- Certificate Wrapper Start -->
+ <div class="certificate-wrapper">
+ <!-- Section Title Start -->
+ <div class="section-title section-devider text-center">
+ <h2 class="title">Certificate of Achievements</h2>
+ </div>
+ <!-- Section Title End -->
+ <!-- Certificate Content Wrapper Start -->
+ <div class="certificate-content-wrapper">
+ <div class="row">
+ <div class="col-lg-4 col-md-4 certificate-col">
+ <!-- Certificate Item Start -->
+ <div class="certificate-item text-center">
+ <div class="certificate-img">
+ <img src="lambition/assets/images/certificate/certificate-1.jpg" alt="">
+ </div>
+ <div class="certificate-content">
+ <h3 class="title">Get evidence of what you've learned </h3>
+ <p>Start streaming on-demand video lectures today from instructors Attention heatmaps.</p>
+ </div>
+ </div>
+ <!-- Certificate Item End -->
+ </div>
+ <div class="col-lg-4 col-md-4 certificate-col">
+ <!-- Certificate Item Start -->
+ <div class="certificate-item text-center">
+ <div class="certificate-img">
+ <img src="lambition/assets/images/certificate/certificate-2.jpg" alt="">
+ </div>
+ <div class="certificate-content">
+ <h3 class="title">Easily share your achievements</h3>
+ <p>Start streaming on-demand video lectures today from instructors Attention heatmaps.</p>
+ </div>
+ </div>
+ <!-- Certificate Item End -->
+ </div>
+ <div class="col-lg-4 col-md-4 certificate-col">
+ <!-- Certificate Item Start -->
+ <div class="certificate-item text-center">
+ <div class="certificate-img">
+ <img src="lambition/assets/images/certificate/certificate-3.jpg" alt="">
+ </div>
+ <div class="certificate-content">
+ <h3 class="title">Celebrate your achievement with a personalised</h3>
+ <p>Start streaming on-demand video lectures today from instructors Attention heatmaps.</p>
+ </div>
+ </div>
+ <!-- Certificate Item End -->
+ </div>
+ </div>
+ </div>
+ <!-- Certificate Content Wrapper End -->
+ </div>
+ <!-- Certificate Wrapper End -->
+ </div>
+ </div>
+ <!-- Certificate End -->
+
+
+ <!-- Testimonial Start -->
+ <div class="section testimonial-2-section section-padding" style="background-image: url(lambition/assets/images/bg/testimonial2-bg.jpg);">
+ <div class="container">
+ <div class="testimonial-2-wrapper">
+ <!-- Section Title Start -->
+ <div class="section-title section-devider text-center">
+ <h2 class="title">What learners say about us</h2>
+ </div>
+ <!-- Section Title End -->
+ <!-- Testimonial Slider Wrappper Start -->
+ <div class="testimonial-2-slider-wrapper" style="background-image: url(lambition/assets/images/testimonial/testimonial2.jpg);">
+ <div class="testimonial-2-slider">
+ <div class="testimonial-2-content">
+ <div class="svg-bg">
+ <svg class="feedback-svg-large" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="554px" height="526px">
+ <defs>
+ <linearGradient id="PSgrad_0" x1="0%" x2="100%" y1="0%" y2="0%">
+ <stop offset="0%" stop-color="rgb(113,27,82)" stop-opacity="1"></stop>
+ <stop offset="100%" stop-color="rgb(235,82,82)" stop-opacity="1"></stop>
+ </linearGradient>
+ </defs>
+ <path fill-rule="evenodd" fill="rgb(255, 31, 89)" d="M342.000,436.999 L10.000,436.999 C4.477,436.999 -0.000,432.522 -0.000,426.999 L-0.000,9.999 C-0.000,4.476 4.477,-0.001 10.000,-0.001 L544.000,-0.001 C549.523,-0.001 554.000,4.476 554.000,9.999 L554.000,426.999 C554.000,432.522 549.523,436.999 544.000,436.999 L483.000,436.999 L483.000,525.999 L342.000,436.999 Z"></path>
+ <path fill="url(#PSgrad_0)" d="M342.000,436.999 L10.000,436.999 C4.477,436.999 -0.000,432.522 -0.000,426.999 L-0.000,9.999 C-0.000,4.476 4.477,-0.001 10.000,-0.001 L544.000,-0.001 C549.523,-0.001 554.000,4.476 554.000,9.999 L554.000,426.999 C554.000,432.522 549.523,436.999 544.000,436.999 L483.000,436.999 L483.000,525.999 L342.000,436.999 Z"></path>
+ </svg>
+ </div>
+ <!-- Testimonial Slider Active Start -->
+ <div class="swiper-container testimonial-2-active">
+ <div class="swiper-wrapper">
+ <div class="swiper-slide">
+ <!-- Single Testimonial Start -->
+ <div class="single-testimonial-2">
+ <div class="testimonial-2-text">
+ <div class="quote-svg">
+ <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" xmlns:xlink="http://www.w3.org/1999/xlink" width="70px" height="50px">
+ <path fill-rule="evenodd" d="M55.376,31.360 C55.235,32.892 55.341,37.067 59.311,42.872 C59.612,43.311 59.557,43.901 59.184,44.276 C57.560,45.912 56.555,46.943 55.853,47.664 C54.933,48.608 54.513,49.038 53.899,49.600 C53.691,49.791 53.428,49.885 53.164,49.885 C52.908,49.885 52.652,49.795 52.446,49.616 C45.527,43.551 37.842,31.022 38.954,15.667 C39.605,6.652 46.133,0.108 54.476,0.108 C63.036,0.108 70.000,7.123 70.000,15.746 C70.000,24.065 63.519,30.888 55.376,31.360 ZM54.476,2.311 C47.312,2.311 41.702,7.997 41.135,15.826 C39.885,33.096 50.075,44.309 53.153,47.278 C53.451,46.983 53.791,46.634 54.292,46.121 C54.901,45.497 55.736,44.639 57.003,43.359 C52.184,35.879 53.095,30.552 53.493,29.788 C53.682,29.426 54.070,29.181 54.476,29.181 C61.829,29.181 67.812,23.155 67.812,15.746 C67.812,8.339 61.829,2.311 54.476,2.311 ZM16.527,31.360 C16.386,32.891 16.493,37.063 20.464,42.872 C20.765,43.311 20.710,43.901 20.337,44.276 C18.719,45.907 17.717,46.936 17.014,47.656 C16.090,48.605 15.668,49.037 15.051,49.600 C14.843,49.791 14.579,49.885 14.316,49.885 C14.059,49.885 13.804,49.795 13.598,49.615 C6.679,43.551 -1.006,31.020 0.105,15.667 L0.105,15.665 C0.758,6.652 7.287,0.108 15.628,0.108 C24.188,0.108 31.153,7.123 31.153,15.746 C31.153,24.065 24.671,30.888 16.527,31.360 ZM15.628,2.311 C8.465,2.311 2.854,7.997 2.286,15.827 L2.286,15.826 C1.037,33.094 11.227,44.309 14.305,47.278 C14.605,46.981 14.948,46.629 15.454,46.110 C16.062,45.487 16.894,44.633 18.156,43.359 C13.337,35.879 14.246,30.552 14.644,29.788 C14.833,29.427 15.222,29.181 15.628,29.181 C22.982,29.181 28.965,23.155 28.965,15.746 C28.965,8.339 22.982,2.311 15.628,2.311 Z"></path>
+ </svg>
+ </div>
+ <p>I believe in lifelong learning and they are a great place to learn from experts. I have lot of recommend it. Lorem ipsum dolor sit amet consectetur</p>
+ <span class="name">James Smeeth</span>
+ </div>
+ </div>
+ <!-- Single Testimonial End -->
+ </div>
+ <div class="swiper-slide">
+ <!-- Single Testimonial Start -->
+ <div class="single-testimonial-2">
+ <div class="testimonial-2-text">
+ <div class="quote-svg">
+ <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" xmlns:xlink="http://www.w3.org/1999/xlink" width="70px" height="50px">
+ <path fill-rule="evenodd" d="M55.376,31.360 C55.235,32.892 55.341,37.067 59.311,42.872 C59.612,43.311 59.557,43.901 59.184,44.276 C57.560,45.912 56.555,46.943 55.853,47.664 C54.933,48.608 54.513,49.038 53.899,49.600 C53.691,49.791 53.428,49.885 53.164,49.885 C52.908,49.885 52.652,49.795 52.446,49.616 C45.527,43.551 37.842,31.022 38.954,15.667 C39.605,6.652 46.133,0.108 54.476,0.108 C63.036,0.108 70.000,7.123 70.000,15.746 C70.000,24.065 63.519,30.888 55.376,31.360 ZM54.476,2.311 C47.312,2.311 41.702,7.997 41.135,15.826 C39.885,33.096 50.075,44.309 53.153,47.278 C53.451,46.983 53.791,46.634 54.292,46.121 C54.901,45.497 55.736,44.639 57.003,43.359 C52.184,35.879 53.095,30.552 53.493,29.788 C53.682,29.426 54.070,29.181 54.476,29.181 C61.829,29.181 67.812,23.155 67.812,15.746 C67.812,8.339 61.829,2.311 54.476,2.311 ZM16.527,31.360 C16.386,32.891 16.493,37.063 20.464,42.872 C20.765,43.311 20.710,43.901 20.337,44.276 C18.719,45.907 17.717,46.936 17.014,47.656 C16.090,48.605 15.668,49.037 15.051,49.600 C14.843,49.791 14.579,49.885 14.316,49.885 C14.059,49.885 13.804,49.795 13.598,49.615 C6.679,43.551 -1.006,31.020 0.105,15.667 L0.105,15.665 C0.758,6.652 7.287,0.108 15.628,0.108 C24.188,0.108 31.153,7.123 31.153,15.746 C31.153,24.065 24.671,30.888 16.527,31.360 ZM15.628,2.311 C8.465,2.311 2.854,7.997 2.286,15.827 L2.286,15.826 C1.037,33.094 11.227,44.309 14.305,47.278 C14.605,46.981 14.948,46.629 15.454,46.110 C16.062,45.487 16.894,44.633 18.156,43.359 C13.337,35.879 14.246,30.552 14.644,29.788 C14.833,29.427 15.222,29.181 15.628,29.181 C22.982,29.181 28.965,23.155 28.965,15.746 C28.965,8.339 22.982,2.311 15.628,2.311 Z"></path>
+ </svg>
+ </div>
+ <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt labore I believe in lifelong learning</p>
+ <span class="name">Leo Marea</span>
+ </div>
+ </div>
+ <!-- Single Testimonial End -->
+ </div>
+ <div class="swiper-slide">
+ <!-- Single Testimonial Start -->
+ <div class="single-testimonial-2">
+ <div class="testimonial-2-text">
+ <div class="quote-svg">
+ <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" xmlns:xlink="http://www.w3.org/1999/xlink" width="70px" height="50px">
+ <path fill-rule="evenodd" d="M55.376,31.360 C55.235,32.892 55.341,37.067 59.311,42.872 C59.612,43.311 59.557,43.901 59.184,44.276 C57.560,45.912 56.555,46.943 55.853,47.664 C54.933,48.608 54.513,49.038 53.899,49.600 C53.691,49.791 53.428,49.885 53.164,49.885 C52.908,49.885 52.652,49.795 52.446,49.616 C45.527,43.551 37.842,31.022 38.954,15.667 C39.605,6.652 46.133,0.108 54.476,0.108 C63.036,0.108 70.000,7.123 70.000,15.746 C70.000,24.065 63.519,30.888 55.376,31.360 ZM54.476,2.311 C47.312,2.311 41.702,7.997 41.135,15.826 C39.885,33.096 50.075,44.309 53.153,47.278 C53.451,46.983 53.791,46.634 54.292,46.121 C54.901,45.497 55.736,44.639 57.003,43.359 C52.184,35.879 53.095,30.552 53.493,29.788 C53.682,29.426 54.070,29.181 54.476,29.181 C61.829,29.181 67.812,23.155 67.812,15.746 C67.812,8.339 61.829,2.311 54.476,2.311 ZM16.527,31.360 C16.386,32.891 16.493,37.063 20.464,42.872 C20.765,43.311 20.710,43.901 20.337,44.276 C18.719,45.907 17.717,46.936 17.014,47.656 C16.090,48.605 15.668,49.037 15.051,49.600 C14.843,49.791 14.579,49.885 14.316,49.885 C14.059,49.885 13.804,49.795 13.598,49.615 C6.679,43.551 -1.006,31.020 0.105,15.667 L0.105,15.665 C0.758,6.652 7.287,0.108 15.628,0.108 C24.188,0.108 31.153,7.123 31.153,15.746 C31.153,24.065 24.671,30.888 16.527,31.360 ZM15.628,2.311 C8.465,2.311 2.854,7.997 2.286,15.827 L2.286,15.826 C1.037,33.094 11.227,44.309 14.305,47.278 C14.605,46.981 14.948,46.629 15.454,46.110 C16.062,45.487 16.894,44.633 18.156,43.359 C13.337,35.879 14.246,30.552 14.644,29.788 C14.833,29.427 15.222,29.181 15.628,29.181 C22.982,29.181 28.965,23.155 28.965,15.746 C28.965,8.339 22.982,2.311 15.628,2.311 Z"></path>
+ </svg>
+ </div>
+ <p>I believe in lifelong learning and they are a great place to learn from experts. I have lot of recommend it. Lorem ipsum dolor sit amet consectetur</p>
+ <span class="name">John Dowson</span>
+ </div>
+ </div>
+ <!-- Single Testimonial End -->
+ </div>
+ <div class="swiper-slide">
+ <!-- Single Testimonial Start -->
+ <div class="single-testimonial-2">
+ <div class="testimonial-2-text">
+ <div class="quote-svg">
+ <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" xmlns:xlink="http://www.w3.org/1999/xlink" width="70px" height="50px">
+ <path fill-rule="evenodd" d="M55.376,31.360 C55.235,32.892 55.341,37.067 59.311,42.872 C59.612,43.311 59.557,43.901 59.184,44.276 C57.560,45.912 56.555,46.943 55.853,47.664 C54.933,48.608 54.513,49.038 53.899,49.600 C53.691,49.791 53.428,49.885 53.164,49.885 C52.908,49.885 52.652,49.795 52.446,49.616 C45.527,43.551 37.842,31.022 38.954,15.667 C39.605,6.652 46.133,0.108 54.476,0.108 C63.036,0.108 70.000,7.123 70.000,15.746 C70.000,24.065 63.519,30.888 55.376,31.360 ZM54.476,2.311 C47.312,2.311 41.702,7.997 41.135,15.826 C39.885,33.096 50.075,44.309 53.153,47.278 C53.451,46.983 53.791,46.634 54.292,46.121 C54.901,45.497 55.736,44.639 57.003,43.359 C52.184,35.879 53.095,30.552 53.493,29.788 C53.682,29.426 54.070,29.181 54.476,29.181 C61.829,29.181 67.812,23.155 67.812,15.746 C67.812,8.339 61.829,2.311 54.476,2.311 ZM16.527,31.360 C16.386,32.891 16.493,37.063 20.464,42.872 C20.765,43.311 20.710,43.901 20.337,44.276 C18.719,45.907 17.717,46.936 17.014,47.656 C16.090,48.605 15.668,49.037 15.051,49.600 C14.843,49.791 14.579,49.885 14.316,49.885 C14.059,49.885 13.804,49.795 13.598,49.615 C6.679,43.551 -1.006,31.020 0.105,15.667 L0.105,15.665 C0.758,6.652 7.287,0.108 15.628,0.108 C24.188,0.108 31.153,7.123 31.153,15.746 C31.153,24.065 24.671,30.888 16.527,31.360 ZM15.628,2.311 C8.465,2.311 2.854,7.997 2.286,15.827 L2.286,15.826 C1.037,33.094 11.227,44.309 14.305,47.278 C14.605,46.981 14.948,46.629 15.454,46.110 C16.062,45.487 16.894,44.633 18.156,43.359 C13.337,35.879 14.246,30.552 14.644,29.788 C14.833,29.427 15.222,29.181 15.628,29.181 C22.982,29.181 28.965,23.155 28.965,15.746 C28.965,8.339 22.982,2.311 15.628,2.311 Z"></path>
+ </svg>
+ </div>
+ <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor incididunt labore I believe in lifelong learning</p>
+ <span class="name">Mikel Haris</span>
+ </div>
+ </div>
+ <!-- Single Testimonial End -->
+ </div>
+
+ </div>
+ <!-- Add Pagination -->
+ <div class="testimonial-arrow swiper-button-next"></div>
+ <div class="testimonial-arrow swiper-button-prev"></div>
+ </div>
+ <!-- Testimonial Slider Active End -->
+ </div>
+ </div>
+ </div>
+ <!-- Testimonial Slider Wrappper End -->
+ </div>
+ </div>
+ </div>
+ <!-- Testimonial End -->
+
+ <!-- Blog Start -->
+ <div class="section blog-2-section section-padding">
+ <div class="container">
+ <div class="blog-2-wrapper">
+ <!-- Section Title Start -->
+ <div class="section-title section-devider text-center">
+ <h2 class="title">Read our latest blog</h2>
+ </div>
+ <!-- Section Title End -->
+ <!-- Blog Wrapper Start -->
+ <div class="blog-content-wrapper">
+ <div class="row">
+ <div class="col-lg-4 col-md-6 col-sm-6">
+ <!-- Single Blog Start -->
+ <div class="single-blog">
+ <!-- Blog Image Start -->
+ <div class="blog-image">
+ <a href="blog-details.html"><img src="lambition/assets/images/blog/blog-1.jpg" alt="blog"></a>
+ </div>
+ <!-- Blog Image End -->
+ <!-- Blog Content Start -->
+ <div class="blog-content">
+ <div class="blog-author-category">
+ <a class="category color-1" href="#">Health</a>
+ <div class="blog-author">
+ <img src="lambition/assets/images/courses/author-1.jpg" alt="author">
+ <h4 class="name"><a href="#">Mick Harris</a></h4>
+ </div>
+ </div>
+ <h3 class="title"><a href="blog-details.html">Educational technology and mobile learning</a></h3>
+ <a class="read-more" href="blog-details.html">Read More</a>
+ </div>
+ <!-- Blog Content End -->
+ </div>
+ <!-- Single Blog End -->
+ </div>
+ <div class="col-lg-4 col-md-6 col-sm-6">
+ <!-- Single Blog Start -->
+ <div class="single-blog">
+ <!-- Blog Image Start -->
+ <div class="blog-image">
+ <a href="blog-details.html"><img src="lambition/assets/images/blog/blog-2.jpg" alt="blog"></a>
+ </div>
+ <!-- Blog Image End -->
+ <!-- Blog Content Start -->
+ <div class="blog-content">
+ <div class="blog-author-category">
+ <a class="category color-2" href="#">Health</a>
+ <div class="blog-author">
+ <img src="lambition/assets/images/courses/author-1.jpg" alt="author">
+ <h4 class="name"><a href="#">Mick Harris</a></h4>
+ </div>
+ </div>
+ <h3 class="title"><a href="blog-details.html">We are changing the way the world learns</a></h3>
+ <a class="read-more" href="blog-details.html">Read More</a>
+ </div>
+ <!-- Blog Content End -->
+ </div>
+ <!-- Single Blog End -->
+ </div>
+ <div class="col-lg-4 col-md-6 col-sm-6">
+ <!-- Single Blog Start -->
+ <div class="single-blog">
+ <!-- Blog Image Start -->
+ <div class="blog-image">
+ <a href="blog-details.html"><img src="lambition/assets/images/blog/blog-3.jpeg" alt="blog"></a>
+ </div>
+ <!-- Blog Image End -->
+ <!-- Blog Content Start -->
+ <div class="blog-content">
+ <div class="blog-author-category">
+ <a class="category color-3" href="#">Health</a>
+ <div class="blog-author">
+ <img src="lambition/assets/images/courses/author-1.jpg" alt="author">
+ <h4 class="name"><a href="#">Mick Harris</a></h4>
+ </div>
+ </div>
+ <h3 class="title"><a href="blog-details.html">Guide to visas and funding to study in the UK</a></h3>
+ <a class="read-more" href="blog-details.html">Read More</a>
+ </div>
+ <!-- Blog Content End -->
+ </div>
+ <!-- Single Blog End -->
+ </div>
+ </div>
+ </div>
+ <!-- Blog Wrapper End -->
+ </div>
+
+ </div>
+ </div>
+ <!-- Blog End -->
+
+ <!-- Call to Action Start -->
+ <div class="section call-to-action-2-section">
+ <div class="container-fluid g-0">
+ <!-- Call to Action Wrapper Start -->
+ <div class="call-to-action-2-wrapper">
+ <!-- Call to Action Image Start-->
+ <div class="call-to-action-2-img" style="background-image: url(lambition/assets/images/digital-1.jpeg);">
+
+ </div>
+ <!-- Call to Action Image End -->
+ <!-- Call to Action Content Start -->
+ <div class="call-to-action-2-content" style="background-image: url(lambition/assets/images/digital-bg.jpg);">
+ <h2 class="title">Start today and get certified in Fundamentals of digital marketing</h2>
+ <a class="btn" href="course.html">Start Course </a>
+ </div>
+ <!-- Call to Action Content End -->
+ </div>
+ <!-- Call to Action Wrapper End -->
+ </div>
+ </div>
+ <!-- Call to Action End -->
+
+
+
+{% endblock %}

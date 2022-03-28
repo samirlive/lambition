@@ -1,0 +1,41 @@
+
+
+<div class="container" style="padding:50px 0;">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white" style="border-radius:5px;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Bonjour <span class="badge badge-warning" ><small>{{customer.firstName}} {{customer.lastName}}</small></span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse menu-item" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link {% if app.request.get('_route') == 'myaccount' %}active{% endif %} " aria-current="page" href="{{path('myaccount')}}">Mes commandes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% if app.request.get('_route') == 'edit_myaccount' %}active{% endif %} " href="{{path('edit_myaccount')}}">Mon profil</a>
+        </li>
+       
+       <!-- <li class="nav-item">
+          <a class="nav-link disabled">Mes avis</a>
+        </li>-->
+         <li class="nav-item">
+          <a class="nav-link disabled" href="#">Mon crédit O'Mall </a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link disabled" href="{{path('editpassword')}}">Modifier votre mot de passe</a>
+        </li>
+         <li class="nav-item menu-item">
+          <a class="nav-link {% if app.request.get('_route') == 'my_customer_address' %}active{% endif %} " href="{{path('my_customer_address')}}">Adresses</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Remboursement</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link " href="{{path('app_logout')}}">Déconnexion</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+</div>

@@ -1,0 +1,53 @@
+<div class="row product-layout-list last-child ">
+                                                    <div class="col-lg-3 col-md-5 ">
+                                                        <div class="product-image menu-item">
+                                                            <a href="{{path('single_product',{id:singleProduct.id})}}">
+                                                                {% if singleProduct.image %}
+                                                    <img src="{{ asset('uploads/' ~ singleProduct.image) | imagine_filter('my_thumb') }}" alt="{{singleProduct.name}}" />
+
+                                                    
+                                                {% else %}
+                                                    <img height="136" src="{{asset("bundles/flexyfront/assets/images/picture.png")}}" alt="{{singleProduct.name}}">
+                                                {% endif %}
+                                                            </a>
+                                                            <span class="sticker">New</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-5 col-md-7">
+                                                        <div class="product_desc">
+                                                            <div class="product_desc_info">
+                                                                <div class="product-review">
+                                                                    <h5 class="manufacturer">
+                                                                        <a href="#">{{singleProduct.name}}</a>
+                                                                    </h5>
+                                                                    <div class="rating-box">
+                                                                        <ul class="rating">
+                                                                            <li><i class="fa fa-star"></i></li>
+                                                                            <li><i class="fa fa-star"></i></li>
+                                                                            <li><i class="fa fa-star"></i></li>
+                                                                            <li class="no-star"><i class="fa fa-star"></i></li>
+                                                                            <li class="no-star"><i class="fa fa-star"></i></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <h4 class="menu-item"><a class="product_name" href="{{path('single_product',{id:singleProduct.id})}}">{{singleProduct.name}}</a></h4>
+                                                                <div class="price-box">
+                                                                    <span class="new-price">MAD {{singleProduct.formattedPrice}}</span>
+                                                                    {% if singleProduct.oldPrice %}
+                                                                    <span class="old-price">{{singleProduct.oldPrice / 100}} MAD</span>
+                                                                    {% endif %}
+                                                                </div>
+                                                                <p>{{singleProduct.shortDescription|raw}}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                        <div class="shop-add-action card actions">
+                                                            <ul class="add-actions-link">
+                                                                <li data-id="{{singleProduct.id}}"  data-name="{{singleProduct.name}}" data-image="uploads/{{asset(singleProduct.image)}}" data-price="{{singleProduct.formattedPrice}}"  data-url="{{path('single_product',{id:singleProduct.id}) }}"  class="add-cart add-to-cart active add-product-to-cart"><a href="#">Ajouter au panier</a></li>
+                                                                <li class="wishlist"><a href="wishlist.html"><i class="fa fa-heart-o"></i>Ajouter au favoris</a></li>
+                                                                <li><a class="quick-view" data-toggle="modal" data-target="#exampleModalCenter" href="#"><i class="fa fa-eye"></i>Prévisualiser</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>

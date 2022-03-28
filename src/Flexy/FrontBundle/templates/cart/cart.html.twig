@@ -1,0 +1,85 @@
+{% extends "@Flexy/FrontBundle/templates/layout.html.twig"  %}
+
+{% block body %}
+
+        <div class="body-wrapper">
+
+            <!-- Begin Li's Breadcrumb Area -->
+            <div class="breadcrumb-area">
+                <div class="container">
+                    <div class="breadcrumb-content">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active">Shopping Cart</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Li's Breadcrumb Area End Here -->
+            <!--Shopping Cart Area Strat-->
+            <div class="Shopping-cart-area pt-60 pb-60">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <form action="#">
+                                <div class="table-content table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th class="li-product-remove">Supprimer</th>
+                                                <th class="li-product-thumbnail">images</th>
+                                                <th class="cart-product-name">Product</th>
+                                                <th class="li-product-price">Prix unitaire</th>
+                                                <th class="li-product-quantity">Quantité</th>
+                                                <th class="li-product-subtotal">Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="cart">
+                                                <!-- LocalStorage Cart Items -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="coupon-all">
+                                            <div class="coupon">
+                                                <input id="coupon_code" class="input-text" name="coupon_code" value="" placeholder="Coupon code" type="text">
+                                                <input class="button" name="apply_coupon" value="Appliquer un coupon" type="submit">
+                                            </div>
+                                            <div class="coupon2">
+                                                <input class="button destroy-cart"  value="Vider le panier" type="button" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5 ml-auto">
+                                        <div class="cart-page-total menu-item">
+                                            <h2>Total paniers</h2>
+                                            <ul>
+                                                <li class="d-none">Subtotal <span>MAD 130.00</span></li>
+                                                <li >Total <span class="total">MAD 130.00</span></li>
+                                            </ul>
+                                            <a href="{{path('checkout')}}">Passer la commande</a>
+                                            <a href="{{path('show_devis')}}">Voir le devis</a>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Shopping Cart Area End-->
+ 
+        </div>
+        <!-- Body Wrapper End Here -->
+{% endblock %}
+
+
+
+
+
+
+

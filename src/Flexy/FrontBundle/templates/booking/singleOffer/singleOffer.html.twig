@@ -1,0 +1,819 @@
+{% extends '@Flexy/FrontBundle/templates/booking/layout.html.twig' %}
+
+{% block body %}
+<style>
+
+.countersection .count{
+    padding:10px !important;
+    font-size:18px;
+}
+
+</style>
+
+ <div class="body-wrapper">
+            <!-- Begin Header Area -->
+
+            <!-- Header Area End Here -->
+            <!-- Begin Li's Breadcrumb Area -->
+            <div class="breadcrumb-area menu-item">
+                <div class="container simple-container">
+                    <div class="breadcrumb-content">
+                        <ul>
+                            <li><a href="{{path('front_home')}}">Accueil</a></li>
+
+                            {% for category in singleOffer.categoriesProduct %}
+
+                            <li ><a href="{{path('single_category_product',{id:category.id})}}">{{category}}</a></li>
+
+                            {% endfor %}
+                            <li class="active">{{singleOffer.name}}</li>
+                            
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- Li's Breadcrumb Area End Here -->
+            <!-- content-wraper start -->
+            <div class="content-wraper">
+                <div class="container">
+                    <div class="row single-product-area">
+                        <div class="col-lg-8 col-md-5">
+                           <!-- Details de produit Left -->
+                            <div class="product-details-left sp-tab-style-left-page">
+
+                                <div class="product-details-images slider-navigation-1">
+
+
+
+                                    <div class="lg-image menu-item">
+                                        <a class="popup-img venobox vbox-item" href="/uploads/{{asset(singleOffer.image)}}" data-gall="myGallery">
+                                            <img  src="/uploads/{{asset(singleOffer.image)}}" alt="{{singleOffer.name}}">
+                                        </a>
+                                    </div>
+
+                                    {% for image in singleOffer.images %}
+                                    <div class="lg-image  menu-item">
+                                        <a class="popup-img venobox vbox-item" href="/uploads/images/products{{asset(image.path)}}" data-gall="myGallery">
+                                            <img  src="/uploads/images/products{{asset(image.path)}}" alt="{{image.alt}}">
+                                        </a>
+                                    </div>
+                                    {% endfor %}
+
+                                    
+
+                                </div>
+
+
+                                <div class="tab-style-left">
+
+
+                                    <div class="sm-image"><img  src="/uploads/{{asset(singleOffer.image)}}" alt="{{singleOffer.name}}"></div>
+                                    {% for image in singleOffer.images %}
+                                        <div class="sm-image"><img  src="/uploads/images/products{{asset(image.path)}}" alt="{{image.alt}}"></div>
+                                    {% endfor %}
+                                
+                                </div>
+                            </div>
+                            <!--// Details de produit Left -->
+                        </div>
+
+                        <div class="col-lg-4 col-md-5">
+                            <div class="product-details-view-content pt-60">
+                                <div class="product-info">
+                                    
+                                    <h2>{{singleOffer.name}}</h2>
+
+                                   
+
+                                    <p class="sell-by">
+                                    
+                                    {% if singleOffer.brand %} Marque: <a href="#">{{singleOffer.brand}}</a>{% endif %}  {% if singleOffer.vendor %} / <a href="#"> Par {{singleOffer.vendor}} </a>{% endif %}</span>
+                                    
+                                    
+                                    
+                                    </p>
+                                    {% if singleOffer.skuCode %}
+                                    <span class="product-details-ref d-none">Reference: {{singleOffer.skuCode}}</span>
+                                    {% endif %}
+                                   
+                                    <div class="price-box pt-20">
+                                        <span class="new-price new-price-2">MAD {{singleOffer.formattedPrice}}</span>
+                                        {% if singleOffer.oldPrice or singleOffer.oldPrice > 0 %}
+                                        <span class="old-price">MAD {{singleOffer.oldPrice / 100}}</span>
+                                        {% endif %}
+                                    </div>
+
+                                     
+                                               <div class="countersection">
+                                                        <div data-endat="{{singleOffer.endAt|date("Y/m/d")}}" class="li-countdown"></div>
+                                                           
+                                                    </div>
+                                    
+                                    <div style="margin-top:15px;" class="product-desc">
+                                        <p>
+                                            <span>
+                                            {{singleOffer.shortDescription|raw}}
+                                            </span>
+                                        </p>
+                                    </div>
+                                                
+
+                                     <div class="rating-box pt-20">
+
+
+                                     <h5>Rating : {{singleOffer.rating|number_format(1, '.', ',')}}/5</h5>
+                                      
+                                           
+                                        <ul class="rating rating-with-review-item">
+                                             {% if  singleOffer.rating > 0 %}
+                                           {% for stars in 1..singleOffer.rating|number_format %}
+                                             <li><i class="fa fa-star"></i></li>
+                                                
+                                            {% endfor %}
+                                              {% if singleOffer.rating|number_format < 5 %}
+                                                {% for stars in singleOffer.rating|number_format..4 %}
+                                                    <li class="no-star"><i class="fa fa-star"></i></li>
+                                                {% endfor %}
+                                            {% endif %}
+
+                                              {% else %}
+                                                  <li class="no-star"><i class="fa fa-star"></i></li>
+                                                    <li class="no-star"><i class="fa fa-star"></i></li>
+                                                      <li class="no-star"><i class="fa fa-star"></i></li>
+                                                        <li class="no-star"><i class="fa fa-star"></i></li>
+                                                          <li class="no-star"><i class="fa fa-star"></i></li>
+                                                {% endif %}
+                                                            
+                                   
+                                 
+                                            
+                                           
+                                
+                                            <li class="menu-item" ><a href="#reviews" id="showcomments">   Avis ({{ singleOffer.comments|length }}) <i class="fa fa-comments" ></i> </a></li>
+                                
+
+
+                                        </ul>
+                                    </div>
+                                    
+
+                                    
+                                   
+                                    
+
+                                    <div class="single-add-to-cart">
+                                        <form action="#" class="cart-quantity d-none">
+                                            
+                                            <button data-id="{{singleOffer.id}}"  data-name="{{singleOffer.name}}" data-image="uploads/{{asset(singleOffer.image)}}" data-price="{{singleOffer.formattedPrice}}"  data-url="{{path('single_product',{id:singleOffer.id}) }}"  class="add-cart add-to-cart active " >Réserver</button>
+                                        </form>
+
+                                         <a class="review-links add-cart add-to-cart mt-3" style="c" href="#" data-toggle="modal" data-target="#book-modal">Réserver maintenant</a>
+
+                                    </div>
+
+                                    <div class="booking-form-modal" >
+                                    
+                                    <!-- Begin Prévisualiser | Modal Area -->
+                                    <div class="modal fade modal-wrapper" id="book-modal" >
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    <h3 class="review-page-title">Choisissez une date</h3>
+                                                    <div class="modal-inner-area row">
+                                                        
+                                                        <div class="col-lg-12">
+                                                            <div class="li-review-content">
+                                                                <!-- Begin Feedback Area -->
+                                                                <div class="feedback-area">
+                                                                    <div class="feedback">
+
+
+                                                                    
+                                                                        
+                                                                        
+                                                                   
+                                                                        
+                                                                        <form action="#" class="cart-quantity">
+                                                                            
+
+                                                                            <div  class="quantity d-none">
+                                                                            <label>Quantité</label>
+                                                                                <div class="cart-plus-minus">
+                                                                                    <input class="cart-plus-minus-box" value="1" type="text">
+                                                                                    <div class="dec qtybutton"><i class="fa fa-angle-down"></i></div>
+                                                                                    <div class="inc qtybutton"><i class="fa fa-angle-up"></i></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            
+                                                                            <div class="row" >
+                                                                                <div class="col-6" >
+                                                                                        <p class="feedback-form">
+                                                                                        <label for="feedback">Choisissez la date de depart</label>
+                                                                                        <input type="datetime-local"  name="date-start" />
+                                                                                        </p>
+                                                                            
+                                                                                </div>
+                                                                                <div class="col-6" >
+                                                                                        <p class="feedback-form">
+                                                                                            <label for="feedback">Choisissez la date d'arrivée</label>
+                                                                                            <input type="datetime-local"  name="date-end" />
+                                                                                        </p>
+                                                                            
+                                                                                </div>
+
+                                                                                <div class="col-6" >
+                                                                                       <p class="feedback-form">
+                                                                                <label for="feedback">Nombre de personnes</label>
+                                                                                
+                                                                                <select  name="nbrPerson">
+                                                                                    <option>1</option>
+                                                                                    <option>2</option>
+                                                                                    <option>3</option>
+                                                                                    <option>4</option>
+                                                                                    <option>5</option>
+                                                                                    <option>6</option>
+                                                                                </select>
+                                                                            </p>
+                                                                                </div>
+
+                                                                                <div class="col-6" >
+                                                                                        <p class="feedback-form">
+                                                                                <label for="feedback">Nombre de chambre</label>
+                                                                                <select name="nbrRooms">
+                                                                                    <option>1</option>
+                                                                                    <option>2</option>
+                                                                                    <option>3</option>
+                                                                                </select>
+                                                                            </p>
+                                                                            
+                                                                                </div>
+                                                                                <div class="col-12" >
+                                                                                    <p class="feedback-form">
+                                                                                        <label for="feedback">Laissez nous une note (Facultatif)</label>
+                                                                                        <textarea id="feedback" name="comment" cols="45" rows="2" aria-required="true"></textarea>
+                                                                                    </p>
+                                                                                </div>
+                                                                            </div>
+
+
+
+                                                                            
+
+                                                                             
+
+                                                                            
+
+
+
+                                                                            
+                                                                            <div class="feedback-input">
+                                                                              
+                                                                                
+                                                                                <div class="feedback-btn pb-15">
+                                                                                    <a href="#" class="close register-button d-none" data-dismiss="modal" aria-label="Close">Annuler</a>
+                                                                                    
+                                                                                    <button data-id="{{singleOffer.id}}"  data-name="{{singleOffer.name}}" data-image="uploads/{{asset(singleOffer.image)}}" data-price="{{singleOffer.formattedPrice}}"  data-url="{{path('single_offer',{id:singleOffer.id}) }}"  class="add-cart add-to-cart active add-product-to-cart" >Réserver</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Feedback Area End Here -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>   
+                                    <!-- Prévisualiser | Modal Area End Here -->
+                                    </div>
+
+                                    <div class="menu-item product-additional-info pt-25">
+                                        <div class="product-social-sharing pt-25">
+                                            <ul>
+                                                <li class="facebook"><a href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
+                                                <li class="twitter"><a href="#"><i class="fa fa-twitter"></i>Twitter</a></li>
+                                                <li class="google-plus"><a href="#"><i class="fa fa-google-plus"></i>Google +</a></li>
+                                                <li class="instagram"><a href="#"><i class="fa fa-instagram"></i>Instagram</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    
+
+
+                                </div>
+                            </div>
+                        </div> 
+
+                     <!-- <div class="col-lg-3 col-md-3 ">
+                                                            <div class="block-reassurance ">
+
+                                            <div class="row " > 
+                                            {% if singleOffer.vendor %}
+                                                <div class="col-12 p-3 " >
+                                                        <div class="card actions p-3">
+                                                            <h5>Vendeur : <span class="badge badge-warning" >{{singleOffer.vendor}}</span></h5>
+
+                                                                <div>
+                                                                    <p>
+                                                                    <small>
+                                                                    100% Evaluation du vendeur<br>
+                                                                    67 abonnés <br>
+                                                                    </small>
+                                                                    <h6>Performance vendeur</h6>
+                                                                    <p>
+                                                                    <span class="badge badge-success text-white" ><i class="fa fa-star" ></i></span> Expeditions : <span class="badge badge-success text-white" >Excellent</span>
+                                                                    <br>
+                                                                    <span class="badge badge-success text-white" ><i class="fa fa-star" ></i></span> Qualité : <span class="badge badge-warning text-white" >Moyen</span>
+                                                                    <br>
+                                                                    <span class="badge badge-success text-white" ><i class="fa fa-star" ></i></span> Avis consommateurs : <span class="badge badge-warning text-white" >Moyen</span>
+                                                                    
+                                                                    </p>
+
+                                                                    </p>
+                                                                </div>
+                                                   
+                                                         </div>
+                                                </div>
+                                                {% endif %}
+                                                    
+                                                </div>
+
+                                        
+                                    </div>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+            <!-- content-wraper end -->
+            <!-- Begin Product Area -->
+            <div class="product-area pt-35">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="li-product-tab">
+                                <ul class="nav li-product-menu">
+                                   <li><a class="active" data-toggle="tab" href="#description" id="description_pro"><span>Description</span></a></li>
+                                  <!-- <li><a data-toggle="tab" href="#product-details" id="description_technique"><span>Descriptif technique</span></a></li>-->
+                                   <li><a data-toggle="tab" href="#reviews" id="comments"><span>Avis</span></a></li>
+                                </ul>               
+                            </div>
+                            <!-- Begin Li's Tab Menu Content Area -->
+                        </div>
+                    </div>
+                    <div class="tab-content">
+                        <div id="description" class="tab-pane active show" role="tabpanel">
+                            <div class="product-description">
+                                <span>
+                                    {{singleOffer.description|raw}}
+                                </span>
+                            </div>
+                        </div>
+                        <div id="product-details" class="tab-pane p-5" role="tabpanel">
+                                <table class="table table-sm  ">
+                                            
+                                            <tbody>
+                                                <tr>
+                                                <th scope="row">Modele</th>
+                                                <td>MOD{{singleOffer.skuCode}}</td>
+                                                </tr>
+                                                <tr>
+                                                <th scope="row">Marque</th>
+                                                <td>{{singleOffer.brand}}</td>
+                                                </tr>
+                                                <tr>
+                                                <th scope="row">SKU</th>
+                                                <td>{{singleOffer.skuCode}}</td>
+                                                </tr>
+                                                <tr>
+                                                <th scope="row">Poids (Kg)</th>
+                                                <td>0.9 </td>
+                                                </tr>
+                                                
+                                                
+                                                
+                                                
+                                            </tbody>
+                                            </table>
+                        </div>
+                        <div id="reviews" class="tab-pane" role="tabpanel">
+                            <div class="product-reviews">
+
+    <div class="container">		
+		<div class="row">
+			<div class="col-sm-3">
+				<div class="rating-block">
+					<h4>AVIS </h4>
+					<h2 class="bold padding-bottom-7"> {{singleOffer.rating|number_format(1, '.', ',')}} <small>/ 5</small></h2>
+					
+
+                   {% if  singleOffer.rating|number_format(1, '.', ',') > 0 %}
+                     {% for stars in 1..singleOffer.rating|number_format %}
+
+                      <button type="button" class="btn btn-warning btn-sm" aria-label="Left Align">
+					  <i class="fa fa-star"></i>
+					    </button>  
+                         {% endfor %}
+
+                                              {% if singleOffer.rating|number_format < 5 %}
+                                                {% for stars in singleOffer.rating|number_format..4 %}
+                        <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align">
+					  <i class="fa fa-star"></i>
+					</button>
+                                                {% endfor %}
+                                            {% endif %}
+                           {% else %}  
+             <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align"> <i class="fa fa-star"></i>	</button>
+             <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align"> <i class="fa fa-star"></i>	</button>
+             <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align"> <i class="fa fa-star"></i>	</button>
+             <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align"> <i class="fa fa-star"></i>	</button>
+             <button type="button" class="btn btn-default btn-grey btn-sm" aria-label="Left Align"> <i class="fa fa-star"></i>	</button>
+            
+
+                             {% endif %}                 
+
+                    
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<h4> &nbsp;</h4>
+				<div class="pull-left">
+					<div class="pull-left" style="width:35px; line-height:1;">
+						<div style="height:9px; margin:5px 0;">5   <i class="fa fa-star"></i> </div>
+					</div>
+					<div class="pull-left" style="width:180px;">
+						<div class="progress" style="height:9px; margin:8px 0;">
+                            {% set percentage = 0 %}
+                            {% if singleOffer.getStars5 > 0 %}
+                            {% set percentage = (singleOffer.getStars5 / singleOffer.comments|length ) * 100 %}
+                            {% endif  %}
+						  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="5" aria-valuemin="0" aria-valuemax="5" style="width: {{ percentage }}%">
+							<span class="sr-only">80% Complete (danger)</span>
+						  </div>
+						</div>
+					</div>
+					<div class="pull-right" style="margin-left:10px;"> {{singleOffer.getStars5}}</div>
+				</div>
+				<div class="pull-left">
+					<div class="pull-left" style="width:35px; line-height:1;">
+						<div style="height:9px; margin:5px 0;">4  <i class="fa fa-star"></i> </div>
+					</div>
+					<div class="pull-left" style="width:180px;">
+						<div class="progress" style="height:9px; margin:8px 0;">
+                            {% set percentage = 0 %}
+                            {% if singleOffer.getStars4 > 0 %}
+                            {% set percentage = (singleOffer.getStars4 / singleOffer.comments|length ) * 100 %}
+                            {% endif  %}
+						  <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="4" aria-valuemin="0" aria-valuemax="5" style="width: {{percentage}}%">
+							<span class="sr-only">80% Complete (danger)</span>
+						  </div>
+						</div>
+					</div>
+					<div class="pull-right" style="margin-left:10px;">
+                        
+                        {{singleOffer.getStars4}}
+                        
+                        </div>
+				</div>
+				<div class="pull-left">
+					<div class="pull-left" style="width:35px; line-height:1;">
+						<div style="height:9px; margin:5px 0;">3  <i class="fa fa-star"></i></div>
+					</div>
+					<div class="pull-left" style="width:180px;">
+						<div class="progress" style="height:9px; margin:8px 0;">
+                            {% set percentage = 0 %}
+                            {% if singleOffer.getStars3 > 0 %}
+                            {% set percentage = (singleOffer.getStars3 / singleOffer.comments|length ) * 100 %}
+                            {% endif  %}
+						  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="3" aria-valuemin="0" aria-valuemax="5" style="width:{{percentage}}%">
+							<span class="sr-only">80% Complete (danger)</span>
+						  </div>
+						</div>
+					</div>
+					<div class="pull-right" style="margin-left:10px;">{{singleOffer.getStars3}}</div>
+				</div>
+				<div class="pull-left">
+					<div class="pull-left" style="width:35px; line-height:1;">
+						<div style="height:9px; margin:5px 0;">2  <i class="fa fa-star"></i></div>
+					</div>
+					<div class="pull-left" style="width:180px;">
+						<div class="progress" style="height:9px; margin:8px 0;">
+                            {% set percentage = 0 %}
+                            {% if singleOffer.getStars2 > 0 %}
+                            {% set percentage = (singleOffer.getStars2 / singleOffer.comments|length ) * 100 %}
+                            {% endif  %}
+						  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="5" style="width: {{percentage}}%">
+							<span class="sr-only">80% Complete (danger)</span>
+						  </div>
+						</div>
+					</div>
+					<div class="pull-right" style="margin-left:10px;">{{singleOffer.getStars2}}</div>
+				</div>
+				<div class="pull-left">
+					<div class="pull-left" style="width:35px; line-height:1;">
+						<div style="height:9px; margin:5px 0;">1  <i class="fa fa-star"></i></div>
+					</div>
+					<div class="pull-left" style="width:180px;">
+						<div class="progress" style="height:9px; margin:8px 0;">
+                            {% set percentage = 0 %}
+                            {% if singleOffer.getStars1 > 0 %}
+                            {% set percentage = (singleOffer.getStars1 / singleOffer.comments|length ) * 100 %}
+                            {% endif  %}
+						  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="5" style="width: {{percentage}}%">
+							<span class="sr-only">80% Complete (danger)</span>
+						  </div>
+						</div>
+					</div>
+					<div class="pull-right" style="margin-left:10px;">{{singleOffer.getStars1}}</div>
+				</div>
+			</div>			
+		</div>			
+		
+		<div class="row">
+			<div class="col-sm-7">
+                  
+				<hr/>
+				<div class="review-block">
+                   {% for singleComment in singleOffer.comments %}
+					<div class="row">
+						<div class="col-sm-3">
+							<img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
+							<div class="review-block-name"><b> {{singleComment.customer.lastName}} {{singleComment.customer.firstName}}</b></div>
+							<div class="review-block-date">{{singleComment.createdAt|date("Y-m-d H:i")}} </div>
+						</div>
+						<div class="col-sm-9">
+							<div class="review-block-rate">
+
+                                   {% for stars in 1..singleComment.rating %}
+                            	<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
+								  <i class="fa fa-star"></i>
+								</button>
+                   
+                                     {% endfor %}
+							
+								    {% if singleComment.rating < 5 %}
+                                 {% for stars in singleComment.rating..4 %}
+								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
+								  <i class="fa fa-star"></i>
+								</button>
+                                 {% endfor %}
+                                 {% endif %}
+							</div>
+							<div class="review-block-title">COMMENTAIRES</div>
+							<div class="review-block-description">{{singleComment.comment|raw}}</div>
+						</div>
+					</div>
+                    
+					<hr/>
+                     {% endfor %}
+					 
+
+				</div>
+			</div>
+		</div>
+		
+    </div> <!-- /container -->
+
+                                <div class="product-details-comment-block">
+                                       {% for singleComment in singleOffer.comments %}
+
+                                    
+                                        <!-- <div class="comment-details">
+                                         <div class="comment-author-infos pt-25">
+                                            <span>
+                                            {{singleComment.customer.lastName}} {{singleComment.customer.firstName}}
+                                            <ul class="rating d-inline">
+                                            {% for stars in 1..singleComment.rating %}
+                                                <li><i class="fa fa-star"></i></li>
+                                                
+                                            {% endfor %}
+
+
+                                            
+                                            {% if singleComment.rating < 5 %}
+                                                {% for stars in singleComment.rating..4 %}
+                                                    <li class="no-star"><i class="fa fa-star"></i></li>
+                                                {% endfor %}
+                                            {% endif %}
+
+                                            
+                                        </ul>
+                                            </span>
+                                            
+                                            <em>{{singleComment.createdAt|date("Y-m-d H:i")}}</em>
+                                        </div>
+                                            
+                                            <p>{{singleComment.comment|raw}}</p>
+                                        </div>
+                                        <hr style="margin:0;">-->
+                                    {% endfor %}
+
+                                    {% if is_granted("ROLE_CUSTOMER") %}
+
+                                    <div class="review-btn">
+                                        <a class="review-links" href="#" data-toggle="modal" data-target="#mymodal">Ajouter un commentaire!</a>
+                                    </div>
+                                    <!-- Begin Prévisualiser | Modal Area -->
+                                    <div class="modal fade modal-wrapper" id="mymodal" >
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    <h3 class="review-page-title">Ajouter un commentaire</h3>
+                                                    <div class="modal-inner-area row">
+                                                        <div class="col-lg-6">
+                                                           <div class="li-review-product">
+                                                               <img width="200px" src="/uploads/{{asset(singleOffer.image)}}" alt="Li's Product">
+                                                               <div class="li-review-product-desc">
+                                                                   <p class="li-product-name">{{singleOffer.name}}</p>
+                                                                   <p>
+                                                                       <span>{{singleOffer.shortDescription|raw}}</span>
+                                                                   </p>
+                                                               </div>
+                                                           </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="li-review-content">
+                                                                <!-- Begin Feedback Area -->
+                                                                <div class="feedback-area">
+                                                                    <div class="feedback">
+                                                                        <h3 class="feedback-title">Votre avis</h3>
+                                                                        <form action="{{path('comment_product',{id:singleOffer.id})}}" method="POST">
+                                                                            <p class="your-opinion">
+                                                                                <label>Evaluer le produit</label>
+                                                                                <span>
+                                                                                    <select name="rating" class="star-rating">
+                                                                                      <option value="1">1</option>
+                                                                                      <option value="2">2</option>
+                                                                                      <option value="3">3</option>
+                                                                                      <option value="4">4</option>
+                                                                                      <option value="5">5</option>
+                                                                                    </select>
+                                                                                </span>
+                                                                            </p>
+                                                                            <p class="feedback-form">
+                                                                                <label for="feedback">Votre commentaire</label>
+                                                                                <textarea id="feedback" name="comment" cols="45" rows="8" aria-required="true"></textarea>
+                                                                            </p>
+                                                                            <div class="feedback-input">
+                                                                              
+                                                                                
+                                                                                <div class="feedback-btn pb-15">
+                                                                                    <a href="#" class="close register-button d-none" data-dismiss="modal" aria-label="Close">Close</a>
+                                                                                    <button class="register-button" type="submit">Envoyer</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Feedback Area End Here -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>   
+                                    <!-- Prévisualiser | Modal Area End Here -->
+
+
+                                    {% endif  %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Product Area End Here -->
+            <!-- Begin Li's PC Portable Product Area -->
+            <section class="product-area li-laptop-product pt-30 pb-50">
+                 {# <div class="container">
+                    <div class="row">
+                        <!-- Begin Li's Section Area -->
+                        <div class="col-lg-12">
+                            <div class="li-section-title">
+                                <h2>
+                                    <span>Produits en relation</span>
+                                </h2>
+                            </div>
+
+                            {#
+                            <div class="row">
+                                <div class="product-active owl-carousel">
+                                
+
+                                  {% for singleOffer in associatedProducts %}
+                                        {% 
+                                        include "@Flexy/FrontBundle/templates/products/includes/_singleOffer.html.twig" with
+                                        {
+                                            singleOffer:singleOffer,
+                                        }
+                                         %} 
+                                {% endfor %}
+
+                                </div>
+                            </div>
+
+                            #}
+                        </div>
+                        <!-- Li's Section Area End Here -->
+                    </div>
+                </div>
+            </section>  
+            <!-- Li's PC Portable Product Area End Here -->
+            <!-- Begin Footer Area -->
+         
+
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+{{parent()}}
+
+<script>
+$(document).ready(function(){
+                    $.ajax({
+                        url: "{{path('departements_ajax')}}",
+                        data:{
+                            city:$("select[name='city']").val()
+                        },
+                        success:function(data){
+                            
+                            $("select[name='departement']").html(data);
+                        },
+                    });
+
+                    $("select[name='city'").change(function(){
+                    $.ajax({
+                        url: "{{path('departements_ajax')}}",
+                        data:{
+                            city:$(this).val()
+                        },
+                        success:function(data){
+                            
+                            $("select[name='departement']").html(data);
+                        },
+                    });
+                    });
+
+          $("#showcomments").click(function(){
+               
+               $("#comments").addClass("active show");
+               $("#reviews").addClass("active show");
+
+               $("#description_technique").removeClass("active show");
+               $("#product-details").removeClass("active show");
+
+                $("#description_pro").removeClass("active show");
+                $("#description").removeClass("active show");
+                
+
+     });
+
+
+(function () {
+  const second = 1000,
+        minute = second * 60,
+        hour = minute * 60,
+        day = hour * 24;
+
+  //I'm adding this section so I don't have to keep updating this pen every year :-)
+  //remove this if you don't need it
+  let today = new Date(),
+   
+    
+      dd = String(today.getDate()).padStart(2, "0"),
+      mm = String(today.getMonth() + 1).padStart(2, "0"),
+      yyyy = today.getFullYear(),
+      nextYear = yyyy + 1,
+      dayMonth = "09/30/", 
+      birthday = dayMonth + yyyy;
+  
+  today = mm + "/" + dd + "/" + yyyy;
+  if (today > birthday) {
+    birthday = dayMonth + nextYear;
+  }
+  //end
+  
+  const countDown = new Date(birthday).getTime(),
+      x = setInterval(function() {    
+
+        const now = new Date().getTime(),
+              distance = countDown - now;
+
+          document.getElementById("days").innerText = Math.floor(distance / (day)),
+          document.getElementById("hours").innerText = Math.floor((distance % (day)) / (hour)),
+          document.getElementById("minutes").innerText = Math.floor((distance % (hour)) / (minute)),
+          document.getElementById("seconds").innerText = Math.floor((distance % (minute)) / second);
+
+        
+      }, 0)
+  }());
+
+        });
+</script>
+
+{% endblock %}

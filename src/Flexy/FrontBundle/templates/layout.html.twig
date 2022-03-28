@@ -1,0 +1,68 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+    
+<!-- index28:48-->
+
+
+    {% block stylesheets %}
+{% include "@Flexy/FrontBundle/templates/_head.html.twig" %}
+    {% endblock %}
+    <body>
+    <!--[if lt IE 8]>
+		<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+
+
+ <div class="main-wrapper">
+
+
+
+
+
+
+
+     <!-- Preloader start -->
+ <div class="preloader">
+ <div class="loader">
+ <div class="ytp-spinner">
+ <div class="ytp-spinner-container">
+ <div class="ytp-spinner-rotator">
+ <div class="ytp-spinner-left">
+ <div class="ytp-spinner-circle"></div>
+ </div>
+ <div class="ytp-spinner-right">
+ <div class="ytp-spinner-circle"></div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ <!-- Preloader End -->
+       
+        {{ render(path('front_header')) }}
+
+        {% block body %}
+
+        {% endblock %}
+
+
+
+        {% include "@Flexy/FrontBundle/templates/_footer.html.twig" %}
+
+
+
+             <!-- Back to Top End -->
+ <button class="back-btn" id="backBtn"><i class="flaticon-left-arrow-1"></i></button>
+ <!-- Back to Top End -->
+
+         </div>
+
+        {% block javascripts %}
+            {% include "@Flexy/FrontBundle/templates/_javascripts.html.twig" %}
+        {% endblock %}
+    </body>
+
+<!-- index30:23-->
+</html>

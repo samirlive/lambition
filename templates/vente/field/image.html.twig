@@ -1,0 +1,27 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{# @var field \EasyCorp\Bundle\EasyAdminBundle\Dto\FieldDto #}
+{# @var entity \EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto #}
+{% set images = field.formattedValue %}
+
+{% if images is not null %}
+
+{% if images is not iterable %}
+    {% set images = [images] %}
+{% endif %}
+
+{% for image in images %}
+    {% set html_id = 'ea-lightbox-' ~ field.uniqueId ~ '-' ~ loop.index %}
+    <a style="font-size:1.4rem;" href="{{ asset(image) }}" target="_blank" >
+        <i class="fas fa-file-pdf"></i>
+    </a>
+
+    <div id="{{ html_id }}" class="ea-lightbox">
+        <iframe src="{{ asset(image) }}" ></iframe>
+    </div>
+{% endfor %}
+
+{% else %}
+<span class="badge badge-secondary">
+    Aucun
+</span>
+{% endif %}

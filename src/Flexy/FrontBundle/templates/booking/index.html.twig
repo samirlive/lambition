@@ -1,0 +1,292 @@
+{% extends '@Flexy/FrontBundle/templates/booking/layout.html.twig' %}
+
+
+
+
+{% block body %}
+
+
+ <!-- Begin Body Wrapper -->
+        <div class="body-wrapper">
+
+            <div class="row" style="margin-top: -20px;">
+                <div class="col-12" >
+                                        <!-- Begin Slider Area -->
+                        
+                            <div class="slider-area">
+                                <div class="slider-active owl-carousel">
+
+
+
+                                    
+
+
+                                     <!-- Begin Single Slide Area -->
+                                    <div style="background-image:url('https://res.cloudinary.com/simplotel/image/upload/x_0,y_128,w_1457,h_654,r_0,c_crop,q_90,fl_progressive/w_1457,f_auto,c_fit/sarovar-hotels---indias-leading-hotel-chain/Sarovar_Summer-offer_May-2019_Website-banner_kkjpuu');background-position: center;background-size:cover;" class="single-slide align-center-left  animation-style-01 bg-1">
+                                        <div class="slider-progress"></div>
+                                        
+                                    </div>
+                                    <!-- Single Slide Area End Here -->
+                                <!-- Begin Single Slide Area -->
+                                    <div style="background-image:url('https://i0.wp.com/www.agoda.com/wp-content/uploads/2021/11/Shopee-Agoda-RG.png?fit=1262%2C707&ssl=1');background-position: center;background-size:cover;" class="single-slide align-center-left  animation-style-01 bg-1">
+                                        <div class="slider-progress"></div>
+                                        
+                                    </div>
+                                    <!-- Single Slide Area End Here -->
+
+                                    <!-- Begin Single Slide Area -->
+                                    <div style="background-image:url('https://s3.amazonaws.com/new-wordpress/tulipgroup/wp-content/uploads/2020/06/09023127/banner-TULIP-051.jpg');" class="single-slide align-center-left  animation-style-01 bg-1">
+                                        <div class="slider-progress"></div>
+                                        
+                                    </div>
+                                    <!-- Single Slide Area End Here -->
+                                   
+                                </div>
+                            </div>
+                        
+                        <!-- Slider Area End Here -->
+                        
+                </div>
+            </div>
+           
+            <!-- Begin Deals Li's Special Product Area  -->
+            <section class="product-area li-laptop-product Special-product pt-60 pb-45">
+                <div class="container">
+
+                    
+                    <div class="row">
+                    
+                        
+                        <!-- Begin Li's Section Area -->
+                        
+                        <div class="col-lg-12">
+                            <div class="li-section-title">
+                                <h2>
+                                    <span>Hôtels</span>
+                                </h2>
+                            </div>
+                            <div class="row">
+                                <div class="special-offers owl-carousel">
+
+
+                                {% for singleOffer in offers %}
+                                        {% 
+                                        include "@Flexy/FrontBundle/templates/booking/singleOffer/_singleOffer.html.twig" with
+                                        {
+                                            singleOffer:singleOffer,
+                                            isDeal:true
+                                        }
+                                         %} 
+                                {% endfor %}
+
+                              
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Li's Section Area End Here -->
+                    </div>
+                </div>
+            </section>
+            <!-- Li's Deals Special Product Area End Here -->
+
+
+
+            <div class="container simple-container">
+                    <div class="row">
+                        <!-- Begin Single Banner Area -->
+                                               
+
+                                 
+                            
+                        <div class="col-lg-6 col-md-6 "> 
+                                        <div class="single-banner">
+                                <a href="#">
+                                    <img src="https://www.travelpesoph.com/public/uploads/service-11.jpg" alt="">
+                                </a>
+                            </div>
+
+
+                        </div>
+                                                        
+       
+                            
+                        <div class="col-lg-6 col-md-6 "> 
+                                        <div class="single-banner">
+                                <a href="#">
+                                    <img src="https://i.ytimg.com/vi/G2F6pOTxb8s/maxresdefault.jpg" alt="">
+                                </a>
+                            </div>
+
+
+                        </div>
+                                                        
+                          
+
+                        <!-- Single Banner Area End Here -->
+
+                    </div>
+                </div>
+           
+
+        </div>
+        <!-- Body Wrapper End Here -->
+
+        <!-- Begin Deals Li's Special Product Area  -->
+            <section class="product-area li-laptop-product Special-product pt-60 pb-45">
+                <div class="container">
+
+                    
+                    <div class="row">
+                    
+                        
+                        <!-- Begin Li's Section Area -->
+                        
+                        <div class="col-lg-12">
+                            <div class="li-section-title">
+                                <h2>
+                                    <span>Restaurants</span>
+                                </h2>
+                            </div>
+                            <div class="row">
+                                <div class="special-offers owl-carousel">
+
+
+                                {% for singleOffer in offers %}
+                                        {% 
+                                        include "@Flexy/FrontBundle/templates/booking/singleOffer/_singleOffer.html.twig" with
+                                        {
+                                            singleOffer:singleOffer,
+                                            isDeal:true
+                                        }
+                                         %} 
+                                {% endfor %}
+
+                              
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Li's Section Area End Here -->
+                    </div>
+                </div>
+            </section>
+            <!-- Li's Deals Special Product Area End Here -->
+
+             <!-- Begin Deals Li's Special Product Area  -->
+            <section class="product-area li-laptop-product Special-product pt-60 pb-45">
+                <div class="container">
+
+                    
+                    <div class="row">
+                    
+                        
+                        <!-- Begin Li's Section Area -->
+                        
+                        <div class="col-lg-12">
+                            <div class="li-section-title">
+                                <h2>
+                                    <span>Activités</span>
+                                </h2>
+                            </div>
+                            <div class="row">
+                                <div class="special-offers owl-carousel">
+
+
+                                {% for singleOffer in offers %}
+                                        {% 
+                                        include "@Flexy/FrontBundle/templates/booking/singleOffer/_singleOffer.html.twig" with
+                                        {
+                                            singleOffer:singleOffer,
+                                            isDeal:true
+                                        }
+                                         %} 
+                                {% endfor %}
+
+                              
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Li's Section Area End Here -->
+                    </div>
+                </div>
+            </section>
+            <!-- Li's Deals Special Product Area End Here -->
+
+             <!-- Begin Deals Li's Special Product Area  -->
+            <section class="product-area li-laptop-product Special-product pt-60 pb-45">
+                <div class="container">
+
+                    
+                    <div class="row">
+                    
+                        
+                        <!-- Begin Li's Section Area -->
+                        
+                        <div class="col-lg-12">
+                            <div class="li-section-title">
+                                <h2>
+                                    <span>Entreprises</span>
+                                </h2>
+                            </div>
+                            <div class="row">
+                                <div class="special-offers owl-carousel">
+
+
+                                {% for singleOffer in offers %}
+                                        {% 
+                                        include "@Flexy/FrontBundle/templates/booking/singleOffer/_singleOffer.html.twig" with
+                                        {
+                                            singleOffer:singleOffer,
+                                            isDeal:true
+                                        }
+                                         %} 
+                                {% endfor %}
+
+                              
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Li's Section Area End Here -->
+                    </div>
+                </div>
+            </section>
+            <!-- Li's Deals Special Product Area End Here -->
+
+{% endblock %}
+
+
+{% block javascripts %}
+{{parent()}}
+
+<script>
+    	$(".special-offers").owlCarousel({
+		loop: true,
+		nav: false,
+		dots: false,
+		autoplay: false,
+		autoplayTimeout: 5000,
+		navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-left"></i>'],
+		item: 4,
+		responsive: {
+			0: {
+					items: 1
+			},
+			480: {
+					items: 1
+			},
+			768: {
+					items: 3
+			},
+			992: {
+					items: 3
+			},
+			1200: {
+					items: 4
+			}
+		}
+	});
+</script>
+{% endblock %}

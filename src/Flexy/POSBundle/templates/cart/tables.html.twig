@@ -1,0 +1,579 @@
+
+
+
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+
+
+{% block main %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.css" integrity="sha512-qveKnGrvOChbSzAdtSs8p69eoLegyh+1hwOMbmpCViIwj7rn4oJjdmMvWOuyQlTOZgTlZA0N2PXA7iA8/2TUYA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class="container-fluid text-center">
+
+  <div class="form-group admin-menu">
+    <div class="row d-none">
+      <div class="col-sm-2 col-sm-offset-3 form-group">
+        <label>Width (px)</label>
+        <input type="number" id="width" class="form-control" value="1000" />
+      </div>
+      <div class="col-sm-2 form-group">
+        <label>Height (px)</label>
+        <input type="number" id="height" class="form-control" value="1000" />
+      </div>
+      <div class="col-sm-2 form-group">
+        <label>&nbsp;</label>
+        <br />
+        <button class="btn btn-primary">Save</button>
+        <button class="btn btn-danger clear">clear</button>
+        <button class="btn btn-secondary reload">reload</button>
+      </div>
+    </div>
+    <div class="btn-group">
+      <button class="btn btn-primary rectangle">+ &#9647; Table</button>
+      <button class="btn btn-primary circle">+ &#9711; Table</button>
+      <button class="btn btn-primary triangle">+ &#9651; Table</button>
+      <button class="btn btn-primary chair">+ Chair</button>
+      <button class="btn btn-primary bar">+ Bar</button>
+      <button class="btn btn-default wall">+ Wall</button>
+      <button class="btn btn-danger remove">Remove</button>
+      <button class="btn btn-warning customer-mode">Customer mode</button>
+    </div>
+  </div>
+  
+  <div class="form-group customer-menu" style="display: none;">
+    <div class="btn-group">
+      <button class="btn btn-success submit">Submit reservation</button>
+      <button class="btn btn-warning admin-mode">Admin mode</button>
+    </div>
+    <br />
+    <br />
+    <div id="slider"></div>
+    <div id="slider-value"></div>
+  </div>
+  
+  <canvas id="canvas"  width="1000" height="1000"></canvas>
+</div>
+
+<div class="modal fade" id="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body text-center">
+        <p id="modal-table-id"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+
+    {% block body_javascript %}
+
+        {{parent()}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.11/fabric.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.js" integrity="sha512-ZKqmaRVpwWCw7S7mEjC89jDdWRD/oMS0mlfH96mO0u3wrPYoN+lXmqvyptH4P9mY6zkoPTSy5U2SwKVXRY5tYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+
+
+
+
+let canvas
+let number
+const grid = 20
+const backgroundColor = '#f8f8f8'
+const lineStroke = '#ebebeb'
+const tableFill = 'rgba(150, 111, 51, 0.7)'
+const tableStroke = '#694d2300'
+const tableShadow = 'rgba(0, 0, 0, 0.4) 3px 3px 7px'
+const chairFill = 'rgba(67, 42, 4, 0.7)'
+const chairStroke = '#32230b00'
+const chairShadow = 'rgba(0, 0, 0, 0.4) 3px 3px 7px'
+const barFill = 'rgba(0, 93, 127, 0.7)'
+const barStroke = '#003e5400'
+const barShadow = 'rgba(0, 0, 0, 0.4) 3px 3px 7px'
+const barText = 'Snooker Royale'
+const wallFill = 'rgba(136, 136, 136, 0.7)'
+const wallStroke = '#68686800'
+const wallShadow = 'rgba(0, 0, 0, 0.4) 5px 5px 20px'
+
+        var  photoUrlLandscape = 'https://images8.alphacoders.com/292/292379.jpg',
+            photoUrlPortrait = 'https://presspack.rte.ie/wp-content/blogs.dir/2/files/2015/04/AMC_TWD_Maggie_Portraits_4817_V1.jpg'
+
+
+let widthEl = document.getElementById('width')
+let heightEl = document.getElementById('height')
+let canvasEl = document.getElementById('canvas')
+
+function initCanvas() {
+  if (canvas) {
+    canvas.clear()
+    canvas.dispose()
+  }
+  
+  canvas = new fabric.Canvas('canvas')
+  number = 1
+  canvas.backgroundColor = backgroundColor
+  //canvas.setBackgroundImage('https://www.archifacile.fr/plan/b44dc36fdaae53b2-750E750.jpg', canvas.renderAll.bind(canvas));
+
+
+  for (let i = 0; i < (canvas.height / grid); i++) {
+    const lineX = new fabric.Line([ 0, i * grid, canvas.height, i * grid], {
+      stroke: lineStroke,
+      selectable: false,
+      type: 'line'
+    })
+    const lineY = new fabric.Line([ i * grid, 0, i * grid, canvas.height], {
+      stroke: lineStroke,
+      selectable: false,
+      type: 'line'
+    })
+    sendLinesToBack()
+    canvas.add(lineX)
+    canvas.add(lineY)
+  }
+
+
+}
+initCanvas()
+
+function resizeCanvas() {
+  /*widthEl = document.getElementById('width')
+  heightEl = document.getElementById('height')
+  canvasEl.width = widthEl.value ? widthEl.value : 1000
+  canvasEl.height = heightEl.value ? heightEl.value : 1000*/
+  
+ 
+}
+resizeCanvas()
+
+widthEl.addEventListener('change', () => {
+  resizeCanvas()
+  initCanvas()
+  addDefaultObjects()
+  console.log(JSON.stringify(canvas))
+})
+heightEl.addEventListener('change', () => {
+  resizeCanvas()
+  initCanvas()
+  addDefaultObjects()
+  console.log(JSON.stringify(canvas))
+})
+
+function generateId() {
+  return Math.random().toString(36).substr(2, 8)
+}
+
+function addRect(idTable=99999,left, top,height=100,width=100, scaleX, scaleY,angle,tableFill=tableFill) {
+  const id = idTable;
+  const object = new fabric.Rect({
+    width: width,
+    height: height,
+    scaleX:scaleX,
+    scaleY:scaleY,
+    angle:angle,
+    fill: tableFill,
+    stroke: tableStroke,
+    strokeWidth: 2,
+    shadow: tableShadow,
+    originX: 'center',
+    originY: 'center',
+    centeredRotation: true,
+    snapAngle: 45,
+    selectable: true
+  })
+  const text = new fabric.IText("Table "+number.toString(), {
+    fontFamily: 'Open sans',
+    fontSize: 14,
+    fill: '#fff',
+    textAlign: 'center',
+    originX: 'center',
+    originY: 'center'
+  })
+  const group = new fabric.Group([object, text], {
+    left: left,
+    top: top,
+    centeredRotation: true,
+    snapAngle: 45,
+    selectable: true,
+    type: 'table',
+    subTargetCheck: true,
+    id: id,
+    number: number
+  })
+  canvas.add(group)
+  number++
+  return group
+}
+
+function addCircle(left, top, radius) {
+  const id = generateId()
+  const object = new fabric.Circle({
+    radius: radius,
+    fill: tableFill,
+    stroke: tableStroke,
+    strokeWidth: 2,
+    shadow: tableShadow,
+    originX: 'center',
+    originY: 'center',
+    centeredRotation: true
+  })
+  const text = new fabric.IText(number.toString(), {
+    fontFamily: 'Open sans',
+    fontSize: 14,
+    fill: '#fff',
+    textAlign: 'center',
+    originX: 'center',
+    originY: 'center'
+  })
+  const group = new fabric.Group([object, text], {
+    left: left,
+    top: top,
+    centeredRotation: true,
+    snapAngle: 45,
+    selectable: true,
+    subTargetCheck: true,
+    type: 'table',
+    id: id,
+    number: number
+  })
+  canvas.add(group)
+  number++
+  return group
+}
+
+function addTriangle(left, top, radius) {
+  const id = generateId()
+  const object = new fabric.Triangle({
+    radius: radius,
+    fill: tableFill,
+    stroke: tableStroke,
+    strokeWidth: 2,
+    shadow: tableShadow,
+    originX: 'center',
+    originY: 'center',
+    centeredRotation: true
+  })
+  const text = new fabric.IText(number.toString(), {
+    fontFamily: 'Open sans',
+    fontSize: 14,
+    fill: '#fff',
+    textAlign: 'center',
+    originX: 'center',
+    originY: 'center'
+  })
+  const group = new fabric.Group([object, text], {
+    left: left,
+    top: top,
+    centeredRotation: true,
+    snapAngle: 45,
+    selectable: true,
+    subTargetCheck: true,
+    type: 'table',
+    id: id,
+    number: number
+  })
+  canvas.add(group)
+  number++
+  return group
+}
+
+function addChair(left, top, width, height) {
+  const object = new fabric.Rect({
+    left: left,
+    top: top,
+    width: 30,
+    height: 30,
+    fill: chairFill,
+    stroke: chairStroke,
+    strokeWidth: 2,
+    shadow: chairShadow,
+    originX: 'left',
+    originY: 'top',
+    centeredRotation: true,
+    snapAngle: 45,
+    selectable: true,
+    type: 'chair',
+    id: generateId()
+  })
+  canvas.add(o)
+  return o
+}
+
+function addBar(left, top, width, height) {
+  const object = new fabric.Rect({
+    width: width,
+    height: height,
+    fill: barFill,
+    stroke: barStroke,
+    strokeWidth: 2,
+    shadow: barShadow,
+    originX: 'center',
+    originY: 'center',
+    type: 'bar',
+    id: generateId()
+  })
+  const text = new fabric.IText(barText, {
+    fontFamily: 'Open sans',
+    fontSize: 14,
+    fill: '#fff',
+    textAlign: 'center',
+    originX: 'center',
+    originY: 'center'
+  })
+  const group = new fabric.Group([object, text], {
+    left: left,
+    top: top,
+    centeredRotation: true,
+    snapAngle: 45,
+    selectable: true,
+    subTargetCheck: true,
+    type: 'bar'
+  })
+  canvas.add(group)
+  return group
+}
+
+function addWall(left, top, width, height) {
+  const object = new fabric.Rect({
+    left: left,
+    top: top,
+    width: width,
+    height: height,
+    fill: wallFill,
+    stroke: wallStroke,
+    strokeWidth: 2,
+    shadow: wallShadow,
+    originX: 'left',
+    originY: 'top',
+    centeredRotation: true,
+    snapAngle: 45,
+    selectable: true,
+    type: 'wall',
+    id: generateId()
+  })
+  canvas.add(o)
+  return o
+}
+
+function snapToGrid(target) {
+  target.set({
+    left: Math.round(target.left / (grid / 2)) * grid / 2,
+    top: Math.round(target.top / (grid / 2)) * grid / 2
+  })
+}
+
+function checkBoudningBox(e) {
+  const obj = e.target
+
+  if (!obj) {
+    return
+  }
+  obj.setCoords()
+
+  const objBoundingBox = obj.getBoundingRect()
+  if (objBoundingBox.top < 0) {
+    obj.set('top', 0)
+    obj.setCoords()
+  }
+  if (objBoundingBox.left > canvas.width - objBoundingBox.width) {
+    obj.set('left', canvas.width - objBoundingBox.width)
+    obj.setCoords()
+  }
+  if (objBoundingBox.top > canvas.height - objBoundingBox.height) {
+    obj.set('top', canvas.height - objBoundingBox.height)
+    obj.setCoords()
+  }
+  if (objBoundingBox.left < 0) {
+    obj.set('left', 0)
+    obj.setCoords()
+  }
+}
+
+function sendLinesToBack() {
+  canvas.getObjects().map(o => {
+    if (o.type === 'line') {
+      canvas.sendToBack(o)
+    }
+  })
+}
+
+document.querySelectorAll('.rectangle')[0].addEventListener('click', function() {
+  const object = addRect(0, 0, 60, 60)
+  canvas.setActiveObject(o)
+})
+
+document.querySelectorAll('.circle')[0].addEventListener('click', function() {
+  const object = addCircle(0, 0, 30)
+  canvas.setActiveObject(o)
+})
+
+document.querySelectorAll('.triangle')[0].addEventListener('click', function() {
+  const object = addTriangle(0, 0, 30)
+  canvas.setActiveObject(o)
+})
+
+document.querySelectorAll('.chair')[0].addEventListener('click', function() {
+  const object = addChair(0, 0)
+  canvas.setActiveObject(o)
+})
+
+document.querySelectorAll('.bar')[0].addEventListener('click', function() {
+  const object = addBar(0, 0, 180, 60)
+  canvas.setActiveObject(o)
+})
+
+document.querySelectorAll('.wall')[0].addEventListener('click', function() {
+  const object = addWall(0, 0, 60, 180)
+  canvas.setActiveObject(o)
+})
+
+document.querySelectorAll('.remove')[0].addEventListener('click', function() {
+  const object = canvas.getActiveObject()
+  if (o) {
+    o.remove()
+    canvas.remove(o)
+    canvas.discardActiveObject()
+    canvas.renderAll()
+  }
+})
+
+document.querySelectorAll('.customer-mode')[0].addEventListener('click', function() {
+  canvas.getObjects().map(o => {
+    o.hasControls = false
+    o.lockMovementX = true
+    o.lockMovementY = true
+    if (o.type === 'chair' || o.type === 'bar' || o.type === 'wall') {
+      o.selectable = false
+    }
+    o.borderColor = '#38A62E'
+    o.borderScaleFactor = 2.5
+  })
+  canvas.selection = false
+  canvas.hoverCursor = 'pointer'
+  canvas.discardActiveObject()
+  canvas.renderAll()
+  document.querySelectorAll('.admin-menu')[0].style.display = 'none'
+  document.querySelectorAll('.customer-menu')[0].style.display = 'block'
+})
+
+document.querySelectorAll('.admin-mode')[0].addEventListener('click', function() {
+  canvas.getObjects().map(o => {
+    o.hasControls = true
+    o.lockMovementX = false
+    o.lockMovementY = false
+    if (o.type === 'chair' || o.type === 'bar' || o.type === 'wall') {
+      o.selectable = true
+    }
+    o.borderColor = 'rgba(102, 153, 255, 0.75)'
+    o.borderScaleFactor = 1
+  })
+  canvas.selection = true
+  canvas.hoverCursor = 'move'
+  canvas.discardActiveObject()
+  canvas.renderAll()
+  document.querySelectorAll('.admin-menu')[0].style.display = 'block'
+  document.querySelectorAll('.customer-menu')[0].style.display = 'none'
+})
+
+function formatTime(val) {
+  const hours =  Math.floor(val / 60)
+  const minutes = val % 60
+  const englishHours = hours > 12 ? hours - 12 : hours
+  
+  const normal = hours + ':' + minutes + (minutes === 0 ? '0' : '')
+  const english = englishHours + ':' + minutes + (minutes === 0 ? '0' : '') + ' ' + (hours > 12 ? 'PM' : 'AM')
+  
+  return normal + ' (' + english + ')'
+}
+
+document.querySelectorAll('.submit')[0].addEventListener('click', function() {
+  const obj = canvas.getActiveObject()
+  $('#modal').modal('show')
+  let modalText = "Vous n'avez rien sélectionner"
+  if (obj) {
+    modalText = 'Client X a reservé la table ' + obj.id + ', time: ' + formatTime(slider.noUiSlider.get())
+  }
+  document.querySelectorAll('#modal-table-id')[0].innerHTML = modalText
+})
+
+const slider = document.getElementById('slider')
+noUiSlider.create(slider, {
+  start: 1200,
+  step: 15,
+  connect: 'lower',
+  range: {
+    min: 0,
+    max: 1425
+  }
+})
+
+const sliderValue = document.getElementById('slider-value')
+slider.noUiSlider.on('update', function(values, handle) {
+	sliderValue.innerHTML = formatTime(values[handle])
+})
+
+function addDefaultObjects() {
+
+{% for table in tables %}
+  addRect(
+        {{table.id}},
+        {{table.canvasY}},
+        {{table.canvasX}},
+        {{table.canvasHeight?table.canvasHeight:100}},
+        {{table.canvasWidth?table.canvasWidth:100}},
+        {{table.canvasScaleX}},
+        {{table.canvasScaleY}},
+        {{table.canvasAngle}},
+        "{{table.backgroundColor}}"
+        )
+{% endfor %}
+}
+
+
+
+addDefaultObjects()
+
+var objects = canvas.toObject();
+
+console.log(objects);
+
+canvas.on("object:modified", function() {
+  var ao = canvas.getActiveObject();
+  console.log('id:' + ao.id);
+  console.log('top:' + ao.top); //get other property like this
+  console.log('left:' + ao.left);
+  console.log('scaleX:' + ao.scaleX);
+  console.log('scaleY:' + ao.scaleY);
+  console.log('rotateAngle:' + ao.angle);
+
+var DataToSend={
+  "canvasX":  Math.round(ao.top),
+  "canvasY":  Math.round(ao.left),
+  "canvasHeight":  Math.round( ao.height ),
+  "canvasWidth": Math.round( ao.width ),
+  "canvasScaleX":  ao.scaleX ,
+  "canvasScaleY": ao.scaleY ,
+  "canvasAngle": ao.angle ,
+};
+
+  $.ajax({
+  url: "/api/tables/"+ao.id,
+  type: 'PUT',
+  contentType: "application/json; charset=utf-8",
+  data:JSON.stringify(DataToSend), 
+  
+  success: function(data) {
+    //alert('Table a été bien modifée.');
+  }
+});
+})
+
+</script>
+
+    {% endblock body_javascript %}
+
+

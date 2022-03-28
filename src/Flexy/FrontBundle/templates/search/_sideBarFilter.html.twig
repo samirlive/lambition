@@ -1,0 +1,119 @@
+                            <!--sidebar-categores-box start  -->
+                            <div class="sidebar-categores-box menu-item">
+                            <a href="{{path('front_filter')}}" class="btn-clear-all mb-sm-30 mb-xs-30">Effacer tout</a>
+                            <form action="{{path('front_filter')}}" method="GET" class="form-filter-sidebar">
+                                
+                                <!-- btn-clear-all start -->
+                                 {% set filters = null %}
+                                 {% set currentParamPriceMin = 0 %}
+                                {% set currentParamPriceMax = 50000 %}
+                                {% if app.request.get("filter") %}
+                                {% set filters = app.request.get('filter') %}
+                                {% set currentParamPriceMin = filters["price"]["min"] %}
+                                {% set currentParamPriceMax = filters["price"]["max"] %}
+
+                                
+                                
+                                {% endif %}
+                                <!-- btn-clear-all end -->
+
+                                <!-- filter-sub-area start -->
+                                <div class="filter-sub-area pt-sm-10 pt-xs-10">
+                                    <h5 class="filter-sub-titel">Filtrer par prix</h5>
+                                    <div class="categori-checkbox">
+                                        
+                                            <ul>
+                                                <li>
+                                                    <small>Prix</small>
+                                                    <div id="slider-range"></div>
+                                                    <div class="row" >
+                                                    <div class="col-6" >
+                                                    <input style="width:100% !important;" id="min_price" type="number" value="{{ currentParamPriceMin ? currentParamPriceMin : "0" }}" placeholder="Prix Min" required name="filter[price][min]">
+                                                    </div>
+                                                    <div class="col-6" >
+                                                    <input  style="width:100% !important;" id="max_price" type="number" value="{{ currentParamPriceMax ? currentParamPriceMax : "50000" }}"  placeholder="Prix Max"  required name="filter[price][max]">
+                                                    </div>
+                                                    </div>
+                                                </li>
+                                               
+                                            </ul>
+                                            <button type="filter" class="btn btn-success" > Filter </button>
+                                    </div>
+                                 </div>
+                                <!-- filter-sub-area end -->
+
+                                <!-- filter-sub-area start -->
+                                <div class="filter-sub-area">
+                                    <h5 class="filter-sub-titel">Marques</h5>
+                                    <div class="categori-checkbox">
+                                            <ul>
+                                            {% for brand in brands %}
+                                            {% set currentParams = null %}
+                                            {% if "brand" in filters|keys %}
+                                                {% set currentParams = filters["brand"] %}
+                                            {% endif %}
+
+                                                <li><input type="checkbox" {% if brand.id in currentParams|keys %} checked {% endif %} name="filter[brand][{{brand.id}}]"><a href="#">{{brand.name}}</a></li>
+                                            {% endfor %}
+                                            </ul>
+                                            
+                                        
+                                    </div>
+                                 </div>
+                                <!-- filter-sub-area end -->
+
+                                <!-- filter-sub-area start -->
+                                <div class="filter-sub-area pt-sm-10 pt-xs-10">
+                                    <h5 class="filter-sub-titel">Categories</h5>
+                                    <div class="categori-checkbox">
+                                        
+                                            <ul>
+                                                <li><input type="checkbox" name="product-categori"><a href="#">TCL TV(s) (10)</a></li>
+                                                <li><input type="checkbox" name="product-categori"><a href="#"> Accésoires (6)</a></li>
+                                            </ul>
+                                    </div>
+                                 </div>
+                                <!-- filter-sub-area end -->
+                                {% for attribute in Attributes %}
+                                <!-- filter-sub-area start -->
+                                <div class="filter-sub-area pt-sm-10 pt-xs-10">
+                                    <h5 class="filter-sub-titel">{{attribute.name}}</h5>
+                                    <div class="size-checkbox">
+                                            <ul>
+                                                {% for attributeValue in attribute.attributValues %}
+
+                                                {% set currentParams = null %}
+                                                {% if "attributValues" in filters|keys %}
+                                                    {% set currentParams = filters["attributValues"] %}
+                                                {% endif %}
+
+                                                <li><input type="checkbox"  {% if attributeValue.id in currentParams|keys %} checked {% endif %} name="filter[attributValues][{{attributeValue.id}}]"><a href="#">{{attributeValue.value}}</a></li>
+                                                {% endfor %}
+                                            </ul>
+                                    </div>
+                                </div>
+                                <!-- filter-sub-area end -->
+                                {% endfor %}
+                                
+                                </form>
+
+                               
+                            </div>
+                            <!--sidebar-categores-box end  -->
+                            <!-- category-sub-menu start -->
+                            <div class="sidebar-categores-box mb-sm-0 d-none">
+                                <div class="sidebar-title">
+                                    <h2>PC Portable</h2>
+                                </div>
+                                <div class="category-tags">
+                                    <ul>
+                                        <li><a href="# ">Devita</a></li>
+                                        <li><a href="# ">Cameras</a></li>
+                                        <li><a href="# ">Sony</a></li>
+                                        <li><a href="# ">Computer</a></li>
+                                        <li><a href="# ">Big Sale</a></li>
+                                        <li><a href="# ">Accessories</a></li>
+                                    </ul>
+                                </div>
+                                <!-- category-sub-menu end -->
+                            </div>

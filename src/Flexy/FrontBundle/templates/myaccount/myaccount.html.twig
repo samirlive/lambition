@@ -1,0 +1,82 @@
+
+
+{% extends '@Flexy/FrontBundle/templates/layout.html.twig' %}
+
+{% block body %}
+
+
+
+ {% include "@Flexy/FrontBundle/templates/myaccount/_nav.html.twig" %} 
+
+
+<div class="container" style="padding-bottom:150px;" >
+
+
+<div class="row" >
+    <div class="col-4">
+        <div class="card p-3 text-center" >
+            <h6>Mes achats</h6>
+            <div class="badge badge-success" ><h4>0</h4></div>
+        </div>
+    </div>
+        <div class="col-4">
+        <div class="card p-3 text-center" >
+            <h6>Commandes en attente</h6>
+            <div class="badge badge-warning" ><h4>{{orders|length}}</h4></div>
+        </div>
+</div>
+        <div class="col-4">
+        <div class="card p-3 text-center" >
+            <h6>Mes retours</h6>
+            <div class="badge badge-danger" ><h4>0</h4></div>
+        </div>
+    </div>
+</div>
+
+    <div class="details" style="margin-top:50px;" >
+    <h3>Mes commandes</h3>
+<div class="table-responsive" style="box-shadow:0 0 8px #00000020;border-radius:5px;overflow:hidden;">
+    <table style="margin-bottom:0;" class="table ">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col">Num CMD</th>
+      <th scope="col">Crée le</th>
+      <th scope="col">Nbr de produits</th>
+      <th scope="col">Montant</th>
+      <th scope="col">Etat</th>
+      <th scope="col">Consulter</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {% for order in orders %}
+    <tr class="menu-item">
+      <th scope="row">{{order.orderNumber}}</th>
+      <td>{{order.createdAt|date("Y-m-d H:i")}}</td>
+      <td>
+      <span class="badge badge-primary">
+            {{order.orderItems|length}}
+        </span>
+      </td>
+      <td>{{order.totalAmount}} MAD</td>
+      <td>
+        <span class="badge badge-warning">
+            en attente
+        </span>
+      </td>
+
+        <td>
+        <a class="btn btn-primary" href="{{path('customer_order_detail',{id:order.id})}}">
+            <i class="fa fa-file" ></i>
+        </a>
+      </td>
+    </tr>
+   {% endfor %} 
+  </tbody>
+</table>
+</div>
+    </div>
+</div>
+
+{% endblock %}
+
