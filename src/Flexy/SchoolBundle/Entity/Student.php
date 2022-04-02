@@ -3,7 +3,7 @@
 namespace App\Flexy\SchoolBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\StudentRepository;
+use App\Flexy\SchoolBundle\Repository\StudentRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
