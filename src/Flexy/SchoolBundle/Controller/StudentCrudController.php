@@ -4,6 +4,7 @@ namespace App\Flexy\SchoolBundle\Controller;
 
 use App\Flexy\SchoolBundle\Entity\Student;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class StudentCrudController extends AbstractCrudController
 {
@@ -12,14 +13,13 @@ class StudentCrudController extends AbstractCrudController
         return Student::class;
     }
 
-    /*
+    
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
+            TextField::new('firstName'),
+            TextField::new('lastName'),
         ];
     }
-    */
+    
 }
