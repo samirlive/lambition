@@ -59,13 +59,13 @@ class DashboardController extends AbstractDashboardController
             $urlImage ="../uploads/".$vendor->getImage();
 
         }else{
-            $urlImage ="../omall/logo.png";
+            $urlImage ="../lambition/logo.png";
         }
         
         return Dashboard::new()
 
         ->setTitle('
-        <img  style="margin:10px 0 0px 40px" src="/omall/logo.png" width="90px" />
+        <img  style="margin:10px 0 0px 40px" src="/lambition/logo.png" width="90px" />
         <br>
         <img  style="margin:0 0 0 30px" src="'.$urlImage.'" width="130px" />
         

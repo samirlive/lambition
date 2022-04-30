@@ -2610,7 +2610,7 @@ select {
 }
 
 .header-menu .main-menu li a {
-  font-size: 14px;
+  font-size: 12px;
   font-family: "Khula", sans-serif;
   font-weight: 700;
   text-transform: uppercase;
@@ -2626,9 +2626,9 @@ select {
 }
 
 .header-menu .main-menu li .menu-icon::after {
-  content: '\f16c';
-  font-family: "flaticon";
-  font-size: 10px;
+  
+  
+  font-size: 12px;
   color: #94a0b9;
   margin-left: 5px;
   -webkit-transition: all 0.3s linear;

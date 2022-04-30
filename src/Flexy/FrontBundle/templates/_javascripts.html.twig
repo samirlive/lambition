@@ -16,9 +16,22 @@
  <script src="lambition/assets/js/plugins/waypoints.min.js"></script>
  <script src="lambition/assets/js/plugins/jquery.counterup.min.js"></script>
  <script src="lambition/assets/js/plugins/appear.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/vegas/2.5.4/vegas.min.js" integrity="sha512-lYAcY5E6LZVeNB3Pky37SxbYKzo8A68MzKFoPg5oTuolhRm36D+YRvkrAQS4JuKsaGYeJ5KA5taMEtpNlPUeOA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
  <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
 
 
  <!-- Main JS -->
  <script src="lambition/assets/js/main.js"></script>
+
+
+ <script>
+ $("#hero-section").vegas({
+    slides: [
+        { src: "lambition/assets/images/hero-2.jpg" },
+        { src: "lambition/assets/images/hero-2.jpg" },
+    ],
+    overlay: 'https://cdnjs.cloudflare.com/ajax/libs/vegas/2.5.4/overlays/06.png',
+    animation: 'kenburns'
+});
+ </script>
