@@ -172,56 +172,6 @@
     }
 
 
-    /*--
-		Offcanvas/Collapseable Menu 
-	-----------------------------------*/
-    const offCanvasMenu = function (selector) {
-
-        const $offCanvasNav = document.querySelector(selector),
-            $subMenu = $offCanvasNav.querySelectorAll('.sub-menu');
-        $subMenu.forEach(function (subMenu) {
-            const menuExpand = document.createElement('span')
-            menuExpand.classList.add('menu-expand')
-            // menuExpand.innerHTML = '+'
-            subMenu.parentElement.insertBefore(menuExpand, subMenu)
-            if (subMenu.classList.contains('mega-menu')) {
-                subMenu.classList.remove('mega-menu')
-                subMenu.querySelectorAll('ul').forEach(function (ul) {
-                    ul.classList.add('sub-menu')
-                    const menuExpand = document.createElement('span')
-                    menuExpand.classList.add('menu-expand')
-                    menuExpand.innerHTML = '+'
-                    ul.parentElement.insertBefore(menuExpand, ul)
-                })
-            }
-        })
-
-        $offCanvasNav.querySelectorAll('.menu-expand').forEach(function (item) {
-            item.addEventListener('click', function (e) {
-                e.preventDefault()
-                const parent = this.parentElement
-                if (parent.classList.contains('active')) {
-                    parent.classList.remove('active');
-                    parent.querySelectorAll('.sub-menu').forEach(function (subMenu) {
-                        subMenu.parentElement.classList.remove('active');
-                        slideUp(subMenu)
-                    })
-                } else {
-                    parent.classList.add('active');
-                    slideDown(this.nextElementSibling)
-                    getSiblings(parent).forEach(function (item) {
-                        item.classList.remove('active')
-                        item.querySelectorAll('.sub-menu').forEach(function (subMenu) {
-                            subMenu.parentElement.classList.remove('active');
-                            slideUp(subMenu)
-                        })
-                    })
-                }
-            })
-        })
-    }
-    offCanvasMenu('.offcanvas-menu');
-
 
     /*--
 		Mousemove Parallax
