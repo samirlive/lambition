@@ -18,6 +18,8 @@
  <script src="lambition/assets/js/plugins/appear.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/vegas/2.5.4/vegas.min.js" integrity="sha512-lYAcY5E6LZVeNB3Pky37SxbYKzo8A68MzKFoPg5oTuolhRm36D+YRvkrAQS4JuKsaGYeJ5KA5taMEtpNlPUeOA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
  <!--====== Use the minified version files listed below for better performance and remove the files listed above ======-->
 
 
@@ -26,11 +28,30 @@
 
 
  <script>
+
+$(document).ready(function(){
+
+
+
+    //var heightWindow = $(window).height();
+    //$(".owl-carousel img").height(heightWindow);
+
+  $(".owl-carousel").owlCarousel({
+      nav:true,
+      items:1,
+      loop:true,
+      autoplay:true,
+      autoplaySpeed:900,
+
+  });
+});
+
  $("#hero-section").vegas({
     slides: [
-        { src: "lambition/assets/images/slide1.jpg" },
-        { src: "lambition/assets/images/slide2.jpg" },
-        { src: "lambition/assets/images/slide5.jpg" },
+        { src: "lambition/assets/images/slides/1.png" },
+        { src: "lambition/assets/images/slides/2.png" },
+        { src: "lambition/assets/images/slides/3.png" },
+        { src: "lambition/assets/images/slides/4.png" },
     ],
     overlay: 'https://cdnjs.cloudflare.com/ajax/libs/vegas/2.5.4/overlays/06.png',
     animation: 'random'
