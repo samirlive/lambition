@@ -55,6 +55,11 @@
 /*----------------------------------------*/
 /*-- Google Font --*/
 @import url("https://fonts.googleapis.com/css2?family=Khula:wght@600;700&family=Nunito+Sans:wght@300;400;600;700&display=swap");
+
+@font-face {
+  font-family: "flaticon";
+  src: url("/fonts/flaticon.ttf") format("ttf");
+ }
 /*-- Common Style --*/
 *, *::after, *::before {
   -webkit-box-sizing: border-box;
@@ -5887,19 +5892,14 @@ select {
   left: -30px;
 }
 
-.testimonial-active .testimonial-arrow.swiper-button-prev::after {
-  content: "\f108";
-  font-family: flaticon !important;
-}
+
+
 
 .testimonial-active .testimonial-arrow.swiper-button-next {
   right: -30px;
 }
 
-.testimonial-active .testimonial-arrow.swiper-button-next::after {
-  content: "\f109";
-  font-family: flaticon !important;
-}
+
 
 .testimonial-active:hover .testimonial-arrow {
   opacity: 1;
@@ -6114,22 +6114,14 @@ select {
   left: 0px;
 }
 
-.testimonial-2-active .testimonial-arrow.swiper-button-prev::after,
-.testimonial-4-active .testimonial-arrow.swiper-button-prev::after {
-  content: "\f108";
-  font-family: flaticon !important;
-}
+
 
 .testimonial-2-active .testimonial-arrow.swiper-button-next,
 .testimonial-4-active .testimonial-arrow.swiper-button-next {
   right: 0px;
 }
 
-.testimonial-2-active .testimonial-arrow.swiper-button-next::after,
-.testimonial-4-active .testimonial-arrow.swiper-button-next::after {
-  content: "\f109";
-  font-family: flaticon !important;
-}
+
 
 .testimonial-2-active:hover .testimonial-arrow,
 .testimonial-4-active:hover .testimonial-arrow {
@@ -12346,9 +12338,9 @@ select {
           justify-content: center;
   color: #ffffff;
   opacity: 0;
-  -webkit-transform: translateX(130%) rotate(90deg);
-      -ms-transform: translateX(130%) rotate(90deg);
-          transform: translateX(130%) rotate(90deg);
+  -webkit-transform: translateX(130%) rotate(0deg);
+      -ms-transform: translateX(130%) rotate(0deg);
+          transform: translateX(130%) rotate(0deg);
 }
 
 .back-btn:hover {
@@ -12358,9 +12350,9 @@ select {
 
 .back-btn.active {
   opacity: 1;
-  -webkit-transform: translateY(0) rotate(90deg);
-      -ms-transform: translateY(0) rotate(90deg);
-          transform: translateY(0) rotate(90deg);
+  -webkit-transform: translateY(0) rotate(0deg);
+      -ms-transform: translateY(0) rotate(0deg);
+          transform: translateY(0) rotate(0deg);
 }
 
 /*--

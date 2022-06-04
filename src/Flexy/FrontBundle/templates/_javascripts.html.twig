@@ -1,21 +1,21 @@
  <!-- JS
  ============================================ -->
- <script src="lambition/assets/js/vendor/jquery-1.12.4.min.js"></script>
- <script src="lambition/assets/js/vendor/modernizr-3.11.2.min.js"></script>
+ <script src="{{asset('lambition/assets/js/vendor/jquery-1.12.4.min.js')}}"></script>
+ <script src="{{asset('lambition/assets/js/vendor/modernizr-3.11.2.min.js')}}"></script>
 
  <!-- Bootstrap JS -->
- <script src="lambition/assets/js/plugins/popper.min.js"></script>
- <script src="lambition/assets/js/plugins/bootstrap.min.js"></script>
+ <script src="{{asset('lambition/assets/js/plugins/popper.min.js')}}"></script>
+ <script src="{{asset('lambition/assets/js/plugins/bootstrap.min.js')}}"></script>
 
  <!-- Plugins JS -->
- <script src="lambition/assets/js/plugins/swiper-bundle.min.js"></script>
- <script src="lambition/assets/js/plugins/jquery.magnific-popup.min.js"></script>
- <script src="lambition/assets/js/plugins/imagesloaded.pkgd.min.js"></script>
- <script src="lambition/assets/js/plugins/isotope.pkgd.min.js"></script>
- <script src="lambition/assets/js/plugins/aos.js"></script>
- <script src="lambition/assets/js/plugins/waypoints.min.js"></script>
- <script src="lambition/assets/js/plugins/jquery.counterup.min.js"></script>
- <script src="lambition/assets/js/plugins/appear.min.js"></script>
+ <script src="{{asset('lambition/assets/js/plugins/swiper-bundle.min.js')}}"></script>
+ <script src="{{asset('lambition/assets/js/plugins/jquery.magnific-popup.min.js')}}"></script>
+ <script src="{{asset('lambition/assets/js/plugins/imagesloaded.pkgd.min.js')}}"></script>
+ <script src="{{asset('lambition/assets/js/plugins/isotope.pkgd.min.js')}}"></script>
+ <script src="{{asset('lambition/assets/js/plugins/aos.js')}}"></script>
+ <script src="{{asset('lambition/assets/js/plugins/waypoints.min.js')}}"></script>
+ <script src="{{asset('lambition/assets/js/plugins/jquery.counterup.min.js')}}"></script>
+ <script src="{{asset('lambition/assets/js/plugins/appear.min.js')}}"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/vegas/2.5.4/vegas.min.js" integrity="sha512-lYAcY5E6LZVeNB3Pky37SxbYKzo8A68MzKFoPg5oTuolhRm36D+YRvkrAQS4JuKsaGYeJ5KA5taMEtpNlPUeOA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js" integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -24,7 +24,7 @@
 
 
  <!-- Main JS -->
- <script src="lambition/assets/js/main.js"></script>
+ <script src="{{asset('lambition/assets/js/main.js')}}"></script>
 
 
  <script>
@@ -46,14 +46,5 @@ $(document).ready(function(){
   });
 });
 
- $("#hero-section").vegas({
-    slides: [
-        { src: "lambition/assets/images/slides/1.png" },
-        { src: "lambition/assets/images/slides/2.png" },
-        { src: "lambition/assets/images/slides/3.png" },
-        { src: "lambition/assets/images/slides/4.png" },
-    ],
-    overlay: 'https://cdnjs.cloudflare.com/ajax/libs/vegas/2.5.4/overlays/06.png',
-    animation: 'random'
-});
+
  </script>

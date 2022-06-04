@@ -1024,6 +1024,8 @@
               <!-- Testimonial Slider Active Start -->
               <div class="swiper-container testimonial-2-active">
                 <div class="swiper-wrapper">
+
+                {% for testimonial in testimonials %}
                   <div class="swiper-slide">
                     <!-- Single Testimonial Start -->
                     <div class="single-testimonial-2">
@@ -1041,22 +1043,15 @@
                         <p>
                           <font style="vertical-align: inherit;">
                             <font style="vertical-align: inherit;">
-                              Je crois en l'apprentissage tout au long de la vie
-                              et ils sont un excellent endroit pour apprendre
-                              des experts.
+                              {{testimonial.content}}
                             </font>
-                            <font style="vertical-align: inherit;">
-                              J'ai beaucoup de le recommander.
-                            </font>
-                            <font style="vertical-align: inherit;">
-                              Lorem ipsum dolor sit amet consectetur
-                            </font>
+                            
                           </font>
                         </p>
                         <span class="name">
                           <font style="vertical-align: inherit;">
                             <font style="vertical-align: inherit;">
-                              Leila BENJELLOUNE
+                              {{testimonial.fullName}}
                             </font>
                           </font>
                         </span>
@@ -1064,114 +1059,16 @@
                     </div>
                     <!-- Single Testimonial End -->
                   </div>
-                  <div class="swiper-slide">
-                    <!-- Single Testimonial Start -->
-                    <div class="single-testimonial-2">
-                      <div class="testimonial-2-text">
-                        <div class="quote-svg">
-                          <svg xmlns="http://www.w3.org/2000/svg"
-                            fill="#fff"
-                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                            width="70px"
-                            height="50px">
-                            <path fill-rule="evenodd"
-                              d="M55.376,31.360 C55.235,32.892 55.341,37.067 59.311,42.872 C59.612,43.311 59.557,43.901 59.184,44.276 C57.560,45.912 56.555,46.943 55.853,47.664 C54.933,48.608 54.513,49.038 53.899,49.600 C53.691,49.791 53.428,49.885 53.164,49.885 C52.908,49.885 52.652,49.795 52.446,49.616 C45.527,43.551 37.842,31.022 38.954,15.667 C39.605,6.652 46.133,0.108 54.476,0.108 C63.036,0.108 70.000,7.123 70.000,15.746 C70.000,24.065 63.519,30.888 55.376,31.360 ZM54.476,2.311 C47.312,2.311 41.702,7.997 41.135,15.826 C39.885,33.096 50.075,44.309 53.153,47.278 C53.451,46.983 53.791,46.634 54.292,46.121 C54.901,45.497 55.736,44.639 57.003,43.359 C52.184,35.879 53.095,30.552 53.493,29.788 C53.682,29.426 54.070,29.181 54.476,29.181 C61.829,29.181 67.812,23.155 67.812,15.746 C67.812,8.339 61.829,2.311 54.476,2.311 ZM16.527,31.360 C16.386,32.891 16.493,37.063 20.464,42.872 C20.765,43.311 20.710,43.901 20.337,44.276 C18.719,45.907 17.717,46.936 17.014,47.656 C16.090,48.605 15.668,49.037 15.051,49.600 C14.843,49.791 14.579,49.885 14.316,49.885 C14.059,49.885 13.804,49.795 13.598,49.615 C6.679,43.551 -1.006,31.020 0.105,15.667 L0.105,15.665 C0.758,6.652 7.287,0.108 15.628,0.108 C24.188,0.108 31.153,7.123 31.153,15.746 C31.153,24.065 24.671,30.888 16.527,31.360 ZM15.628,2.311 C8.465,2.311 2.854,7.997 2.286,15.827 L2.286,15.826 C1.037,33.094 11.227,44.309 14.305,47.278 C14.605,46.981 14.948,46.629 15.454,46.110 C16.062,45.487 16.894,44.633 18.156,43.359 C13.337,35.879 14.246,30.552 14.644,29.788 C14.833,29.427 15.222,29.181 15.628,29.181 C22.982,29.181 28.965,23.155 28.965,15.746 C28.965,8.339 22.982,2.311 15.628,2.311 Z"></path>
-                          </svg>
-                        </div>
-                        <p>
-                          <font style="vertical-align: inherit;">
-                            <font style="vertical-align: inherit;">
-                              Je crois en l'apprentissage tout au long de la vie
-                            </font>
-                          </font>
-                        </p>
-                        <span class="name">
-                          <font style="vertical-align: inherit;">
-                            <font style="vertical-align: inherit;">
-                              Léo Marea
-                            </font>
-                          </font>
-                        </span>
-                      </div>
-                    </div>
-                    <!-- Single Testimonial End -->
-                  </div>
-                  <div class="swiper-slide">
-                    <!-- Single Testimonial Start -->
-                    <div class="single-testimonial-2">
-                      <div class="testimonial-2-text">
-                        <div class="quote-svg">
-                          <svg xmlns="http://www.w3.org/2000/svg"
-                            fill="#fff"
-                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                            width="70px"
-                            height="50px">
-                            <path fill-rule="evenodd"
-                              d="M55.376,31.360 C55.235,32.892 55.341,37.067 59.311,42.872 C59.612,43.311 59.557,43.901 59.184,44.276 C57.560,45.912 56.555,46.943 55.853,47.664 C54.933,48.608 54.513,49.038 53.899,49.600 C53.691,49.791 53.428,49.885 53.164,49.885 C52.908,49.885 52.652,49.795 52.446,49.616 C45.527,43.551 37.842,31.022 38.954,15.667 C39.605,6.652 46.133,0.108 54.476,0.108 C63.036,0.108 70.000,7.123 70.000,15.746 C70.000,24.065 63.519,30.888 55.376,31.360 ZM54.476,2.311 C47.312,2.311 41.702,7.997 41.135,15.826 C39.885,33.096 50.075,44.309 53.153,47.278 C53.451,46.983 53.791,46.634 54.292,46.121 C54.901,45.497 55.736,44.639 57.003,43.359 C52.184,35.879 53.095,30.552 53.493,29.788 C53.682,29.426 54.070,29.181 54.476,29.181 C61.829,29.181 67.812,23.155 67.812,15.746 C67.812,8.339 61.829,2.311 54.476,2.311 ZM16.527,31.360 C16.386,32.891 16.493,37.063 20.464,42.872 C20.765,43.311 20.710,43.901 20.337,44.276 C18.719,45.907 17.717,46.936 17.014,47.656 C16.090,48.605 15.668,49.037 15.051,49.600 C14.843,49.791 14.579,49.885 14.316,49.885 C14.059,49.885 13.804,49.795 13.598,49.615 C6.679,43.551 -1.006,31.020 0.105,15.667 L0.105,15.665 C0.758,6.652 7.287,0.108 15.628,0.108 C24.188,0.108 31.153,7.123 31.153,15.746 C31.153,24.065 24.671,30.888 16.527,31.360 ZM15.628,2.311 C8.465,2.311 2.854,7.997 2.286,15.827 L2.286,15.826 C1.037,33.094 11.227,44.309 14.305,47.278 C14.605,46.981 14.948,46.629 15.454,46.110 C16.062,45.487 16.894,44.633 18.156,43.359 C13.337,35.879 14.246,30.552 14.644,29.788 C14.833,29.427 15.222,29.181 15.628,29.181 C22.982,29.181 28.965,23.155 28.965,15.746 C28.965,8.339 22.982,2.311 15.628,2.311 Z"></path>
-                          </svg>
-                        </div>
-                        <p>
-                          <font style="vertical-align: inherit;">
-                            <font style="vertical-align: inherit;">
-                              Je crois en l'apprentissage tout au long de la vie
-                              et ils sont un excellent endroit pour apprendre
-                              des experts.
-                            </font>
-                            <font style="vertical-align: inherit;">
-                              J'ai beaucoup de le recommander.
-                            </font>
-                            <font style="vertical-align: inherit;">
-                              Lorem ipsum dolor sit amet consectetur
-                            </font>
-                          </font>
-                        </p>
-                        <span class="name">
-                          <font style="vertical-align: inherit;">
-                            <font style="vertical-align: inherit;">
-                              John Dowson
-                            </font>
-                          </font>
-                        </span>
-                      </div>
-                    </div>
-                    <!-- Single Testimonial End -->
-                  </div>
-                  <div class="swiper-slide">
-                    <!-- Single Testimonial Start -->
-                    <div class="single-testimonial-2">
-                      <div class="testimonial-2-text">
-                        <div class="quote-svg">
-                          <svg xmlns="http://www.w3.org/2000/svg"
-                            fill="#fff"
-                            xmlns:xlink="http://www.w3.org/1999/xlink"
-                            width="70px"
-                            height="50px">
-                            <path fill-rule="evenodd"
-                              d="M55.376,31.360 C55.235,32.892 55.341,37.067 59.311,42.872 C59.612,43.311 59.557,43.901 59.184,44.276 C57.560,45.912 56.555,46.943 55.853,47.664 C54.933,48.608 54.513,49.038 53.899,49.600 C53.691,49.791 53.428,49.885 53.164,49.885 C52.908,49.885 52.652,49.795 52.446,49.616 C45.527,43.551 37.842,31.022 38.954,15.667 C39.605,6.652 46.133,0.108 54.476,0.108 C63.036,0.108 70.000,7.123 70.000,15.746 C70.000,24.065 63.519,30.888 55.376,31.360 ZM54.476,2.311 C47.312,2.311 41.702,7.997 41.135,15.826 C39.885,33.096 50.075,44.309 53.153,47.278 C53.451,46.983 53.791,46.634 54.292,46.121 C54.901,45.497 55.736,44.639 57.003,43.359 C52.184,35.879 53.095,30.552 53.493,29.788 C53.682,29.426 54.070,29.181 54.476,29.181 C61.829,29.181 67.812,23.155 67.812,15.746 C67.812,8.339 61.829,2.311 54.476,2.311 ZM16.527,31.360 C16.386,32.891 16.493,37.063 20.464,42.872 C20.765,43.311 20.710,43.901 20.337,44.276 C18.719,45.907 17.717,46.936 17.014,47.656 C16.090,48.605 15.668,49.037 15.051,49.600 C14.843,49.791 14.579,49.885 14.316,49.885 C14.059,49.885 13.804,49.795 13.598,49.615 C6.679,43.551 -1.006,31.020 0.105,15.667 L0.105,15.665 C0.758,6.652 7.287,0.108 15.628,0.108 C24.188,0.108 31.153,7.123 31.153,15.746 C31.153,24.065 24.671,30.888 16.527,31.360 ZM15.628,2.311 C8.465,2.311 2.854,7.997 2.286,15.827 L2.286,15.826 C1.037,33.094 11.227,44.309 14.305,47.278 C14.605,46.981 14.948,46.629 15.454,46.110 C16.062,45.487 16.894,44.633 18.156,43.359 C13.337,35.879 14.246,30.552 14.644,29.788 C14.833,29.427 15.222,29.181 15.628,29.181 C22.982,29.181 28.965,23.155 28.965,15.746 C28.965,8.339 22.982,2.311 15.628,2.311 Z"></path>
-                          </svg>
-                        </div>
-                        <p>
-                          <font style="vertical-align: inherit;">
-                            <font style="vertical-align: inherit;">
-                              Je crois en l'apprentissage tout au long de la vie
-                            </font>
-                          </font>
-                        </p>
-                        <span class="name">
-                          <font style="vertical-align: inherit;">
-                            <font style="vertical-align: inherit;">
-                              Mikel Haris
-                            </font>
-                          </font>
-                        </span>
-                      </div>
-                    </div>
-                    <!-- Single Testimonial End -->
-                  </div>
+                  {% endfor %}
+                
                 </div>
                 <!-- Add Pagination -->
-                <div class="testimonial-arrow swiper-button-next"></div>
-                <div class="testimonial-arrow swiper-button-prev"></div>
+                <div class="testimonial-arrow swiper-button-next">
+                  
+                </div>
+                <div class="testimonial-arrow swiper-button-prev">
+                
+                </div>
               </div>
               <!-- Testimonial Slider Active End -->
             </div>

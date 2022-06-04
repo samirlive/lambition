@@ -1,0 +1,20 @@
+{% extends '@Flexy/FrontBundle/templates/layout.html.twig' %}
+
+{% block body %}
+
+<div class="container" style="margin:200px auto;">
+
+<h1>{{page.title}}</h1>
+
+<div class="content" >
+{{page.contentHtml|raw}}
+</div>
+
+</div>
+
+{% endblock %}
+
+
+
+
+

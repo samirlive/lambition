@@ -9,14 +9,13 @@
  <div class="col-lg-3 col-sm-6">
  <!-- Footer Widget Start -->
  <div class="footer-widget widget-about">
- <a class="footer-logo" href="index.html"><img src="lambition/assets/images/logo.png" alt="Logo"></a>
+ <a class="footer-logo" href="index.html"><img src="{{asset('lambition/assets/images/logo.png')}}" alt="Logo"></a>
 
  <div class="widget-info">
- <p>A votre disposition pour tout complément d’informations
+ <p>Le groupe scolaire l’Ambition assure l’évolution de vos enfants tout au long du processus scolaire : de la maternelle jusqu’à l’obtention de leur baccalauréat au sein de notre école.
+ <br>
 
-                             Téléphone : +212 5 22 67 38 79
-
-                             mail : contact@groupe-ambition.ma</p>
+                             </p>
 
  <ul class="social">
  <li><a href="#"><i class="fab fa-facebook"></i></a></li>
@@ -30,14 +29,16 @@
  <div class="col-lg-3 col-sm-6">
  <!-- Footer Widget Start -->
  <div class="footer-widget">
- <h4 class="footer-widget-title">Liens Tests</h4>
+ <h4 class="footer-widget-title">Approche pédagogique</h4>
 
  <div class="widget-link">
  <ul class="link">
- <li><a href="#">About Us</a></li>
- <li><a href="#">Privacy Policy</a></li>
- <li><a href="#">Terms & Condition</a></li>
- <li><a href="#">Student Spotlight</a></li>
+ {#}
+ <li><a href="{{path('front_maternelle')}}">Maternelle</a></li>
+ <li><a href="{{path('front_primaire')}}">Primaire</a></li>
+ <li><a href="{{path('front_college')}}">Collége</a></li>
+ <li><a href="{{path('front_lycee')}}">Lycée</a></li>
+ #}
  </ul>
  </div>
  </div>
@@ -46,13 +47,13 @@
  <div class="col-lg-3 col-sm-6">
  <!-- Footer Widget Start -->
  <div class="footer-widget">
- <h4 class="footer-widget-title">Learning</h4>
+ <h4 class="footer-widget-title">S'engager</h4>
 
  <div class="widget-link">
  <ul class="link">
- <li><a href="#">Project Management</a></li>
- <li><a href="#">Business Strategy</a></li>
- <li><a href="#">Software Development</a></li>
+ <li><a href="#">Inscription</a></li>
+ <li><a href="#">Contactez-nous</a></li>
+ <li><a href="#">Postulez</a></li>
  </ul>
  </div>
  </div>
@@ -66,9 +67,9 @@
  <ul class="widget-info">
  <li>
  <div class="media">
- <i class="flaticon-location-pin"></i>
+<i class="fas fa-map-marker-alt"></i>
  <div class="media-body">
- <span>Ain sbaa, Rue test, Bloc Test 1234</span>
+ <span>Ain sbaa - Casablanca</span>
  </div>
  </div>
  </li>
@@ -76,15 +77,40 @@
  <div class="media">
  <i class="fas fa-phone-volume"></i>
  <div class="media-body">
- <a href="tel:+91458654528">+212 5 22 67 38 79</a>
+ <a href="tel:+91458654528"> +212 5 22 67 38 79</a><br>
+
+
+
+                            
+
+                            
  </div>
  </div>
  </li>
+  <li>
+ <div class="media">
+<i class="fas fa-globe" > </i>
+ <div class="media-body">
+ <a href="{{path('front_home')}}"> www.groupe-ambition.ma</a><br>
+
+
+
+                            
+
+                            
+ </div>
+ </div>
+ </li>
+
+
+
+
+ 
  <li>
  <div class="media">
- <i class="flaticon-email"></i>
+ <i class="fas fa-envelope"></i>
  <div class="media-body">
- <a href="gostudy@gmail.com">contact@groupe-ambition.ma</a>
+ <a href="mailto:contact@groupe-ambition.ma">contact@groupe-ambition.ma</a>
  </div>
  </div>
  </li>

@@ -8,6 +8,7 @@ use App\Flexy\FrontBundle\Repository\MasterSliderRepository;
 use App\Flexy\FrontBundle\Repository\PubBannerRepository;
 use App\Flexy\ShopBundle\Repository\Product\ProductRepository;
 use App\Flexy\FrontBundle\Repository\ProductFrontRepository;
+use App\Flexy\FrontBundle\Repository\TestimonialRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,7 +21,8 @@ class HomeController extends AbstractController
         ProductFrontRepository $productRepository,
         MasterSliderRepository $masterSliderRepository,
         PubBannerRepository $pubBannerRepository,
-        CategoryProductFrontRepository $categoryProductFrontRepository
+        CategoryProductFrontRepository $categoryProductFrontRepository,
+        TestimonialRepository $testimonialRepository
         
         ): Response
     {
@@ -38,7 +40,8 @@ class HomeController extends AbstractController
             'masterSliders'=> $masterSliderRepository->findBy(["isEnabled"=>true]),
             'pubBanners'=> $pubBannerRepository->findBy(["isEnabled"=>true]),
             'deals'=>$deals,
-            'categoriesProduct'=> $categoryProductFrontRepository->findBy(["parentCategory"=>null])
+            'categoriesProduct'=> $categoryProductFrontRepository->findBy(["parentCategory"=>null]),
+            'testimonials' => $testimonialRepository->findBy(["isEnabled"=>true])
         ]);
     }
 
