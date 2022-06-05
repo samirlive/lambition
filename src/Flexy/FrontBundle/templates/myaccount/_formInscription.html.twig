@@ -1,0 +1,52 @@
+
+  <!-- Inscription Form Start -->
+<div class="hero-section-2 section" style="background-position:left center;background-image: url({{asset('lambition/assets/images/bg/TEACHER.png')}});">
+
+            <div class="container">
+                <div class="row d-flex align-items-center">
+                    <div class="col-lg-7">
+                        <!-- Hero Content Start -->
+                        <div class="hero-content-2">
+                            <h2 class="title">Découvrez une nouvelle façon d’apprendre </h2>
+                        </div>
+                        <!-- Hero Content End -->
+                    </div>
+                    <div class="col-lg-5 d-flex justify-content-lg-end">
+                        <div class="hero-form-2">
+                            <div class="hero-form-2-wrapper">
+                                <div class="heading-wrapper text-center">
+                                   
+                                    <h3 class="title">Inscrivez-vous dès à présent !</h3>
+                                </div>
+                               {{form_start(registrationForm)}}
+
+                                
+
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <!-- Single Form Start -->
+                                            <div class="single-form">
+                                                {{form_widget(registrationForm)}}
+                                            </div>
+                                            <!-- Single Form End -->
+                                        </div>
+   
+                                        <div class="col-sm-12">
+                                            <!-- Single Form Start -->
+                                            <div class="form-btn">
+                                                <button class="btn" type="submit">Je m’inscris !</button>
+                                            </div>
+                                            <!-- Single Form End -->
+                                        </div>
+                                    </div>
+                                {{form_end(registrationForm)}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+  <!-- Inscription Form End --> 

@@ -42,14 +42,19 @@
  <!-- Preloader End -->
        
         {{ render(path('front_header')) }}
+     
 
         {% block body %}
+
 
         {% endblock %}
 
 
 
-        {% include "@Flexy/FrontBundle/templates/_footer.html.twig" %}
+        
+
+
+        {{ render(path('front_footer')) }}
 
 
 

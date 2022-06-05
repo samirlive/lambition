@@ -250,78 +250,8 @@
 
 
   <!-- Inscription Form Start -->
-<div class="hero-section-2 section" style="background-position:left center;background-image: url({{asset('lambition/assets/images/bg/TEACHER.png')}});">
-
-            <div class="container">
-                <div class="row d-flex align-items-center">
-                    <div class="col-lg-7">
-                        <!-- Hero Content Start -->
-                        <div class="hero-content-2">
-                            <h2 class="title">Découvrez une nouvelle façon d’apprendre </h2>
-                        </div>
-                        <!-- Hero Content End -->
-                    </div>
-                    <div class="col-lg-5 d-flex justify-content-lg-end">
-                        <div class="hero-form-2">
-                            <div class="hero-form-2-wrapper">
-                                <div class="heading-wrapper text-center">
-                                   
-                                    <h3 class="title">Inscrivez-vous dès à présent !</h3>
-                                </div>
-                                <form action="#">
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <!-- Single Form Start -->
-                                            <div class="single-form">
-                                                <input type="text" placeholder="Nom">
-                                            </div>
-                                            <!-- Single Form End -->
-                                        </div>
-                                          <div class="col-sm-12">
-                                            <!-- Single Form Start -->
-                                            <div class="single-form">
-                                                <input type="text" placeholder="Prénom">
-                                            </div>
-                                            <!-- Single Form End -->
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <!-- Single Form Start -->
-                                            <div class="single-form">
-                                                <input type="email" placeholder="Email">
-                                            </div>
-                                            <!-- Single Form End -->
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <!-- Single Form Start -->
-                                            <div class="single-form">
-                                                <input type="text" placeholder="Numéro de téléphone">
-                                            </div>
-                                            <!-- Single Form End -->
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <!-- Single Form Start -->
-                                            <div class="single-form">
-                                                <textarea placeholder="Commentaire"></textarea>
-                                            </div>
-                                            <!-- Single Form End -->
-                                        </div>
-                                        <div class="col-sm-12">
-                                            <!-- Single Form Start -->
-                                            <div class="form-btn">
-                                                <button class="btn" type="submit">Je m’inscris !</button>
-                                            </div>
-                                            <!-- Single Form End -->
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
+  
+{{ render(path('app_register_form')) }}
 
   <!-- Inscription Form End --> 
 
@@ -1290,15 +1220,14 @@
           <h2 class="title">
             <font style="vertical-align: inherit;">
               <font style="vertical-align: inherit;">
-                Commencez dès aujourd'hui et obtenez une certification sur les
-                fondamentaux du marketing numérique
+                Rejoignez l’Ambition
               </font>
             </font>
           </h2>
-          <a class="btn" href="course.html">
+          <a class="btn" href="{{path('app_register')}}">
             <font style="vertical-align: inherit;">
               <font style="vertical-align: inherit;">
-                Commencer le cours
+                Commencez l’aventure
               </font>
             </font>
           </a>

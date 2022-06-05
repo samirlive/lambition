@@ -3,14 +3,14 @@
 namespace App\Flexy\SchoolBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\ExamRepository;
+use App\Flexy\SchoolBundle\Repository\PunishmentRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ExamRepository::class)
+ * @ORM\Entity(repositoryClass=PunishmentRepository::class)
  */
 #[ApiResource]
-class Exam
+class Punishment
 {
     /**
      * @ORM\Id
@@ -30,9 +30,14 @@ class Exam
     private $description;
 
     /**
-     * @ORM\ManyToOne(targetEntity=SchoolClassSubject::class, inversedBy="exams")
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private $schoolClassSubject;
+    private $type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Student::class, inversedBy="punishments")
+     */
+    private $student;
 
     public function getId(): ?int
     {
@@ -63,14 +68,26 @@ class Exam
         return $this;
     }
 
-    public function getSchoolClassSubject(): ?SchoolClassSubject
+    public function getType(): ?string
     {
-        return $this->schoolClassSubject;
+        return $this->type;
     }
 
-    public function setSchoolClassSubject(?SchoolClassSubject $schoolClassSubject): self
+    public function setType(?string $type): self
     {
-        $this->schoolClassSubject = $schoolClassSubject;
+        $this->type = $type;
+
+        return $this;
+    }
+
+    public function getStudent(): ?Student
+    {
+        return $this->student;
+    }
+
+    public function setStudent(?Student $student): self
+    {
+        $this->student = $student;
 
         return $this;
     }

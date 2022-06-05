@@ -29,6 +29,16 @@ class HomeWork
      */
     private $createdAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=SchoolClassSubject::class, inversedBy="homeWorks")
+     */
+    private $schoolSubjectClass;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $title;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -54,6 +64,30 @@ class HomeWork
     public function setCreatedAt(?\DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getSchoolSubjectClass(): ?SchoolClassSubject
+    {
+        return $this->schoolSubjectClass;
+    }
+
+    public function setSchoolSubjectClass(?SchoolClassSubject $schoolSubjectClass): self
+    {
+        $this->schoolSubjectClass = $schoolSubjectClass;
+
+        return $this;
+    }
+
+    public function getTitle(): ?string
+    {
+        return $this->title;
+    }
+
+    public function setTitle(?string $title): self
+    {
+        $this->title = $title;
 
         return $this;
     }

@@ -4,6 +4,8 @@ namespace App\Flexy\SchoolBundle\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\BulletinRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -28,6 +30,21 @@ class Bulletin
      * @ORM\Column(type="datetime_immutable", nullable=true)
      */
     private $createdAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity=SchoolMark::class, mappedBy="bulletin")
+     */
+    private $schoolMarks;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Student::class, inversedBy="bulletins")
+     */
+    private $student;
+
+    public function __construct()
+    {
+        $this->schoolMarks = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -54,6 +71,48 @@ class Bulletin
     public function setCreatedAt(?\DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SchoolMark>
+     */
+    public function getSchoolMarks(): Collection
+    {
+        return $this->schoolMarks;
+    }
+
+    public function addSchoolMark(SchoolMark $schoolMark): self
+    {
+        if (!$this->schoolMarks->contains($schoolMark)) {
+            $this->schoolMarks[] = $schoolMark;
+            $schoolMark->setBulletin($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSchoolMark(SchoolMark $schoolMark): self
+    {
+        if ($this->schoolMarks->removeElement($schoolMark)) {
+            // set the owning side to null (unless already changed)
+            if ($schoolMark->getBulletin() === $this) {
+                $schoolMark->setBulletin(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getStudent(): ?Student
+    {
+        return $this->student;
+    }
+
+    public function setStudent(?Student $student): self
+    {
+        $this->student = $student;
 
         return $this;
     }

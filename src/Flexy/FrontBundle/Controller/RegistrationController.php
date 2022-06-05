@@ -3,8 +3,8 @@
 namespace App\Flexy\FrontBundle\Controller;
 
 use App\Entity\User;
-use App\Flexy\FrontBundle\Form\RegistrationCustomerFormType;
-use App\Flexy\FrontBundle\Form\RegistrationVendorFormType;
+use App\Flexy\FrontBundle\Form\Student\RegisterStudentType;
+use App\Flexy\SchoolBundle\Entity\Student;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,49 +18,27 @@ class RegistrationController extends AbstractController
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
 
-        $user = new User();
-        $formVendor = $this->createForm(RegistrationVendorFormType::class, $user);
-        $formVendor->handleRequest($request);
+        $student = new Student();
+        $form = $this->createForm(RegisterStudentType::class, $student);
+        $form->handleRequest($request);
 
-        $formCustomer = $this->createForm(RegistrationCustomerFormType::class, $user);
-        $formCustomer->handleRequest($request);
+        
 
-        if ($formVendor->isSubmitted() && $formVendor->isValid()) {
+
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
             // encode the plain password
-            $user->setPassword(
-            $userPasswordHasher->hashPassword(
-                    $user,
-                    $formVendor->get('plainPassword')->getData()
-                )
-            );
+            
 
-            $entityManager->persist($user);
+            $entityManager->persist($student);
             $entityManager->flush();
+            $this->addFlash("success","l'inscription est effectuée avec succès");
             // do anything else you need here, like send an email
 
             return $this->redirectToRoute('front_home');
         }
 
-
-        if ($formCustomer->isSubmitted() && $formCustomer->isValid()) {
-            // encode the plain password
-            $user->setPassword(
-            $userPasswordHasher->hashPassword(
-                    $user,
-                    $formCustomer->get('plainPassword')->getData()
-                )
-            );
-
-            $entityManager->persist($user);
-            $entityManager->flush();
-            // do anything else you need here, like send an email
-
-            return $this->redirectToRoute('front_home');
-        }
-
-        return $this->render('@Flexy/FrontBundle/templates/myaccount/login-register.html.twig', [
-            'registrationVendorForm' => $formVendor->createView(),
-            'registrationCustomerForm' => $formCustomer->createView(),
-        ]);
+        return $this->render('@Flexy/FrontBundle/templates/myaccount/login-register.html.twig');
     }
 }

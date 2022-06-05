@@ -28,7 +28,7 @@ class PagesController extends AbstractController
     }
 
 
-    #[Route('/page/{slug}', name: 'front_page')]
+    #[Route('/{slug}', name: 'front_page')]
     public function front_primaire($slug,PageRepository $pageRepository): Response
     {
         

@@ -13,7 +13,7 @@ class StudentCrudController extends AbstractCrudController
         return Student::class;
     }
 
-    
+    /*
     public function configureFields(string $pageName): iterable
     {
         return [
@@ -21,5 +21,6 @@ class StudentCrudController extends AbstractCrudController
             TextField::new('lastName'),
         ];
     }
+    */
     
 }

@@ -107,3 +107,24 @@
  </div>
  </div>
  <!-- Header End -->
+
+
+
+              {% for message in app.flashes('success') %}
+              
+
+
+
+                    <div class="alert alert-success alert-dismissible fade show" style="   
+                             position: fixed;
+                            bottom: 50px;
+                            width: 80%;
+                            margin: 0 auto;
+                            left: 10%;
+                            z-index: 9999999;" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+              
+            
+                {% endfor %}

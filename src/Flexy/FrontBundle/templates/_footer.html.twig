@@ -33,12 +33,11 @@
 
  <div class="widget-link">
  <ul class="link">
- {#}
- <li><a href="{{path('front_maternelle')}}">Maternelle</a></li>
- <li><a href="{{path('front_primaire')}}">Primaire</a></li>
- <li><a href="{{path('front_college')}}">Collége</a></li>
- <li><a href="{{path('front_lycee')}}">Lycée</a></li>
- #}
+ {% for pageNiveau in pagesNiveau %}
+ <li><a href="{{path('front_page',{slug:pageNiveau.slug})}}">{{pageNiveau.title}}</a></li>
+
+ {% endfor %}
+
  </ul>
  </div>
  </div>
