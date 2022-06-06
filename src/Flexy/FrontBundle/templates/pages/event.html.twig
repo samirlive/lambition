@@ -1,0 +1,45 @@
+{% extends '@Flexy/FrontBundle/templates/layout.html.twig' %}
+
+{% block stylesheets %}
+
+{{parent()}}
+
+<style>
+    .content img{
+        border-radius:8px;
+        box-shadow:0 3px 8px #00000090;
+    }
+</style>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container" style="margin:200px auto;">
+
+
+
+<div class="content" >
+<div class="row" >
+    <div class="col-5"><img src="{{asset('uploads/'~event.image)}}"  />
+    </div>
+     <div class="col-7">
+     <h1 >{{event.title}}</h1>
+      <p>
+    {{event.description|raw}}
+    </p>
+    </div>
+
+   
+
+</div>
+</div>
+
+</div>
+
+{% endblock %}
+
+
+
+
+

@@ -177,13 +177,13 @@
               <!-- Courses Subject Item Start -->
               <div class="courses-subject-item color-1 text-center">
                 <div class="courses-subject-img">
-                  <a href="#">
+                  <a href="{{path('front_page',{slug:"maternelle"})}}">
                    <i class="fa-solid fa-palette"></i>
                   </a>
                 </div>
                 <div class="courses-subject-content">
                   <h3 class="title">
-                    <a href="#">Maternelle</a>
+                    <a href="{{path('front_page',{slug:"maternelle"})}}">Maternelle</a>
                   </h3>
                 </div>
               </div>
@@ -193,13 +193,13 @@
               <!-- Courses Subject Item Start -->
               <div class="courses-subject-item color-2 text-center">
                 <div class="courses-subject-img">
-                  <a href="#">
+                  <a href="{{path('front_page',{slug:"primaire"})}}">
                    <i class="fa-solid fa-pen-to-square"></i>
                   </a>
                 </div>
                 <div class="courses-subject-content">
                   <h3 class="title">
-                    <a href="#">Primaire</a>
+                    <a href="{{path('front_page',{slug:"primaire"})}}">Primaire</a>
                   </h3>
                 </div>
               </div>
@@ -209,13 +209,13 @@
               <!-- Courses Subject Item Start -->
               <div class="courses-subject-item color-3 text-center">
                 <div class="courses-subject-img">
-                  <a href="#">
+                  <a href="{{path('front_page',{slug:"college"})}}">
                     <i class="fa-solid fa-calculator"></i>
                   </a>
                 </div>
                 <div class="courses-subject-content">
                   <h3 class="title">
-                    <a href="#">Collége</a>
+                    <a href="{{path('front_page',{slug:"college"})}}">Collége</a>
                   </h3>
                 </div>
               </div>
@@ -225,13 +225,13 @@
               <!-- Courses Subject Item Start -->
               <div class="courses-subject-item color-4 text-center">
                 <div class="courses-subject-img">
-                  <a href="#">
+                  <a href="{{path('front_page',{slug:"lycee"})}}">
                     <i class="fa-solid fa-graduation-cap"></i>
                   </a>
                 </div>
                 <div class="courses-subject-content">
                   <h3 class="title">
-                    <a href="#">Lycée</a>
+                    <a href="{{path('front_page',{slug:"lycee"})}}">Lycée</a>
                   </h3>
                 </div>
               </div>
@@ -274,10 +274,10 @@
             <div class="top-courses-filter">
               <ul>
                 <li class="active" data-filter="*">All <span>8</span></li>
-                <li data-filter=".course-cooking">Maternelle <span>3</span></li>
-                <li data-filter=".course-finance">Primaire <span>3</span></li>
-                <li data-filter=".course-health">Collége <span>5</span></li>
-                <li data-filter=".course-technology">
+                <li data-filter=".maternelle">Maternelle <span>3</span></li>
+                <li data-filter=".primaire">Primaire <span>3</span></li>
+                <li data-filter=".college">Collége <span>5</span></li>
+                <li data-filter=".lycee">
                   Lycée <span>2</span>
                 </li>
               </ul>
@@ -288,18 +288,20 @@
         <!-- Courses Wrapper Start -->
         <div class="top-courses-content-wrapper">
           <div class="row grid">
-            <div class="col-lg-3 col-sm-6 course-health course-technology">
+
+          {% for event in events %}
+            <div class="col-lg-3 col-sm-6 {{event.type}}">
               <!-- Single Courses Start -->
               <div class="single-course">
                 <!-- Courses Image Start -->
                 <div class="courses-image">
-                  <a href="course-single.html">
-                    <img src="lambition/assets/images/courses/course-1.jpg"
+                  <a href="{{path('front_event',{slug:event.slug})}}">
+                    <img src="{{asset("uploads/"~event.image)}}"
                       alt="Courses" />
                   </a>
                   <div class="top-meta">
                     <div class="categories">
-                      <a class="tag color-1" href="#">Maternelle</a>
+                      <a class="tag color-1" href="#">{{event.type|upper}}</a>
                     </div>
                     <div class="wishlist">
                       <a href="#"><i class="far fa-bookmark"></i></a>
@@ -310,15 +312,15 @@
                 <!-- Courses Content Start -->
                 <div class="courses-content">
                   <div class="courses-author">
-                    <img src="lambition/assets/images/courses/author-1.jpg"
+                    <img src="{{asset(event.image)}}"
                       alt="author" />
                     <h4 class="name">
-                      <a href="#">Mick Harris</a>
+                      <a href="#">{{event.title}}</a>
                     </h4>
                   </div>
                   <h3 class="title">
                     <a href="course-single.html">
-                      Learn React JS Tutorial For Beginners
+                     {{event.description}}
                     </a>
                   </h3>
                 </div>
@@ -341,377 +343,8 @@
               </div>
               <!-- Single Courses End -->
             </div>
-            <div class="col-lg-3 col-sm-6 course-finance course-health">
-              <!-- Single Courses Start -->
-              <div class="single-course">
-                <!-- Courses Image Start -->
-                <div class="courses-image">
-                  <a href="course-single.html">
-                    <img src="lambition/assets/images/courses/course-3.jpg"
-                      alt="Courses" />
-                  </a>
-                  <div class="top-meta">
-                    <div class="categories">
-                      <a class="tag color-2" href="#">Primaire</a>
-                    </div>
-                    <div class="wishlist">
-                      <a href="#"><i class="far fa-bookmark"></i></a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Courses Image End -->
-                <!-- Courses Content Start -->
-                <div class="courses-content">
-                  <div class="courses-author">
-                    <img src="lambition/assets/images/courses/author-2.jpg"
-                      alt="author" />
-                    <h4 class="name">
-                      <a href="#">Kevin Perry</a>
-                    </h4>
-                  </div>
-                  <h3 class="title">
-                    <a href="course-single.html">
-                      English Pronunciation for Beginners
-                    </a>
-                  </h3>
-                </div>
-                <!-- Courses Content End -->
-                <!-- Courses Meta Start -->
-                <div class="courses-meta">
-                  <div class="course-enroll-rating d-flex">
-                    <p>
-                      <i class="flaticon-user"></i> 40
-                    </p>
-                    <p>
-                      <i class="flaticon-star-1"></i> 3
-                    </p>
-                  </div>
-                  <div class="price">
-                    <span>Free</span>
-                  </div>
-                </div>
-                <!-- Courses Meta End -->
-              </div>
-              <!-- Single Courses End -->
-            </div>
-            <div class="col-lg-3 col-sm-6 course-cooking course-finance course-health">
-              <!-- Single Courses Start -->
-              <div class="single-course">
-                <!-- Courses Image Start -->
-                <div class="courses-image">
-                  <a href="course-single.html">
-                    <img src="lambition/assets/images/courses/course-4.jpeg"
-                      alt="Courses" />
-                  </a>
-                  <div class="top-meta">
-                    <div class="categories">
-                      <a class="tag color-3" href="#">Collége</a>
-                    </div>
-                    <div class="wishlist">
-                      <a href="#"><i class="far fa-bookmark"></i></a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Courses Image End -->
-                <!-- Courses Content Start -->
-                <div class="courses-content">
-                  <div class="courses-author">
-                    <img src="lambition/assets/images/courses/author-1.jpg"
-                      alt="author" />
-                    <h4 class="name">
-                      <a href="#">Mick Harris</a>
-                    </h4>
-                  </div>
-                  <h3 class="title">
-                    <a href="course-single.html">
-                      Lycée and Safety Awareness Training
-                    </a>
-                  </h3>
-                </div>
-                <!-- Courses Content End -->
-                <!-- Courses Meta Start -->
-                <div class="courses-meta">
-                  <div class="course-enroll-rating d-flex">
-                    <p>
-                      <i class="flaticon-user"></i> 2
-                    </p>
-                    <p>
-                      <i class="flaticon-star-1"></i> 1
-                    </p>
-                  </div>
-                  <div class="price">
-                    <span>£29.99</span>
-                  </div>
-                </div>
-                <!-- Courses Meta End -->
-              </div>
-              <!-- Single Courses End -->
-            </div>
-            <div class="col-lg-3 col-sm-6 course-finance">
-              <!-- Single Courses Start -->
-              <div class="single-course">
-                <!-- Courses Image Start -->
-                <div class="courses-image">
-                  <a href="course-single.html">
-                    <img src="lambition/assets/images/courses/course-5.jpg"
-                      alt="Courses" />
-                  </a>
-                  <div class="top-meta">
-                    <div class="categories">
-                      <a class="tag color-4" href="#">Maternelle</a>
-                    </div>
-                    <div class="wishlist">
-                      <a href="#"><i class="far fa-bookmark"></i></a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Courses Image End -->
-                <!-- Courses Content Start -->
-                <div class="courses-content">
-                  <div class="courses-author">
-                    <img src="lambition/assets/images/courses/author-2.jpg"
-                      alt="author" />
-                    <h4 class="name">
-                      <a href="#">Kevin Perry</a>
-                    </h4>
-                  </div>
-                  <h3 class="title">
-                    <a href="course-single.html">
-                      Complete Financial Analyst Course
-                    </a>
-                  </h3>
-                </div>
-                <!-- Courses Content End -->
-                <!-- Courses Meta Start -->
-                <div class="courses-meta">
-                  <div class="course-enroll-rating d-flex">
-                    <p>
-                      <i class="flaticon-user"></i> 8
-                    </p>
-                    <p>
-                      <i class="flaticon-star-1"></i> 2
-                    </p>
-                  </div>
-                  <div class="price">
-                    <span>Free</span>
-                  </div>
-                </div>
-                <!-- Courses Meta End -->
-              </div>
-              <!-- Single Courses End -->
-            </div>
-            <div class="col-lg-3 col-sm-6 course-health">
-              <!-- Single Courses Start -->
-              <div class="single-course">
-                <!-- Courses Image Start -->
-                <div class="courses-image">
-                  <a href="course-single.html">
-                    <img src="lambition/assets/images/courses/course-6.jpg"
-                      alt="Courses" />
-                  </a>
-                  <div class="top-meta">
-                    <div class="categories">
-                      <a class="tag color-2" href="#">Lycée</a>
-                    </div>
-                    <div class="wishlist">
-                      <a href="#"><i class="far fa-bookmark"></i></a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Courses Image End -->
-                <!-- Courses Content Start -->
-                <div class="courses-content">
-                  <div class="courses-author">
-                    <img src="lambition/assets/images/courses/author-2.jpg"
-                      alt="author" />
-                    <h4 class="name">
-                      <a href="#">Kevin Perry</a>
-                    </h4>
-                  </div>
-                  <h3 class="title">
-                    <a href="course-single.html">
-                      Easy Food Recipes to Make at Home
-                    </a>
-                  </h3>
-                </div>
-                <!-- Courses Content End -->
-                <!-- Courses Meta Start -->
-                <div class="courses-meta">
-                  <div class="course-enroll-rating d-flex">
-                    <p>
-                      <i class="flaticon-user"></i> 2
-                    </p>
-                    <p>
-                      <i class="flaticon-star-1"></i> 1
-                    </p>
-                  </div>
-                  <div class="price">
-                    <span>£39.99</span>
-                  </div>
-                </div>
-                <!-- Courses Meta End -->
-              </div>
-              <!-- Single Courses End -->
-            </div>
-            <div class="col-lg-3 col-sm-6 course-cooking">
-              <!-- Single Courses Start -->
-              <div class="single-course">
-                <!-- Courses Image Start -->
-                <div class="courses-image">
-                  <a href="course-single.html">
-                    <img src="lambition/assets/images/courses/course-7.jpg"
-                      alt="Courses" />
-                  </a>
-                  <div class="top-meta">
-                    <div class="categories">
-                      <a class="tag color-1" href="#">Animation</a>
-                    </div>
-                    <div class="wishlist">
-                      <a href="#"><i class="far fa-bookmark"></i></a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Courses Image End -->
-                <!-- Courses Content Start -->
-                <div class="courses-content">
-                  <div class="courses-author">
-                    <img src="lambition/assets/images/courses/author-2.jpg"
-                      alt="author" />
-                    <h4 class="name">
-                      <a href="#">Kevin Perry</a>
-                    </h4>
-                  </div>
-                  <h3 class="title">
-                    <a href="course-single.html">
-                      Drawing and Painting Course for Children
-                    </a>
-                  </h3>
-                </div>
-                <!-- Courses Content End -->
-                <!-- Courses Meta Start -->
-                <div class="courses-meta">
-                  <div class="course-enroll-rating d-flex">
-                    <p>
-                      <i class="flaticon-user"></i> 5
-                    </p>
-                    <p>
-                      <i class="flaticon-star-1"></i> 2
-                    </p>
-                  </div>
-                  <div class="price">
-                    <span>Free</span>
-                  </div>
-                </div>
-                <!-- Courses Meta End -->
-              </div>
-              <!-- Single Courses End -->
-            </div>
-            <div class="col-lg-3 col-sm-6 course-health">
-              <!-- Single Courses Start -->
-              <div class="single-course">
-                <!-- Courses Image Start -->
-                <div class="courses-image">
-                  <a href="course-single.html">
-                    <img src="lambition/assets/images/courses/course-8.jpg"
-                      alt="Courses" />
-                  </a>
-                  <div class="top-meta">
-                    <div class="categories">
-                      <a class="tag color-2" href="#">Maternelle</a>
-                    </div>
-                    <div class="wishlist">
-                      <a href="#"><i class="far fa-bookmark"></i></a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Courses Image End -->
-                <!-- Courses Content Start -->
-                <div class="courses-content">
-                  <div class="courses-author">
-                    <img src="lambition/assets/images/courses/author-2.jpg"
-                      alt="author" />
-                    <h4 class="name">
-                      <a href="#">Kevin Perry</a>
-                    </h4>
-                  </div>
-                  <h3 class="title">
-                    <a href="course-single.html">
-                      IELTS Course for international students
-                    </a>
-                  </h3>
-                </div>
-                <!-- Courses Content End -->
-                <!-- Courses Meta Start -->
-                <div class="courses-meta">
-                  <div class="course-enroll-rating d-flex">
-                    <p>
-                      <i class="flaticon-user"></i> 7
-                    </p>
-                    <p>
-                      <i class="flaticon-star-1"></i> 1
-                    </p>
-                  </div>
-                  <div class="price">
-                    <span>£49.99</span>
-                  </div>
-                </div>
-                <!-- Courses Meta End -->
-              </div>
-              <!-- Single Courses End -->
-            </div>
-            <div class="col-lg-3 col-sm-6 course-cooking course-technology">
-              <!-- Single Courses Start -->
-              <div class="single-course">
-                <!-- Courses Image Start -->
-                <div class="courses-image">
-                  <a href="course-single.html">
-                    <img src="lambition/assets/images/courses/course-9.jpg"
-                      alt="Courses" />
-                  </a>
-                  <div class="top-meta">
-                    <div class="categories">
-                      <a class="tag color-3" href="#">Animation</a>
-                    </div>
-                    <div class="wishlist">
-                      <a href="#"><i class="far fa-bookmark"></i></a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Courses Image End -->
-                <!-- Courses Content Start -->
-                <div class="courses-content">
-                  <div class="courses-author">
-                    <img src="lambition/assets/images/courses/author-2.jpg"
-                      alt="author" />
-                    <h4 class="name">
-                      <a href="#">Kevin Perry</a>
-                    </h4>
-                  </div>
-                  <h3 class="title">
-                    <a href="course-single.html">
-                      Android App Development Course
-                    </a>
-                  </h3>
-                </div>
-                <!-- Courses Content End -->
-                <!-- Courses Meta Start -->
-                <div class="courses-meta">
-                  <div class="course-enroll-rating d-flex">
-                    <p>
-                      <i class="flaticon-user"></i> 48
-                    </p>
-                    <p>
-                      <i class="flaticon-star-1"></i> 1
-                    </p>
-                  </div>
-                  <div class="price">
-                    <span>Free</span>
-                  </div>
-                </div>
-                <!-- Courses Meta End -->
-              </div>
-              <!-- Single Courses End -->
-            </div>
+          {% endfor %}
+
           </div>
         </div>
         <!-- Courses Wrapper End -->

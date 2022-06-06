@@ -3,6 +3,7 @@
 namespace App\Flexy\SchoolBundle\Controller;
 
 use App\Flexy\SchoolBundle\Entity\Bulletin;
+use App\Flexy\SchoolBundle\Entity\Event;
 use App\Flexy\SchoolBundle\Entity\Exam;
 use App\Flexy\SchoolBundle\Entity\HomeWork;
 use App\Flexy\SchoolBundle\Entity\Payment;
@@ -29,14 +30,15 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('School');
         yield MenuItem::linkToCrud('Student',"fas fa-edit",Student::class);
         yield MenuItem::linkToCrud('Teacher',"fas fa-edit",Teacher::class);
-        yield MenuItem::linkToCrud('Student Parent',"fas fa-edit",StudentParent::class);
+        yield MenuItem::linkToCrud('StudentParent',"fas fa-edit",StudentParent::class);
         yield MenuItem::linkToCrud('Class',"fas fa-edit",SchoolClass::class);
-        yield MenuItem::linkToCrud('School Subject',"fas fa-edit",SchoolSubject::class);
-        yield MenuItem::linkToCrud('School Year',"fas fa-edit",SchoolYear::class);
+        yield MenuItem::linkToCrud('SchoolSubject',"fas fa-edit",SchoolSubject::class);
+        yield MenuItem::linkToCrud('SchoolYear',"fas fa-edit",SchoolYear::class);
         yield MenuItem::linkToCrud('Session',"fas fa-edit",Session::class);
         yield MenuItem::linkToCrud('Exam',"fas fa-edit",Exam::class);
         yield MenuItem::linkToCrud('Bulletin',"fas fa-edit",Bulletin::class);
         yield MenuItem::linkToCrud('HomeWork',"fas fa-edit",HomeWork::class);
+        yield MenuItem::linkToCrud('Events',"fas fa-edit",Event::class);
         
         
         

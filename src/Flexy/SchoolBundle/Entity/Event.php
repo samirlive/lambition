@@ -6,6 +6,9 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use App\Flexy\SchoolBundle\Repository\EventRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use Gedmo\Mapping\Annotation as Gedmo;
+use Doctrine\DBAL\Types\Types;
+
 /**
  * @ORM\Entity(repositoryClass=EventRepository::class)
  */
@@ -30,7 +33,7 @@ class Event
     private $type;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="text",  nullable=true)
      */
     private $description;
 
@@ -53,6 +56,12 @@ class Event
      * @ORM\Column(type="datetime_immutable", nullable=true)
      */
     private $endAt;
+
+        /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Gedmo\Slug(fields={"title"})
+     */
+    private $slug;
 
     public function getId(): ?int
     {
@@ -139,6 +148,26 @@ class Event
     public function setEndAt(?\DateTimeImmutable $endAt): self
     {
         $this->endAt = $endAt;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of slug
+     */ 
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set the value of slug
+     *
+     * @return  self
+     */ 
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
 
         return $this;
     }

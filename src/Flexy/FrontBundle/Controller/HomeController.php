@@ -9,6 +9,7 @@ use App\Flexy\FrontBundle\Repository\PubBannerRepository;
 use App\Flexy\ShopBundle\Repository\Product\ProductRepository;
 use App\Flexy\FrontBundle\Repository\ProductFrontRepository;
 use App\Flexy\FrontBundle\Repository\TestimonialRepository;
+use App\Flexy\SchoolBundle\Repository\EventRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,7 +23,8 @@ class HomeController extends AbstractController
         MasterSliderRepository $masterSliderRepository,
         PubBannerRepository $pubBannerRepository,
         CategoryProductFrontRepository $categoryProductFrontRepository,
-        TestimonialRepository $testimonialRepository
+        TestimonialRepository $testimonialRepository,
+        EventRepository $eventRepository,
         
         ): Response
     {
@@ -41,7 +43,8 @@ class HomeController extends AbstractController
             'pubBanners'=> $pubBannerRepository->findBy(["isEnabled"=>true]),
             'deals'=>$deals,
             'categoriesProduct'=> $categoryProductFrontRepository->findBy(["parentCategory"=>null]),
-            'testimonials' => $testimonialRepository->findBy(["isEnabled"=>true])
+            'testimonials' => $testimonialRepository->findBy(["isEnabled"=>true]),
+            'events' => $eventRepository->findAll()
         ]);
     }
 

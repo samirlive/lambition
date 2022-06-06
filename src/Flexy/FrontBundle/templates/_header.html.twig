@@ -7,7 +7,7 @@
 
  <!-- Header Logo Start -->
  <div class="header-logo">
- <a href="#"><img src="{{asset('lambition/assets/images/logo.png')}}" alt=""></a>
+ <a href="{{path('front_home')}}"><img src="{{asset('lambition/assets/images/logo.png')}}" alt=""></a>
  </div>
  <!-- Header Logo End -->
 
@@ -51,10 +51,10 @@
 
  </ul>
  </li>
- <li> <a href="#" >Inscription
+ <li> <a href="{{path('app_register')}}" >Inscription
 
 </a></li>
- <li><a href="#">Contact</a>
+ <li><a href="{{path('front_contact')}}">Contact</a>
  <ul class="sub-menu">
  <li><a href="{{path('front_contact')}}">Contactez-nous</a></li>
  <li><a href="#">Postulez</a></li>
@@ -86,7 +86,7 @@
  <!-- Header Login Join Start -->
  <div class="header-login-join d-none d-lg-block">
  <a class="login" href="{{path("admin")}}">Se connecter</a>
- <a class="btn join-btn" href="#">S'inscrire</a>
+ <a class="btn join-btn" href="{{path("app_register")}}">S'inscrire</a>
  </div>
  <!-- Header Login Join End -->
  </div>

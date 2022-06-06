@@ -25,7 +25,7 @@ class Notification
     private $title;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $message;
 
@@ -33,6 +33,16 @@ class Notification
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $createdAt;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $nomContact;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $emailContact;
 
     public function getId(): ?int
     {
@@ -71,6 +81,30 @@ class Notification
     public function setCreatedAt(?\DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getNomContact(): ?string
+    {
+        return $this->nomContact;
+    }
+
+    public function setNomContact(string $nomContact): self
+    {
+        $this->nomContact = $nomContact;
+
+        return $this;
+    }
+
+    public function getEmailContact(): ?string
+    {
+        return $this->emailContact;
+    }
+
+    public function setEmailContact(?string $emailContact): self
+    {
+        $this->emailContact = $emailContact;
 
         return $this;
     }
