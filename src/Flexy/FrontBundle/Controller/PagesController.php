@@ -58,12 +58,46 @@ class PagesController extends AbstractController
     }
 
 
+
+    #[Route('/postulez', name: 'front_hireme')]
+    public function front_hireme(HttpFoundationRequest $request,  EntityManagerInterface $entityManager): Response
+    {
+
+        $notifMessage = new Notification();
+        $form = $this->createForm(ContactNotifType::class, $notifMessage);
+        $form->handleRequest($request);
+
+        
+
+
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // encode the plain password
+            
+
+            $entityManager->persist($notifMessage);
+            $entityManager->flush();
+            $this->addFlash("success","l'inscription est effectuée avec succès");
+            // do anything else you need here, like send an email
+
+            return $this->redirectToRoute('front_home');
+        }
+
+        return $this->render('@Flexy/FrontBundle/templates/home/postulez.html.twig',["form"=>$form->createView()]);
+    }
+
+
     #[Route('/{slug}', name: 'front_page')]
     public function front_page($slug,PageRepository $pageRepository): Response
     {
-        
-        return $this->render('@Flexy\FrontBundle/templates/pages/page.html.twig', [
-            'page' => $pageRepository->findOneBy(['slug'=>$slug]),
+        $page = $pageRepository->findOneBy(['slug'=>$slug]);
+        $templatePath ="pages/page.html.twig";
+        if($page->getCustomTemplatePath()){
+            $templatePath =$page->getCustomTemplatePath();
+        }
+        return $this->render('@Flexy\FrontBundle/templates/'. $templatePath, [
+            'page' => $page,
         ]);
     }
 

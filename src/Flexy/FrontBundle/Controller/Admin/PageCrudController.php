@@ -24,6 +24,7 @@ class PageCrudController extends AbstractCrudController
         return [
             IdField::new('id')->onlyOnIndex(),
             TextField::new('title'),
+            TextField::new('slug')->setDisabled(true),
             TextEditorField::new('contentHtml'),
             ImageField::new('image')->setUploadDir("public/uploads")->setBasePath("uploads/"),
             ChoiceField::new('type')->setChoices([
@@ -33,6 +34,7 @@ class PageCrudController extends AbstractCrudController
                 'Event'=>"event",
             ]),
             Field::new('position'),
+            Field::new('customTemplatePath'),
         ];
     }
     

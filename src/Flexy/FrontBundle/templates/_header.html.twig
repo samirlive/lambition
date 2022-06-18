@@ -27,7 +27,7 @@
 
  </ul>
  </li>
- <li><a href="#">Approche pédagogique</a>
+ <li><a href="{{path('front_page',{slug:'notre-pedagogie'})}}">Approche pédagogique</a>
  <ul class="sub-menu">
  {% for page in pagesNiveau %}
     <li><a href="{{path('front_page',{slug:page.slug})}}" >{{page.title}}</a></li>
@@ -57,7 +57,7 @@
  <li><a href="{{path('front_contact')}}">Contact</a>
  <ul class="sub-menu">
  <li><a href="{{path('front_contact')}}">Contactez-nous</a></li>
- <li><a href="#">Postulez</a></li>
+ <li><a href="{{path('front_hireme')}}">Postulez</a></li>
  </ul>
  </li>
  </ul>

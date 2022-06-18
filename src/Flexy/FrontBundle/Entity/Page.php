@@ -65,6 +65,11 @@ class Page
      */
     private $position;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $customTemplatePath;
+
 
 
     public function __construct()
@@ -184,6 +189,18 @@ class Page
     public function setPosition(?int $position): self
     {
         $this->position = $position;
+
+        return $this;
+    }
+
+    public function getCustomTemplatePath(): ?string
+    {
+        return $this->customTemplatePath;
+    }
+
+    public function setCustomTemplatePath(?string $customTemplatePath): self
+    {
+        $this->customTemplatePath = $customTemplatePath;
 
         return $this;
     }

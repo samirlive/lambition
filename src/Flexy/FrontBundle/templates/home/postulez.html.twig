@@ -1,0 +1,138 @@
+{% extends '@Flexy/FrontBundle/templates/layout.html.twig' %}
+
+{% block body %}
+
+<style>
+.hero-form-2 {
+    background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    max-width:700px;
+}
+</style>
+
+
+
+  <!-- Inscription Form Start -->
+<div class="hero-section-2 section" style="background-image: url('https://www.thoughtco.com/thmb/XGe519RVoxFOUl7MHuhaRYoaOcg=/4705x2647/smart/filters:no_upscale()/teacher-standing-in-front-of-a-class-of-raised-hands-dv1940073-5a88dfc9875db90036f2af75.jpg');">
+
+            <div class="container">
+
+
+                
+                <div class="row d-flex align-items-center">
+
+                      <div class="col-lg-12">
+                        <!-- Hero Content Start -->
+                        <div class="hero-content-2 text-center" style="padding:30px 100px;">
+                            <h4 class="title" style="font-size:30px;text-shadow:0 0 8px #00000090;">Rejoignez le Groupe Scolaire en déposant votre candidature ici et en renseignant le formulaire  </h4>
+                        </div>
+                        <!-- Hero Content End -->
+                    </div>
+                   
+                    <div class="col-lg-12 d-flex justify-content-lg-center">
+                        <div class="hero-form-2">
+                            <div class="hero-form-2-wrapper">
+                                <div class="heading-wrapper text-center">
+                                   
+                                    <h3 class="title">Candidature spontanée</h3>
+                                </div>
+                               
+
+                                
+
+                                    <div class="row">
+                                        <div class="col-sm-12 col-lg-6">
+                                            <!-- Single Form Start -->
+                                            <div class="single-form">
+                                                <input type="text" placeholder="Nom">
+                                            </div>
+                                            <!-- Single Form End -->
+                                             <!-- Single Form Start -->
+                                            <div class="single-form">
+                                                <input type="text" placeholder="Email">
+                                            </div>
+                                            <!-- Single Form End -->
+                                            
+                                        </div>
+                                         <div class="col-sm-12 col-lg-6">
+                                             <!-- Single Form Start -->
+                                            <div class="single-form">
+                                                <input type="text" placeholder="Prénom">
+                                            </div>
+                                            <!-- Single Form End -->
+                                             <!-- Single Form Start -->
+                                            <div class="single-form">
+                                                <input type="text" placeholder="Tel">
+                                            </div>
+                                            <!-- Single Form End -->
+                                        </div>
+                                        <div class="col-sm-12  col-lg-12">
+                                         <!-- Single Form Start -->
+                                            <div class="single-form">
+                                                <input type="text" placeholder="Ville">
+                                            </div>
+                                            <!-- Single Form End -->
+                                             <!-- Single Form Start -->
+                                            <div class="single-form">
+                                                <input type="text" placeholder="Fonction">
+                                            </div>
+                                            <!-- Single Form End -->
+                                              <!-- Single Form Start -->
+                                            <div class="single-form">
+                                            <label>Votre CV</label>
+                                                <input type="file" placeholder="Votre CV">
+                                            </div>
+                                            <!-- Single Form End -->
+                                              <!-- Single Form Start -->
+                                            <div class="single-form">
+                                            <label>Lettre de motivation</label>
+                                                <input type="file" placeholder="Lettre de motivation">
+                                            </div>
+                                            <!-- Single Form End -->
+                                            <!-- Single Form Start -->
+                                            <div class="form-btn">
+                                                <button class="btn" type="submit">Envoyer</button>
+                                            </div>
+                                            <!-- Single Form End -->
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+  <!-- Inscription Form End --> 
+
+
+     
+
+{% endblock %}
+
+{% block javascripts %}
+{{parent()}}
+
+<script>
+    $(document).ready(function()
+    {
+        $("#select-account").change(function(){
+            var selectedAccount = $(this).val();
+            
+
+            $(".registerForm").addClass("d-none");
+            $("#"+selectedAccount).removeClass("d-none");
+
+
+        });
+    });
+</script>
+
+{% endblock %}
+
+
