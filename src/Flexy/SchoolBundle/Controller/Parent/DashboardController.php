@@ -2,6 +2,10 @@
 
 namespace App\Flexy\SchoolBundle\Controller\Parent;
 
+use App\Flexy\SchoolBundle\Entity\Bulletin;
+use App\Flexy\SchoolBundle\Entity\Exam;
+use App\Flexy\SchoolBundle\Entity\HomeWork;
+use App\Flexy\SchoolBundle\Entity\Session;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
