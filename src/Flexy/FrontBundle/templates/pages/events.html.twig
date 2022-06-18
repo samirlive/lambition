@@ -1,0 +1,113 @@
+{% extends '@Flexy/FrontBundle/templates/layout.html.twig' %}
+
+{% block body %}
+<style>
+.courses-content,.courses-meta{
+    display:none !important;
+}
+</style>
+
+
+ <!-- Courses Start -->
+  <div class="section top-courses-section section-padding">
+    <div class="container">
+      <div class="top-courses-wrapper">
+        <div class="row">
+          <div class="col-lg-6 col-md-12">
+            <!-- Section Title Start -->
+            <div class="section-title section-devider">
+              <h2 class="title">
+                Événements 
+              </h2>
+            </div>
+            <!-- Section Title End -->
+          </div>
+          <div class="col-lg-6 col-md-12">
+            <div class="top-courses-filter">
+              <ul>
+                <li class="active" data-filter="*">All <span>8</span></li>
+                <li data-filter=".maternelle">Maternelle <span>3</span></li>
+                <li data-filter=".primaire">Primaire <span>3</span></li>
+                <li data-filter=".college">Collége <span>5</span></li>
+                <li data-filter=".lycee">
+                  Lycée <span>2</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Courses Wrapper Start -->
+        <div class="top-courses-content-wrapper">
+          <div class="row grid">
+
+          {% for event in events %}
+            <div class="col-lg-3 col-sm-6 {{event.type}}">
+              <!-- Single Courses Start -->
+              <div class="single-course">
+                <!-- Courses Image Start -->
+                <div class="courses-image">
+                  <a href="{{path('front_event',{slug:event.slug})}}">
+                    <img src="{{asset("uploads/"~event.image)}}"
+                      alt="Courses" />
+                  </a>
+                  <div class="top-meta">
+                    <div class="categories">
+                      <a class="tag color-1" href="#">{{event.type|upper}}</a>
+                    </div>
+                    <div class="wishlist">
+                      <a href="#"><i class="far fa-bookmark"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Courses Image End -->
+                <!-- Courses Content Start -->
+                <div class="courses-content">
+                  <div class="courses-author">
+                    <img src="{{asset(event.image)}}"
+                      alt="author" />
+                    <h4 class="name">
+                      <a href="#">{{event.title}}</a>
+                    </h4>
+                  </div>
+                  <h3 class="title">
+                    <a href="course-single.html">
+                     {{event.description}}
+                    </a>
+                  </h3>
+                </div>
+                <!-- Courses Content End -->
+                <!-- Courses Meta Start -->
+                <div class="courses-meta">
+                  <div class="course-enroll-rating d-flex">
+                    <p>
+                      <i class="flaticon-user"></i> 4
+                    </p>
+                    <p>
+                      <i class="flaticon-star-1"></i> 1
+                    </p>
+                  </div>
+                  <div class="price">
+                    <span>£59.99</span>
+                  </div>
+                </div>
+                <!-- Courses Meta End -->
+              </div>
+              <!-- Single Courses End -->
+            </div>
+          {% endfor %}
+
+          </div>
+        </div>
+        <!-- Courses Wrapper End -->
+      </div>
+    </div>
+  </div>
+  <!-- Courses End -->
+
+{% endblock %}
+
+
+
+
+

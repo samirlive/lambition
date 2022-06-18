@@ -88,7 +88,7 @@ class PagesController extends AbstractController
     }
 
 
-    #[Route('/{slug}', name: 'front_page')]
+    #[Route('page/{slug}', name: 'front_page')]
     public function front_page($slug,PageRepository $pageRepository): Response
     {
         $page = $pageRepository->findOneBy(['slug'=>$slug]);
@@ -108,6 +108,15 @@ class PagesController extends AbstractController
         
         return $this->render('@Flexy\FrontBundle/templates/pages/event.html.twig', [
             'event' => $eventRepository->findOneBy(['slug'=>$slug]),
+        ]);
+    }
+
+    #[Route('/events', name: 'front_events')]
+    public function events(EventRepository $eventRepository): Response
+    {
+        
+        return $this->render('@Flexy\FrontBundle/templates/pages/events.html.twig', [
+            'events' => $eventRepository->findAll(),
         ]);
     }
 

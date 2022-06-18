@@ -1,0 +1,39 @@
+{% extends '@Flexy/FrontBundle/templates/layout.html.twig' %}
+
+{% block body %}
+
+<style>
+.content img {
+    border-radius: 8px;
+    box-shadow: 0 3px 8px #00000090;
+    text-align:center;
+}
+</style>
+
+<div class="container" style="margin:100px auto;">
+
+
+
+
+
+
+<div class="content" style="padding:0 100px;" >
+
+<div style="text-align:center;">
+<h1 class="mb-5">{{page.title}}</h1>
+{% if page.image %}
+<img class="mb-4" src="{{asset('uploads/' ~ page.image)}}" />
+{% endif %}
+</div>
+
+{{page.contentHtml|raw}}
+</div>
+
+</div>
+
+{% endblock %}
+
+
+
+
+
